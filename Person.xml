@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Person>
+    <Student>
+        <Name Marrige="单身">小章</Name>
+        <Age>21</Age>
+    </Student>
+    <Student>
+        <Name Marrige="单身">小红
+            <爱好>唱歌</爱好>
+        </Name>
+        <age>22</age>
+    </Student>
+    <Student>
+        <Name Marrige="单身">小红
+            <爱好>唱歌</爱好>
+        </Name>
+        <age>22</age>
+    </Student>
+    <Student>
+        <Name Marrige="单身">小红
+            <爱好>唱歌</爱好>
+        </Name>
+        <age>22</age>
+    </Student>
+    <Student>
+        <Name Marrige="单身">小红
+            <爱好>唱歌</爱好>
+        </Name>
+        <age>22</age>
+    </Student>
+    <Student>
+        <Name Marrige="单身">小红
+            <爱好>唱歌</爱好>
+        </Name>
+        <age>22</age>
+    </Student>
+</Person>

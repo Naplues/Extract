@@ -1,0 +1,117 @@
+double-blind peer reviewed paper  ◇  doi: 10.26478/ja2017.5.6.1 
+ 
+ 
+On Syntactic Characteristics of Jinwen Shangshu 
+ 
+
+Qian Zongwu  
+(Yangzhou University, China) 
+ 
+Abstract：Jinwen Shangshu consists of the earliest documents handed down in China, and 
+it is the classic of political history compiled no less than 2600 or 2500 years ago. The 
+article makes a thorough analysis on object-preposed sentences, passive sentences, 
+judgment sentences, and double-object sentences in Jinwen Shangshu (《今文尚书》). By 
+comparing various sentence patterns and investigating them systematically combining with 
+the development and the changes of the documentation language, it sums up some syntactic 
+characteristics of Jinwen Shangshu as well as the the evolution law of syntactic forms in 
+the documentation language, and it is of reference value to the study of the history of 
+Chinese grammar. 
+Keywords: Shangshu, Jinwen Shangshu, syntactic characteristics 
+   
+1. Introduction 
+Most documents in Jinwen Shangshu are credible ancient texts of Shang (商) and Zhou 
+(周) dynasties. Besides some narrative and descriptive texts, these documents mainly 
+record words, and they belong to colloquial written language reflecting the language styles 
+of Shang and Zhou dynasties relatively systematically. 
+Jinwen Shangshu has many lexical features. For example, none of the forms of the 
+self-addressing pronouns in the book is both single and plural, nor is its single or plural 
+form marked with an added or deducted affix like that in modern Chinese. A 
+self-addressing pronoun indicates its singular or plural by employing different lexical 
+forms. Interjections and modal particles which are at the beginning or in the middle of the 
+sentences are very rich, while modal particles at the end of the sentences are very poor. The 
+book has neither “也(ye)” which is a high-frequency modal particle in classical Chinese 
+nor the common modal particles “邪(耶)(ye)” and “与 (欤) (yu)”. [There is one case of 
+“乎(hu, a modal particle)” in Yao Dian (《尧典》) only.] The interrogative mood is mainly 
+                                                        
+
+ Qian Zongwu : ⑴ President of the International Society of Shangshu, Yangzhou, China. ⑵ Professor, 
+chief expert of the linguistic subject, Yangzhou University, Yangzhou, China. ⑶ Director of Research 
+Institute of Shangshu, Yangzhou University, Yangzhou, China. Email: qzongwu@126.com. 
+Macrolinguistics Vol.5, No.6 (2017) (1-23) ©2017 by The Learned Press 1 Qian Zongwu 
+double-blind peer reviewed paper  ◇  doi: 10.26478/ja2017.5.6.1 
+①
+indicated by modal adverbs and interrogative pronouns.  The study shows that Jinwen 
+ 
+Shangshu also has many syntactic features, and the article mainly outlines several results of 
+ 
+the research on object-preposed sentences, passive sentences, judgment sentences, and 
+On Syntactic Characteristics of Jinwen Shangshu 
+double-object sentences in the book. 
+ 
+ 
+
+Qian Zongwu  
+2. Object-preposed sentences present different forms 
+(Yangzhou University, China) 
+2.1 The uncommon form of negative object-preposed sentences : subject + 
+ 
+pronoun object + negative word + verb predicate 
+Abstract：Jinwen Shangshu consists of the earliest documents handed down in China, and 
+Negative words strongly adhere to the preposed objects in negative sentences, and they 
+it is the classic of political history compiled no less than 2600 or 2500 years ago. The 
+are generally put in front of the preposed objects in Pre-Qin documents. The syntactic form 
+article makes a thorough analysis on object-preposed sentences, passive sentences, 
+is “negative word + pronoun object + verb predicate”, and most of the negative sentences 
+judgment sentences, and double-object sentences in Jinwen Shangshu (《今文尚书》). By 
+in Jinwen Shangshu are in this form. There are 12 such cases in the book, and except for 
+comparing various sentence patterns and investigating them systematically combining with 
+those, there are also 2 cases in which negative words are put after the pronoun objects as in 
+the development and the changes of the documentation language, it sums up some syntactic 
+(1a) and (2a) below:  
+characteristics of Jinwen Shangshu as well as the the evolution law of syntactic forms in 
+(1) a. 尔   时   罔     敢     易法。                        (《周书·大诰》) 
+the documentation language, and it is of reference value to the study of the history of 
+         ěr   shí   wǎng   gǎn    yì fǎ                          (Zhou Shu· Da Gao) 
+Chinese grammar. 
+         you  it    not   should   belittle 
+Keywords: Shangshu, Jinwen Shangshu, syntactic characteristics 
+         „You should not think little of it.‟  
+   
+    b. 尔     罔     敢    怠弃     时                       (Zhou Bingjun, 1984:164) 
+1. Introduction 
+  ěr    wǎng   gǎn    dà i qì    shí .  
+Most documents in Jinwen Shangshu are credible ancient texts of Shang (商) and Zhou 
+       you   not   should   belittle   it 
+(周) dynasties. Besides some narrative and descriptive texts, these documents mainly 
+„You should not belittle it.‟ 
+record words, and they belong to colloquial written language reflecting the language styles 
+    c. 尔     罔    敢     易废   是 
+of Shang and Zhou dynasties relatively systematically. 
+         ěr    wǎng   gǎn    yì fè i   shì 
+Jinwen Shangshu has many lexical features. For example, none of the forms of the 
+you   not   should   belittle   it 
+self-addressing pronouns in the book is both single and plural, nor is its single or plural 
+„You should not belittle it.‟ 
+form marked with an added or deducted affix like that in modern Chinese. A 
+“(1a) means (1b). As (1a) is a negative object-preposed sentence, we can infer that (1b) 
+self-addressing pronoun indicates its singular or plural by employing different lexical 
+is the right interpretation”. (Zhou Bingjun, 1984： 164) The expression “易法 (yì fǎ)” is “易
+forms. Interjections and modal particles which are at the beginning or in the middle of the 
+废”(yì fèi), and the word “废(fèi)” in Bronze inscriptions means “法(fǎ)” mostly. “废(fèi)” 
+sentences are very rich, while modal particles at the end of the sentences are very poor. The 
+and “法(fǎ)” are interchangeable in ancient times. “易废(yì fèi)” is also “废易(fèi yì )” 
+book has neither “也(ye)” which is a high-frequency modal particle in classical Chinese 
+meaning “怠弃(dà i qì , to belittle or think little of )”. “时(shí )” is equal to the pronoun “是
+nor the common modal particles “邪(耶)(ye)” and “与 (欤) (yu)”. [There is one case of 
+(shì , „it‟)”, and the negative word “罔(wǎng, not)” is used after the pronoun object “时
+“乎(hu, a modal particle)” in Yao Dian (《尧典》) only.] The interrogative mood is mainly 
+(shí )”. Therefore, sentence (1a) can be interpreted into (1c).  
+ 
+                                                        
+
+ Qian Zongwu : ⑴ President of the International Society of Shangshu, Yangzhou, China. ⑵ Professor, 
+                                                        
+①
+chi As ef  expe to the rt m oforphologi the linguist cal ic chsu aract bjec er t, isti Yangz cs ofhou Jin wen Unive Shangshu, rsity, Yan gzhou, please se Chin e m a. y  ⑶ arti cles Direct for or  dof et aResea ils: Qian rch  
+Instit Zongwu ute of (1994), Shangshu, Qian Zongwu Yangzhou  (1Univer 996) and sity Qi , Y an Z angzhou, ongwu (2002). China. Em ail: qzongwu@126.com. 
+Mac 2                                                                rolinguistics Vol.5, No.6 (2017) (1-23) ©2017 by The Learned Press Macrolinguistics (2017) 1  

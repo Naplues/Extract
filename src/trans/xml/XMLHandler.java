@@ -19,14 +19,12 @@ public class XMLHandler {
 	/**
 	 * 打印XML内容
 	 */
-	public static void printXML() {
-		SAXReader reader = new SAXReader();
-		Document document;
+	public static void printXML(String filePath) {
 		try {
-
-			document = (Document) reader.read(new File("test.xml"));
+			SAXReader reader = new SAXReader();
+			Document document = (Document) reader.read(new File(filePath));
 			Element root = document.getRootElement();
-			listNodes(root);
+			listNodes(root); //展示结点
 
 		} catch (DocumentException e) {
 			e.printStackTrace();
@@ -54,31 +52,98 @@ public class XMLHandler {
 	}
 
 	/**
-	 * 导出XML文件
+	 * 根据模板生成dom4j文档
 	 * 
-	 * @param filePath
+	 * @param template
+	 * @return
 	 */
-	public static void exportXML(String filePath) {
-		// 创建文档及设置根元素节点的方式
-		Element root = DocumentHelper.createElement("Person");
-		Document document = DocumentHelper.createDocument(root);
-		// 给根节点添加属性
-		//root.addAttribute("School", "南大").addAttribute("Location", "江西");
+	public static void generateXML(Template template, String filePath) {
+		Element root = DocumentHelper.createElement("ArticleSet");
+		// 文章集子元素
+		Element article = root.addElement("Article");
+		// 文章子元素
+		Element journal = article.addElement("Journal");
 
-		// 给根节点添加孩子节点
-		Element element1 = root.addElement("Student");
-		element1.addElement("Name").addAttribute("Marrige", "单身").addText("小章");
-		element1.addElement("Age").addText("21");
-		
-		//连加5个属性
-		for(int i=0;i<5;i++) {
-			Element element2 = root.addElement("Student");
-			element2.addElement("Name").addAttribute("Marrige", "单身").addText("小红").addElement("爱好").addText("唱歌");
-			element2.addElement("age").addText("22");
+		article.addElement("ArticleType").addText("");
+		article.addElement("ArticleTitle").addText("");
+		article.addElement("SubTitle").addText("");
+		article.addElement("ArticleLanguage").addText("");
+		article.addElement("ArticleOA").addText("");
+		article.addElement("FirstPage").addText("");
+		article.addElement("LastPage").addText("");
+
+		Element authorList = article.addElement("AuthorList");
+
+		article.addElement("DOI").addText("");
+		article.addElement("Abstract").addText("");
+		article.addElement("AbstractLanguage").addText("");
+		article.addElement("Keywords").addText("");
+		article.addElement("Fulltext").addText("");
+
+		Element urls = article.addElement("URLs");
+
+		article.addElement("FulltextLanguage").addText("");
+
+		Element references = article.addElement("References");
+
+		// journal子标签
+		journal.addElement("PublisherName").addText("");
+		journal.addElement("JournalTitle").addText("");
+		journal.addElement("PISSN").addText("");
+		journal.addElement("EISSN").addText("");
+		journal.addElement("Volume").addText("");
+		journal.addElement("Issue").addText("");
+		journal.addElement("PartNumber").addText("");
+		journal.addElement("IssueTopic").addText("");
+		journal.addElement("IssueLanguage").addText("");
+		journal.addElement("Season").addText("");
+		journal.addElement("SpecialIssue").addText("");
+		journal.addElement("SupplementaryIssue").addText("");
+		journal.addElement("IssueOA").addText("");
+		Element pubDate = journal.addElement("PubDate");
+		pubDate.addElement("Year").addText("");
+		pubDate.addElement("Month").addText("");
+		pubDate.addElement("Day").addText("");
+
+		// authorList 子标签
+		for (int i = 0; i < 1; i++) {
+			Element author = authorList.addElement("Author");
+			author.addElement("FirstName").addText("");
+			author.addElement("MiddleName").addText("");
+			author.addElement("LastName").addText("");
+			author.addElement("Initials").addText("");
+			author.addElement("AuthorLanguage").addText("");
+			author.addElement("Affiliation").addText("");
+			author.addElement("Country").addText("");
+			author.addElement("Phone").addText("");
+			author.addElement("Fax").addText("");
+			author.addElement("AuthorEmails").addText("");
+		}
+
+		// URL 子标签
+		urls.addElement("abstract").addText("");
+		urls.addElement("Fulltext").addText("").addElement("pdf").addText("");
+
+		// 参考文献子标签
+		for (int i = 0; i < 1; i++) {
+			references.addElement("ReferencesarticleTitle").addText("");
+			references.addElement("ReferencesfirstPage").addText("");
+			references.addElement("ReferenceslastPage").addText("");
+			Element refAuthorList = references.addElement("authorList");
+			for (int j = 0; j < 1; j++) {
+				Element refAuthor = refAuthorList.addElement("author");
+				refAuthor.addElement("ReferencesfirstName").addText("");
+				refAuthor.addElement("ReferencesmiddleName").addText("");
+				refAuthor.addElement("ReferenceslastName").addText("");
+				refAuthor.addElement("ReferencesInitials").addText("");
+				refAuthor.addElement("Referencesaffiliation").addText("");
+				refAuthor.addElement("Referencescountry").addText("");
+			}
 		}
 
 		// 写入文件
 		try {
+			Document document = DocumentHelper.createDocument(root);
 			OutputFormat format = new OutputFormat("    ", true); // 把生成的xml文档存放在硬盘上 true代表是否换行
 			format.setEncoding("UTF-8");// 设置编码格式
 			XMLWriter xmlWriter = new XMLWriter(new FileOutputStream(filePath), format);

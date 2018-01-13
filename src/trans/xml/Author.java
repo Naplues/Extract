@@ -20,6 +20,16 @@ public class Author {
 
 	public Author() {
 		super();
+		this.firstName = new String();
+		this.middleName = new String();
+		this.lastName = new String();
+		this.initials = new String();
+		this.authorLanguage = new String();
+		this.affiliation = new String();
+		this.country = new String();
+		this.phone = new String();
+		this.fax = new String();
+		this.authorEmails = new String();
 	}
 
 	public Author(String firstName, String middleName, String lastName, String initials, String authorLanguage,

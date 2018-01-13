@@ -24,7 +24,7 @@ public class XMLHandler {
 			SAXReader reader = new SAXReader();
 			Document document = (Document) reader.read(new File(filePath));
 			Element root = document.getRootElement();
-			listNodes(root); //展示结点
+			listNodes(root); // 展示结点
 
 		} catch (DocumentException e) {
 			e.printStackTrace();
@@ -64,80 +64,86 @@ public class XMLHandler {
 		// 文章子元素
 		Element journal = article.addElement("Journal");
 
-		article.addElement("ArticleType").addText("");
-		article.addElement("ArticleTitle").addText("");
-		article.addElement("SubTitle").addText("");
-		article.addElement("ArticleLanguage").addText("");
-		article.addElement("ArticleOA").addText("");
-		article.addElement("FirstPage").addText("");
-		article.addElement("LastPage").addText("");
+		article.addElement("ArticleType").addText(template.getArticleType());
+		article.addElement("ArticleTitle").addText(template.getArticleTitle());
+		article.addElement("SubTitle").addText(template.getSubTitle());
+		article.addElement("ArticleLanguage").addText(template.getArticleLanguage());
+		article.addElement("ArticleOA").addText(template.getArticleOA());
+		article.addElement("FirstPage").addText(template.getFirstPage());
+		article.addElement("LastPage").addText(template.getLastPage());
 
-		Element authorList = article.addElement("AuthorList");
+		Element authorList = article.addElement("AuthorList").addText("");
 
-		article.addElement("DOI").addText("");
-		article.addElement("Abstract").addText("");
-		article.addElement("AbstractLanguage").addText("");
-		article.addElement("Keywords").addText("");
-		article.addElement("Fulltext").addText("");
+		article.addElement("DOI").addText(template.getDoi());
+		article.addElement("Abstract").addText(template.getAbsTract());
+		article.addElement("AbstractLanguage").addText(template.getAbstractLanguage());
+		article.addElement("Keywords").addText(template.getKeyWords());
+		article.addElement("Fulltext").addText(template.getFullText());
 
 		Element urls = article.addElement("URLs");
 
-		article.addElement("FulltextLanguage").addText("");
+		article.addElement("FulltextLanguage").addText(template.getFullTextLanguage());
 
-		Element references = article.addElement("References");
+		Element references = article.addElement("References").addText("");
 
 		// journal子标签
-		journal.addElement("PublisherName").addText("");
-		journal.addElement("JournalTitle").addText("");
-		journal.addElement("PISSN").addText("");
-		journal.addElement("EISSN").addText("");
-		journal.addElement("Volume").addText("");
-		journal.addElement("Issue").addText("");
-		journal.addElement("PartNumber").addText("");
-		journal.addElement("IssueTopic").addText("");
-		journal.addElement("IssueLanguage").addText("");
-		journal.addElement("Season").addText("");
-		journal.addElement("SpecialIssue").addText("");
-		journal.addElement("SupplementaryIssue").addText("");
-		journal.addElement("IssueOA").addText("");
+		journal.addElement("PublisherName").addText(template.getPublisherName());
+		journal.addElement("JournalTitle").addText(template.getJournalTitle());
+		journal.addElement("PISSN").addText(template.getpISSN());
+		journal.addElement("EISSN").addText(template.geteISSN());
+		journal.addElement("Volume").addText(template.getVolumn());
+		journal.addElement("Issue").addText(template.getIssue());
+		journal.addElement("PartNumber").addText(template.getPartNumber());
+		journal.addElement("IssueTopic").addText(template.getIssueTopic());
+		journal.addElement("IssueLanguage").addText(template.getIssueLanguage());
+		journal.addElement("Season").addText(template.getSeason());
+		journal.addElement("SpecialIssue").addText(template.getSpecialIssue());
+		journal.addElement("SupplementaryIssue").addText(template.getSupplementaryIssue());
+		journal.addElement("IssueOA").addText(template.getIssueOA());
 		Element pubDate = journal.addElement("PubDate");
-		pubDate.addElement("Year").addText("");
-		pubDate.addElement("Month").addText("");
-		pubDate.addElement("Day").addText("");
+		pubDate.addElement("Year").addText(template.getPubDateYear());
+		pubDate.addElement("Month").addText(template.getPubDateMonth());
+		pubDate.addElement("Day").addText(template.getPubDateDay());
 
 		// authorList 子标签
-		for (int i = 0; i < 1; i++) {
+		List<Author> authorTemplateList = template.getAuthorList();
+		for (Author authorTemplate : authorTemplateList) {
 			Element author = authorList.addElement("Author");
-			author.addElement("FirstName").addText("");
-			author.addElement("MiddleName").addText("");
-			author.addElement("LastName").addText("");
-			author.addElement("Initials").addText("");
-			author.addElement("AuthorLanguage").addText("");
-			author.addElement("Affiliation").addText("");
-			author.addElement("Country").addText("");
-			author.addElement("Phone").addText("");
-			author.addElement("Fax").addText("");
-			author.addElement("AuthorEmails").addText("");
+			author.addElement("FirstName").addText(authorTemplate.getFirstName());
+			author.addElement("MiddleName").addText(authorTemplate.getMiddleName());
+			author.addElement("LastName").addText(authorTemplate.getLastName());
+			author.addElement("Initials").addText(authorTemplate.getInitials());
+			author.addElement("AuthorLanguage").addText(authorTemplate.getAuthorLanguage());
+			author.addElement("Affiliation").addText(authorTemplate.getAffiliation());
+			author.addElement("Country").addText(authorTemplate.getCountry());
+			author.addElement("Phone").addText(authorTemplate.getPhone());
+			author.addElement("Fax").addText(authorTemplate.getFax());
+			author.addElement("AuthorEmails").addText(authorTemplate.getAuthorEmails());
 		}
+		
 
 		// URL 子标签
-		urls.addElement("abstract").addText("");
-		urls.addElement("Fulltext").addText("").addElement("pdf").addText("");
+		urls.addElement("abstract").addText(template.getUrlAbstract());
+		urls.addElement("Fulltext").addElement("pdf").addText(template.getUrlPDF());
 
 		// 参考文献子标签
-		for (int i = 0; i < 1; i++) {
-			references.addElement("ReferencesarticleTitle").addText("");
-			references.addElement("ReferencesfirstPage").addText("");
-			references.addElement("ReferenceslastPage").addText("");
-			Element refAuthorList = references.addElement("authorList");
-			for (int j = 0; j < 1; j++) {
+		List<References> referencesTemplateList = template.getReferencesList();
+		for (References referencesTemplate : referencesTemplateList) {
+			references.addElement("ReferencesarticleTitle").addText(referencesTemplate.getReferencesarticleTitle());
+			references.addElement("ReferencesfirstPage").addText(referencesTemplate.getReferencesFirstPage());
+			references.addElement("ReferenceslastPage").addText(referencesTemplate.getReferencesLastPage());
+
+			Element refAuthorList = references.addElement("authorList").addText("");
+			List<RefAuthor> refAuthorListTemplate = referencesTemplate.getRefAuthorList();
+
+			for (RefAuthor refAuthorTemplate : refAuthorListTemplate) {
 				Element refAuthor = refAuthorList.addElement("author");
-				refAuthor.addElement("ReferencesfirstName").addText("");
-				refAuthor.addElement("ReferencesmiddleName").addText("");
-				refAuthor.addElement("ReferenceslastName").addText("");
-				refAuthor.addElement("ReferencesInitials").addText("");
-				refAuthor.addElement("Referencesaffiliation").addText("");
-				refAuthor.addElement("Referencescountry").addText("");
+				refAuthor.addElement("ReferencesfirstName").addText(refAuthorTemplate.getReferencesFirstName());
+				refAuthor.addElement("ReferencesmiddleName").addText(refAuthorTemplate.getReferencesMiddleName());
+				refAuthor.addElement("ReferenceslastName").addText(refAuthorTemplate.getReferencesLastName());
+				refAuthor.addElement("ReferencesInitials").addText(refAuthorTemplate.getReferencesInitials());
+				refAuthor.addElement("Referencesaffiliation").addText(refAuthorTemplate.getReferencesAffiliation());
+				refAuthor.addElement("Referencescountry").addText(refAuthorTemplate.getReferencesCountry());
 			}
 		}
 

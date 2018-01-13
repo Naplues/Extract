@@ -1,5 +1,6 @@
 package trans.xml;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -14,9 +15,9 @@ public class Template {
 	private String journalTitle; // 杂志 的标题
 	private String pISSN; // 该杂志的印刷期刊号
 	private String eISSN; // 该杂志的电子期刊号
-	private int volumn; // 卷数
+	private String volumn; // 卷数
 	private String issue; // 版次
-	private int partNumber; // 零件号
+	private String partNumber; // 零件号
 	private String issueTopic; // 议题
 	private String issueLanguage; // 对该问题发表的文章的用语
 	private String season; // 如果问题是季节性的（summer, autumn, spring, winter）
@@ -33,8 +34,8 @@ public class Template {
 	private String subTitle; // 副标题
 	private String articleLanguage; // 文章语言
 	private String articleOA; //
-	private int firstPage; // 文章开始页码
-	private int lastPage; // 文章结束页码
+	private String firstPage; // 文章开始页码
+	private String lastPage; // 文章结束页码
 
 	// 作者列表
 	private List<Author> authorList; // 作者列表
@@ -56,49 +57,39 @@ public class Template {
 
 	public Template() {
 		super();
-	}
-
-	public Template(String publisherName, String journalTitle, String pISSN, String eISSN, int volumn, String issue,
-			int partNumber, String issueTopic, String issueLanguage, String season, String specialIssue,
-			String supplementaryIssue, String issueOA, String pubDateYear, String pubDateMonth, String pubDateDay,
-			String articleType, String articleTitle, String subTitle, String articleLanguage, String articleOA,
-			int firstPage, int lastPage, List<Author> authorList, String doi, String absTract, String abstractLanguage,
-			String keyWords, String fullText, String urlAbstract, String urlPDF, String fullTextLanguage,
-			List<References> referencesList) {
-		super();
-		this.publisherName = publisherName;
-		this.journalTitle = journalTitle;
-		this.pISSN = pISSN;
-		this.eISSN = eISSN;
-		this.volumn = volumn;
-		this.issue = issue;
-		this.partNumber = partNumber;
-		this.issueTopic = issueTopic;
-		this.issueLanguage = issueLanguage;
-		this.season = season;
-		this.specialIssue = specialIssue;
-		this.supplementaryIssue = supplementaryIssue;
-		this.issueOA = issueOA;
-		this.pubDateYear = pubDateYear;
-		this.pubDateMonth = pubDateMonth;
-		this.pubDateDay = pubDateDay;
-		this.articleType = articleType;
-		this.articleTitle = articleTitle;
-		this.subTitle = subTitle;
-		this.articleLanguage = articleLanguage;
-		this.articleOA = articleOA;
-		this.firstPage = firstPage;
-		this.lastPage = lastPage;
-		this.authorList = authorList;
-		this.doi = doi;
-		this.absTract = absTract;
-		this.abstractLanguage = abstractLanguage;
-		this.keyWords = keyWords;
-		this.fullText = fullText;
-		this.urlAbstract = urlAbstract;
-		this.urlPDF = urlPDF;
-		this.fullTextLanguage = fullTextLanguage;
-		this.referencesList = referencesList;
+		this.publisherName = new String();
+		this.journalTitle = new String();
+		this.pISSN = new String();
+		this.eISSN = new String();
+		this.volumn = new String();
+		this.issue = new String();
+		this.partNumber = new String();
+		this.issueTopic = new String();
+		this.issueLanguage = new String();
+		this.season = new String();
+		this.specialIssue = new String();
+		this.supplementaryIssue = new String();
+		this.issueOA = new String();
+		this.pubDateYear = new String();
+		this.pubDateMonth = new String();
+		this.pubDateDay = new String();
+		this.articleType = new String();
+		this.articleTitle = new String();
+		this.subTitle = new String();
+		this.articleLanguage = new String();
+		this.articleOA = new String();
+		this.firstPage = new String();
+		this.lastPage = new String();
+		this.authorList = new ArrayList<>();
+		this.doi = new String();
+		this.absTract = new String();
+		this.abstractLanguage = new String();
+		this.keyWords = new String();
+		this.fullText = new String();
+		this.urlAbstract = new String();
+		this.urlPDF = new String();
+		this.fullTextLanguage = new String();
+		this.referencesList = new ArrayList<>();
 	}
 
 	public String getPublisherName() {
@@ -133,11 +124,11 @@ public class Template {
 		this.eISSN = eISSN;
 	}
 
-	public int getVolumn() {
+	public String getVolumn() {
 		return volumn;
 	}
 
-	public void setVolumn(int volumn) {
+	public void setVolumn(String volumn) {
 		this.volumn = volumn;
 	}
 
@@ -149,11 +140,11 @@ public class Template {
 		this.issue = issue;
 	}
 
-	public int getPartNumber() {
+	public String getPartNumber() {
 		return partNumber;
 	}
 
-	public void setPartNumber(int partNumber) {
+	public void setPartNumber(String partNumber) {
 		this.partNumber = partNumber;
 	}
 
@@ -269,19 +260,19 @@ public class Template {
 		this.articleOA = articleOA;
 	}
 
-	public int getFirstPage() {
+	public String getFirstPage() {
 		return firstPage;
 	}
 
-	public void setFirstPage(int firstPage) {
+	public void setFirstPage(String firstPage) {
 		this.firstPage = firstPage;
 	}
 
-	public int getLastPage() {
+	public String getLastPage() {
 		return lastPage;
 	}
 
-	public void setLastPage(int lastPage) {
+	public void setLastPage(String lastPage) {
 		this.lastPage = lastPage;
 	}
 

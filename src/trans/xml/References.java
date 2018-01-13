@@ -1,5 +1,6 @@
 package trans.xml;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -17,6 +18,10 @@ public class References {
 
 	public References() {
 		super();
+		this.referencesarticleTitle = new String();
+		this.referencesFirstPage = new String();
+		this.referencesLastPage = new String();
+		this.refAuthorList = new ArrayList<RefAuthor>();
 	}
 
 	public References(String referencesarticleTitle, String referencesFirstPage, String referencesLastPage,

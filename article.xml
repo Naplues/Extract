@@ -29,20 +29,7 @@
         <ArticleOA></ArticleOA>
         <FirstPage></FirstPage>
         <LastPage></LastPage>
-        <AuthorList>
-            <Author>
-                <FirstName></FirstName>
-                <MiddleName></MiddleName>
-                <LastName></LastName>
-                <Initials></Initials>
-                <AuthorLanguage></AuthorLanguage>
-                <Affiliation></Affiliation>
-                <Country></Country>
-                <Phone></Phone>
-                <Fax></Fax>
-                <AuthorEmails></AuthorEmails>
-            </Author>
-        </AuthorList>
+        <AuthorList></AuthorList>
         <DOI></DOI>
         <Abstract></Abstract>
         <AbstractLanguage></AbstractLanguage>
@@ -55,20 +42,6 @@
             </Fulltext>
         </URLs>
         <FulltextLanguage></FulltextLanguage>
-        <References>
-            <ReferencesarticleTitle></ReferencesarticleTitle>
-            <ReferencesfirstPage></ReferencesfirstPage>
-            <ReferenceslastPage></ReferenceslastPage>
-            <authorList>
-                <author>
-                    <ReferencesfirstName></ReferencesfirstName>
-                    <ReferencesmiddleName></ReferencesmiddleName>
-                    <ReferenceslastName></ReferenceslastName>
-                    <ReferencesInitials></ReferencesInitials>
-                    <Referencesaffiliation></Referencesaffiliation>
-                    <Referencescountry></Referencescountry>
-                </author>
-            </authorList>
-        </References>
+        <References></References>
     </Article>
 </ArticleSet>

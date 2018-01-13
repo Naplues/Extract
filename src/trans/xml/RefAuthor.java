@@ -16,6 +16,12 @@ public class RefAuthor {
 
 	public RefAuthor() {
 		super();
+		this.referencesFirstName = new String();
+		this.referencesMiddleName = new String();
+		this.referencesLastName = new String();
+		this.referencesInitials = new String();
+		this.referencesAffiliation = new String();
+		this.referencesCountry = new String();
 	}
 
 	public RefAuthor(String referencesFirstName, String referencesMiddleName, String referencesLastName,

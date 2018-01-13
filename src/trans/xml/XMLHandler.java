@@ -16,46 +16,12 @@ import org.dom4j.io.SAXReader;
 import org.dom4j.io.XMLWriter;
 
 public class XMLHandler {
-	/**
-	 * 打印XML内容
-	 */
-	public static void printXML(String filePath) {
-		try {
-			SAXReader reader = new SAXReader();
-			Document document = (Document) reader.read(new File(filePath));
-			Element root = document.getRootElement();
-			listNodes(root); // 展示结点
-
-		} catch (DocumentException e) {
-			e.printStackTrace();
-		}
-
-	}
-
-	public static void listNodes(Element node) {
-		System.out.println("当前结点的名称：" + node.getName());
-		// 获取当前结点的所有属性结点
-		List<Attribute> list = node.attributes();
-		// 遍历属性结点
-		for (Attribute attribute : list) {
-			System.out.println("属性： " + attribute.getName() + ": " + attribute.getValue());
-		}
-		// 如果当前结点内容不为空,则输出
-		if (!node.getTextTrim().equals("")) {
-			System.out.println(node.getName() + ": " + node.getText());
-		}
-		// 迭代当前结点下面的子结点,递归调用
-		Iterator<Element> iterator = node.elementIterator();
-		while (iterator.hasNext()) {
-			listNodes(iterator.next());
-		}
-	}
 
 	/**
 	 * 根据模板生成dom4j文档
 	 * 
 	 * @param template
-	 * @return
+	 * @param filePath
 	 */
 	public static void generateXML(Template template, String filePath) {
 		Element root = DocumentHelper.createElement("ArticleSet");
@@ -120,7 +86,6 @@ public class XMLHandler {
 			author.addElement("Fax").addText(authorTemplate.getFax());
 			author.addElement("AuthorEmails").addText(authorTemplate.getAuthorEmails());
 		}
-		
 
 		// URL 子标签
 		urls.addElement("abstract").addText(template.getUrlAbstract());
@@ -157,6 +122,40 @@ public class XMLHandler {
 			xmlWriter.close();
 		} catch (IOException e) {
 			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * 打印XML内容
+	 */
+	public static void printXML(String filePath) {
+		try {
+			SAXReader reader = new SAXReader();
+			Document document = (Document) reader.read(new File(filePath));
+			Element root = document.getRootElement();
+			listNodes(root); // 展示结点
+
+		} catch (DocumentException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public static void listNodes(Element node) {
+		System.out.println("当前结点的名称：" + node.getName());
+		// 获取当前结点的所有属性结点
+		List<Attribute> list = node.attributes();
+		// 遍历属性结点
+		for (Attribute attribute : list) {
+			System.out.println("属性： " + attribute.getName() + ": " + attribute.getValue());
+		}
+		// 如果当前结点内容不为空,则输出
+		if (!node.getTextTrim().equals("")) {
+			System.out.println(node.getName() + ": " + node.getText());
+		}
+		// 迭代当前结点下面的子结点,递归调用
+		Iterator<Element> iterator = node.elementIterator();
+		while (iterator.hasNext()) {
+			listNodes(iterator.next());
 		}
 	}
 }

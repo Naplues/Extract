@@ -1,9 +1,8 @@
 package trans.run;
 
+import trans.parse.PDFParser;
 import trans.xml.Template;
 import trans.xml.XMLHandler;
-
-//import trans.parse.PDFParser;
 
 /**
  * 
@@ -13,9 +12,10 @@ import trans.xml.XMLHandler;
 public class Main {
 
 	public static void main(String[] args) {
-		// PDFParser.manipulatePdf("test.pdf", "test.txt");
-		
-		XMLHandler.generateXML(new Template(), "article.xml"); // 生成XML文档
-		XMLHandler.printXML("article.xml"); // 输出XMl内容
+		// 解析PDF文件
+		Template template = PDFParser.parsePDF("test.pdf", "test.txt");
+
+		// 根据模板生成XML文档
+		XMLHandler.generateXML(template, "article.xml");
 	}
 }

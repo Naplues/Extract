@@ -21,7 +21,7 @@ public class References {
 		this.referencesarticleTitle = new String();
 		this.referencesFirstPage = new String();
 		this.referencesLastPage = new String();
-		this.refAuthorList = new ArrayList<RefAuthor>();
+		this.refAuthorList = new ArrayList<>();
 	}
 
 	public References(String referencesarticleTitle, String referencesFirstPage, String referencesLastPage,

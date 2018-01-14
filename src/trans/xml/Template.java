@@ -58,27 +58,29 @@ public class Template {
 
 	public Template() {
 		super();
-		this.publisherName = new String();
-		this.journalTitle = new String();
-		this.pISSN = new String();
-		this.eISSN = new String();
+		//
+		this.publisherName = new String("The Learned Press");
+		this.journalTitle = new String("Macrolinguistics");
+		this.pISSN = new String("1934-5755");
+		this.eISSN = new String("2473-6376");
+		this.issueTopic = new String("Lingustic");
+		this.issueLanguage = new String("EN,ZH");
+		this.articleType = new String("researchArticle");
+		this.specialIssue = new String("N");
+		this.supplementaryIssue = new String("N");
+		this.issueOA = new String("Y");
+		this.articleOA = new String("Y");
+		
 		this.volumn = new String();
 		this.issue = new String();
-		this.partNumber = new String();
-		this.issueTopic = new String();
-		this.issueLanguage = new String();
+		this.partNumber = new String();//ignore
 		this.season = new String();
-		this.specialIssue = new String();
-		this.supplementaryIssue = new String();
-		this.issueOA = new String();
 		this.pubDateYear = new String();
 		this.pubDateMonth = new String();
 		this.pubDateDay = new String();
-		this.articleType = new String();
 		this.articleTitle = new String();
 		this.subTitle = new String();
 		this.articleLanguage = new String();
-		this.articleOA = new String();
 		this.firstPage = new String();
 		this.lastPage = new String();
 		this.authorList = new ArrayList<>();

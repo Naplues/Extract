@@ -24,17 +24,6 @@ public class RefAuthor {
 		this.referencesCountry = new String();
 	}
 
-	public RefAuthor(String referencesFirstName, String referencesMiddleName, String referencesLastName,
-			String referencesInitials, String referencesAffiliation, String referencesCountry) {
-		super();
-		this.referencesFirstName = referencesFirstName;
-		this.referencesMiddleName = referencesMiddleName;
-		this.referencesLastName = referencesLastName;
-		this.referencesInitials = referencesInitials;
-		this.referencesAffiliation = referencesAffiliation;
-		this.referencesCountry = referencesCountry;
-	}
-
 	public String getReferencesFirstName() {
 		return referencesFirstName;
 	}

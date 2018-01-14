@@ -120,6 +120,8 @@ public class XMLHandler {
 			XMLWriter xmlWriter = new XMLWriter(new FileOutputStream(filePath), format);
 			xmlWriter.write(document);
 			xmlWriter.close();
+
+			System.out.println(".......................generate success!");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

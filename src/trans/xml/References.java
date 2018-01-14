@@ -24,15 +24,6 @@ public class References {
 		this.refAuthorList = new ArrayList<>();
 	}
 
-	public References(String referencesarticleTitle, String referencesFirstPage, String referencesLastPage,
-			List<RefAuthor> refAuthorList) {
-		super();
-		this.referencesarticleTitle = referencesarticleTitle;
-		this.referencesFirstPage = referencesFirstPage;
-		this.referencesLastPage = referencesLastPage;
-		this.refAuthorList = refAuthorList;
-	}
-
 	public String getReferencesarticleTitle() {
 		return referencesarticleTitle;
 	}

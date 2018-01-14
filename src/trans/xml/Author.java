@@ -27,24 +27,11 @@ public class Author {
 		this.authorLanguage = new String();
 		this.affiliation = new String();
 		this.country = new String();
+
+		this.authorEmails = new String();
+		//ignore
 		this.phone = new String();
 		this.fax = new String();
-		this.authorEmails = new String();
-	}
-
-	public Author(String firstName, String middleName, String lastName, String initials, String authorLanguage,
-			String affiliation, String country, String phone, String fax, String authorEmails) {
-		super();
-		this.firstName = firstName;
-		this.middleName = middleName;
-		this.lastName = lastName;
-		this.initials = initials;
-		this.authorLanguage = authorLanguage;
-		this.affiliation = affiliation;
-		this.country = country;
-		this.phone = phone;
-		this.fax = fax;
-		this.authorEmails = authorEmails;
 	}
 
 	public String getFirstName() {

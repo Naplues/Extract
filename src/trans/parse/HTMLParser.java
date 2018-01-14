@@ -1,6 +1,8 @@
 package trans.parse;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.ParseException;
@@ -15,6 +17,7 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+import trans.xml.Author;
 import trans.xml.Template;
 
 /**
@@ -73,8 +76,8 @@ public class HTMLParser {
 		template.setPubDateMonth(pubDate[1]);
 		template.setPubDateDay(pubDate[2]);
 		template.setSeason(getSeason(pubDate[1]));
-		
-		//Article OK--
+
+		// Article OK--
 		String[] title = document.getElementsByClass("title").text().split("——");
 		template.setArticleTitle(title[0]);
 		if (title.length == 2)
@@ -83,22 +86,54 @@ public class HTMLParser {
 		String[] page = document.getElementsByAttribute("colspan").get(2).text().split("-");
 		template.setFirstPage(page[0]);
 		template.setLastPage(page[1]);
-		
-		//AuthorList
-		
-		
-		//DOI OK--
+
+		// AuthorList
+		String[] authors = document.getElementsByAttribute("width").text().split(";");
+		String[] affilis = document.getElementsByAttribute("colspan").get(0).text().split(";");
+		List<Author> authorList = new ArrayList<>();
+		for (int i = 0; i < authors.length; i++) {
+			for(int j=0;j<authors[i].length();j++) {
+				if(authors[i].startsWith(" ")) {
+					authors[i] = authors[i].substring(1);
+				}
+			}
+			Author tempAuthor = new Author();
+			String[] names = authors[i].split(" ");
+			
+			tempAuthor.setFirstName(names[0]);
+			if (names.length > 2) {
+				String mName = "";
+				for (int j = 1; j < names.length - 1; j++)
+					mName += names[j];
+				tempAuthor.setMiddleName(mName);
+			}
+			tempAuthor.setLastName(names[names.length - 1]);
+			tempAuthor.setAuthorLanguage("");
+			if (affilis.length > 1)
+				tempAuthor.setAffiliation(affilis[i]);
+			else
+				tempAuthor.setAffiliation(affilis[0]);
+			tempAuthor.setCountry("");
+			tempAuthor.setAuthorEmails("");
+
+			authorList.add(tempAuthor);
+		}
+		template.setAuthorList(authorList);
+
+		// DOI OK--
 		template.setAbsTract(document.getElementsByTag("span").get(0).text());
 		template.setKeyWords(document.getElementsByAttribute("colspan").get(5).text());
 		template.setDoi(document.getElementsByAttribute("colspan").get(6).text());
 		template.setAbstractLanguage("EN");
-		
-		//URL OK--
+
+		// URL OK--
 		template.setUrlAbstract(url);
 		template.setUrlPDF("http://www.macrolinguistics.com/" + document.getElementsByTag("a").get(15).attr("href"));
+
+		// References
+		// System.out.println(document.getElementsByAttribute("colspan"));
 		
-		//References
-		System.out.println(url);
+		
 	}
 
 	public static String getSeason(String month) {

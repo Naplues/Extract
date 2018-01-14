@@ -7,38 +7,63 @@
             <JournalTitle>Macrolinguistics</JournalTitle>
             <PISSN>1934-5755</PISSN>
             <EISSN>2473-6376</EISSN>
-            <Volume>6</Volume>
+            <Volume>4</Volume>
             <Issue></Issue>
             <PartNumber></PartNumber>
             <IssueTopic>Lingustic</IssueTopic>
             <IssueLanguage>EN,ZH</IssueLanguage>
-            <Season>autumn</Season>
+            <Season>summer</Season>
             <SpecialIssue>N</SpecialIssue>
             <SupplementaryIssue>N</SupplementaryIssue>
             <IssueOA>Y</IssueOA>
             <PubDate>
-                <Year>2017</Year>
-                <Month>10</Month>
+                <Year>2016</Year>
+                <Month>06</Month>
                 <Day>01</Day>
             </PubDate>
         </Journal>
         <ArticleType>researchArticle</ArticleType>
-        <ArticleTitle>On Syntactic Characteristics of Jinwen Shangshu</ArticleTitle>
+        <ArticleTitle>The Determinacy of Lexical Selectional Restriction and Its Basis for Existence</ArticleTitle>
         <SubTitle></SubTitle>
         <ArticleLanguage>EN,ZH</ArticleLanguage>
         <ArticleOA>Y</ArticleOA>
-        <FirstPage>1</FirstPage>
-        <LastPage>23</LastPage>
-        <AuthorList></AuthorList>
-        <DOI>doi:10.26478/ja2017.5.6.1</DOI>
-        <Abstract>Jinwen Shangshu consists of the earliest documents handed down in China, and it is the classic of political history compiled no less than 2600 or 2500 years ago. The article makes a thorough analysis on object-preposed sentences, passive sentences, judgment sentences, and double-object sentences in Jinwen Shangshu.By comparing various sentence patterns and investigating them systematically combining with the development and the changes of the documentation language, it sums up some syntactic characteristics of Jinwen Shangshu as well as the the evolution law of syntactic forms in the documentation language, and it is of reference value to the study of the history of Chinese grammar.</Abstract>
+        <FirstPage>17</FirstPage>
+        <LastPage>36</LastPage>
+        <AuthorList>
+            <Author>
+                <FirstName>Ma</FirstName>
+                <MiddleName></MiddleName>
+                <LastName>Qinghua</LastName>
+                <Initials></Initials>
+                <AuthorLanguage></AuthorLanguage>
+                <Affiliation>School of Liberal Arts, Nanjing University</Affiliation>
+                <Country></Country>
+                <Phone></Phone>
+                <Fax></Fax>
+                <AuthorEmails></AuthorEmails>
+            </Author>
+            <Author>
+                <FirstName>Huang</FirstName>
+                <MiddleName></MiddleName>
+                <LastName>Yanqun</LastName>
+                <Initials></Initials>
+                <AuthorLanguage></AuthorLanguage>
+                <Affiliation>Hangzhou Dianzi University</Affiliation>
+                <Country></Country>
+                <Phone></Phone>
+                <Fax></Fax>
+                <AuthorEmails></AuthorEmails>
+            </Author>
+        </AuthorList>
+        <DOI>doi:10.26478/ja2016.4.4.2</DOI>
+        <Abstract>In this paper, the determinacy of regular lexical selectional restrictions is examined from both the internal structures of the single selectional restrictions (i.e. semantic selectional restrictions) and relationship between the structures of several selectional restrictions. Hence, our analysis and description are shifted from casual and indeterminate strings and markers on case basis to determined rules and circumspect dynamic systems, from lexical precepts to knowledge precepts, from the state of memory to rational deduction and rhetorical devices. Further studies indicate that selectional restrictions are intertwined structures, a feature that makes it possible to be one of the bases for lexical selectional restrictions to come into existence. Its related theories are the grarantee for scientific observations of selectional restriction structures.</Abstract>
         <AbstractLanguage>EN</AbstractLanguage>
-        <Keywords>Shangshu, Jinwen Shangshu, syntactic characteristics</Keywords>
+        <Keywords>lexical selectional restriction, determinacy, intertwine, basis for existence</Keywords>
         <Fulltext></Fulltext>
         <URLs>
-            <abstract>http://www.macrolinguistics.com/index.php?c=msg&amp;id=663&amp;</abstract>
+            <abstract>http://www.macrolinguistics.com/index.php?c=msg&amp;id=598&amp;</abstract>
             <Fulltext>
-                <pdf>http://www.macrolinguistics.com/index.php?c=download&amp;id=483</pdf>
+                <pdf>http://www.macrolinguistics.com/index.php?c=download&amp;id=442</pdf>
             </Fulltext>
         </URLs>
         <FulltextLanguage></FulltextLanguage>

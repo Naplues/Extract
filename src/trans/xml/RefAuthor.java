@@ -10,9 +10,9 @@ public class RefAuthor {
 	private String referencesFirstName; // 前名
 	private String referencesMiddleName; // 中名
 	private String referencesLastName; // 后名
-	private String referencesInitials; // 首字母
-	private String referencesAffiliation; // 附属
-	private String referencesCountry; // 国家
+	private String referencesInitials; // 首字母缩略字3
+	private String referencesAffiliation; //工作单位3
+	private String referencesCountry; // 国家3
 
 	public RefAuthor() {
 		super();

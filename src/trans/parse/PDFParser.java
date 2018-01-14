@@ -5,10 +5,11 @@ import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.canvas.parser.PdfCanvasProcessor;
 import com.itextpdf.kernel.pdf.canvas.parser.listener.LocationTextExtractionStrategy;
 
-import trans.xml.Template;
+import trans.file.FileHandle;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.List;
 
 /**
  * 解析pdf文件
@@ -19,12 +20,12 @@ import java.io.IOException;
 public class PDFParser {
 
 	/**
-	 * 操控pdf文件
+	 * 提取PDF文件内容
 	 * 
 	 * @param filePath
 	 */
-	public static Template parsePDF(String filePath, String outPath) {
-		Template template = new Template();
+	public static List<String> parsePDF(String filePath, String outPath) {
+
 		try {
 			PdfDocument doc = new PdfDocument(new PdfReader(filePath));
 			FileOutputStream fos = new FileOutputStream(outPath);
@@ -34,11 +35,12 @@ public class PDFParser {
 			for (int i = 0; i < doc.getNumberOfPages(); i++) {
 				parser.processPageContent(doc.getPage(i + 1));
 				fos.write(strategy.getResultantText().getBytes("UTF-8"));
+				if(i+1 == 17) {
+					System.out.println(strategy.getResultantText());
+				}
 			}
 
 			System.out.println("对象数： " + doc.getNumberOfPdfObjects());
-			
-			template.setLastPage(doc.getNumberOfPages() + "");
 
 			fos.flush();
 			fos.close();
@@ -46,7 +48,17 @@ public class PDFParser {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		return template;
-	}
+		
+		return FileHandle.readFileToLines(outPath);
 
+	}
+	
+	
+	/**
+	 * 解析参考文献
+	 * @param list
+	 */
+	public static void parseReferences(List<String> list) {
+		
+	}
 }

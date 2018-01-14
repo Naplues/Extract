@@ -11,46 +11,47 @@ import java.util.List;
  */
 public class Template {
 	// 杂志信息Journal
-	private String publisherName; // 杂志的出版商名称
-	private String journalTitle; // 杂志 的标题
-	private String pISSN; // 该杂志的印刷期刊号
-	private String eISSN; // 该杂志的电子期刊号
-	private String volumn; // 卷数
-	private String issue; // 版次
-	private String partNumber; // 零件号
-	private String issueTopic; // 议题
-	private String issueLanguage; // 对该问题发表的文章的用语
-	private String season; // 如果问题是季节性的（summer, autumn, spring, winter）
-	private String specialIssue; // 特殊议题Y/N
-	private String supplementaryIssue; // 补充议题Y/N
-	private String issueOA; //
-	private String pubDateYear; // 出版时间
-	private String pubDateMonth;
-	private String pubDateDay;
+	// 1.固定 2.网页 3.舍弃
+	private String publisherName; // 杂志的出版商名称 1 The Learned Press
+	private String journalTitle; // 杂志 的标题 1 Macrolinguistics
+	private String pISSN; // 该杂志的印刷期刊号 1 1934-5755
+	private String eISSN; // 该杂志的电子期刊号 1 2473-6376
+	private String volumn; // 卷数2 2017-5 2016-4 2009-3 2008-2 2007-1
+	private String issue; // 期 2
+	private String partNumber; // 零件号3
+	private String issueTopic; // 议题1 Lingustic
+	private String issueLanguage; // 对该问题发表的文章的用语 1. EN,ZH
+	private String season; // 如果问题是季节性的（summer, autumn, spring, winter）春秋根据月份
+	private String specialIssue; // 特殊议题N
+	private String supplementaryIssue; // 补充议题N
+	private String issueOA; // 开放Y
+	private String pubDateYear; // 出版时间 2
+	private String pubDateMonth; // 2
+	private String pubDateDay; // 2
 
 	// 文章信息
-	private String articleType;
-	private String articleTitle; // 文章标题
-	private String subTitle; // 副标题
+	private String articleType; // researchArticle 1
+	private String articleTitle; // 文章标题 2
+	private String subTitle; // 副标题 看具体文章2
 	private String articleLanguage; // 文章语言
-	private String articleOA; //
-	private String firstPage; // 文章开始页码
-	private String lastPage; // 文章结束页码
+	private String articleOA; // Y
+	private String firstPage; // 文章开始页码 2
+	private String lastPage; // 文章结束页码 2
 
 	// 作者列表
 	private List<Author> authorList; // 作者列表
 
 	// 文章信息
-	private String doi; // 文章标题的数字对象标识符
-	private String absTract; // 摘要
-	private String abstractLanguage; // 摘要语言
-	private String keyWords; // 关键字
-	private String fullText; // 全文
+	private String doi; // 文章标题的数字对象标识符 2
+	private String absTract; // 摘要 2
+	private String abstractLanguage; // 摘要语言 EN
+	private String keyWords; // 关键字 2
+	private String fullText; // 全文3
 
 	// URL信息
 	private String urlAbstract; // 摘要url
 	private String urlPDF; // PDF url
-	private String fullTextLanguage; // 全文语言
+	private String fullTextLanguage; // 全文语言EN,ZH
 
 	// 参考文献信息
 	private List<References> referencesList; // 参考文献

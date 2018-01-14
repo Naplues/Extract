@@ -7,16 +7,16 @@ package trans.xml;
  *
  */
 public class Author {
-	private String firstName; // 前名
-	private String middleName; // 中名
-	private String lastName; // 后名
-	private String initials; // 首字母
-	private String authorLanguage; // 作者所属国家的语言
-	private String affiliation; // 作者附属
-	private String country; // 作者 国家
-	private String phone; // 电话号
-	private String fax; // 传真号
-	private String authorEmails; // 作者邮箱
+	private String firstName; // 前名  名2
+	private String middleName; // 中名2
+	private String lastName; // 后名 姓2
+	private String initials; // 首字母3不要
+	private String authorLanguage; // 作者所属国家的语言ZH,其他 EN
+	private String affiliation; // 工作单位2
+	private String country; // 作者 国家2
+	private String phone; // 电话号3
+	private String fax; // 传真号3
+	private String authorEmails; // 作者邮箱文章有
 
 	public Author() {
 		super();

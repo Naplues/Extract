@@ -1,8 +1,8 @@
 package trans.run;
 
+import java.util.List;
+
 import trans.parse.PDFParser;
-import trans.xml.Template;
-import trans.xml.XMLHandler;
 
 /**
  * 
@@ -10,12 +10,16 @@ import trans.xml.XMLHandler;
  *
  */
 public class Main {
-
 	public static void main(String[] args) {
 		// 解析PDF文件
-		Template template = PDFParser.parsePDF("test.pdf", "test.txt");
-
+		List<String> lines = PDFParser.parsePDF("article.pdf", "article.txt");
+		for (String s : lines) {
+			if (s.trim().equals("References")) {
+				System.out.println(s);
+			}
+		}
+		// Template template=new Template();
 		// 根据模板生成XML文档
-		XMLHandler.generateXML(template, "article.xml");
+		// XMLHandler.generateXML(template, "article.xml");
 	}
 }

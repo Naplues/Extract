@@ -69,8 +69,8 @@ public class HTMLParser {
 		//
 		Document document = Jsoup.parse(html);
 		// Journal OK
-		template.setVolumn(document.getElementsByAttribute("colspan").get(1).text().split(" ")[1].split("_")[0]);
-		template.setIssue("");
+		template.setVolumn(getVolume(document.getElementsByAttribute("colspan").get(1).text().split(" ")[1].split("_")[1]));
+		template.setIssue(document.getElementsByAttribute("colspan").get(1).text().split(" ")[1].split("_")[0]);
 		String[] pubDate = document.getElementsByAttribute("colspan").get(3).text().split("-");
 		template.setPubDateYear(pubDate[0]);
 		template.setPubDateMonth(pubDate[1]);
@@ -92,14 +92,14 @@ public class HTMLParser {
 		String[] affilis = document.getElementsByAttribute("colspan").get(0).text().split(";");
 		List<Author> authorList = new ArrayList<>();
 		for (int i = 0; i < authors.length; i++) {
-			for(int j=0;j<authors[i].length();j++) {
-				if(authors[i].startsWith(" ")) {
+			for (int j = 0; j < authors[i].length(); j++) {
+				if (authors[i].startsWith(" ")) {
 					authors[i] = authors[i].substring(1);
 				}
 			}
 			Author tempAuthor = new Author();
 			String[] names = authors[i].split(" ");
-			
+
 			tempAuthor.setFirstName(names[0]);
 			if (names.length > 2) {
 				String mName = "";
@@ -129,11 +129,12 @@ public class HTMLParser {
 		// URL OK--
 		template.setUrlAbstract(url);
 		template.setUrlPDF("http://www.macrolinguistics.com/" + document.getElementsByTag("a").get(15).attr("href"));
-
+		template.setFullTextLanguage("EN");
+		
 		// References
-		// System.out.println(document.getElementsByAttribute("colspan"));
+		 System.out.println(document.getElementsByAttribute("colspan").get(7));
 		
-		
+
 	}
 
 	public static String getSeason(String month) {
@@ -147,7 +148,17 @@ public class HTMLParser {
 		return "winter";
 	}
 
-	public static String getVolume() {
+	public static String getVolume(String year) {
+		if (year.equals("2007"))
+			return "1";
+		if (year.equals("2008"))
+			return "2";
+		if (year.equals("2009"))
+			return "3";
+		if (year.equals("2016"))
+			return "4";
+		if (year.equals("2017"))
+			return "5";
 		return "";
 	}
 

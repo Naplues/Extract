@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ArticleSet>
+    <Article>
+        <Journal>
+            <PublisherName>The Learned Press</PublisherName>
+            <JournalTitle>Macrolinguistics</JournalTitle>
+            <PISSN>1934-5755</PISSN>
+            <EISSN>2473-6376</EISSN>
+            <Volume>4</Volume>
+            <Issue>5</Issue>
+            <PartNumber></PartNumber>
+            <IssueTopic>Lingustic</IssueTopic>
+            <IssueLanguage>EN,ZH</IssueLanguage>
+            <Season>winter</Season>
+            <SpecialIssue>N</SpecialIssue>
+            <SupplementaryIssue>N</SupplementaryIssue>
+            <IssueOA>Y</IssueOA>
+            <PubDate>
+                <Year>2016</Year>
+                <Month>12</Month>
+                <Day>01</Day>
+            </PubDate>
+        </Journal>
+        <ArticleType>Research Article</ArticleType>
+        <ArticleTitle>On Some Theoretical Issues about Historical Strata Analysis</ArticleTitle>
+        <SubTitle></SubTitle>
+        <ArticleLanguage>EN,ZH</ArticleLanguage>
+        <ArticleOA>Y</ArticleOA>
+        <FirstPage>11</FirstPage>
+        <LastPage>38</LastPage>
+        <AuthorList>
+            <Author>
+                <FirstName>Pan</FirstName>
+                <MiddleName></MiddleName>
+                <LastName>Wuyun</LastName>
+                <Initials></Initials>
+                <AuthorLanguage></AuthorLanguage>
+                <Affiliation>Shanghai Normal University；Institute of Comparative Linguistics of Shanghai Universities</Affiliation>
+                <Country></Country>
+                <Phone></Phone>
+                <Fax></Fax>
+                <AuthorEmails></AuthorEmails>
+            </Author>
+        </AuthorList>
+        <DOI>doi:10.26478/ja2016.4.5.2</DOI>
+        <Abstract>This paper is a comprehensive discussion about a few theoretical issues of historical strata analysis, that is, uniformitarianism and neogramarian hypothesis, catastrophism and borrowing, wendu and baidu readings, native stratum, identification of loan strata and native stratum, influence and borrowing, and real time and apparent time.</Abstract>
+        <AbstractLanguage>EN</AbstractLanguage>
+        <Keywords>analysis of historical strata, theoretical issues</Keywords>
+        <Fulltext></Fulltext>
+        <URLs>
+            <abstract>http://www.macrolinguistics.com/index.php?c=msg&amp;id=624&amp;</abstract>
+            <Fulltext>
+                <pdf>http://www.macrolinguistics.com/index.php?c=download&amp;id=429</pdf>
+            </Fulltext>
+        </URLs>
+        <FulltextLanguage>EN</FulltextLanguage>
+        <References>
+            <ReferencesarticleTitle>On Chuqu Dialect of Wu dialect </ReferencesarticleTitle>
+            <ReferencesfirstPage></ReferencesfirstPage>
+            <ReferenceslastPage></ReferenceslastPage>
+            <authorList>
+                <author>
+                    <ReferencesfirstName>Cao</ReferencesfirstName>
+                    <ReferencesmiddleName>Zhiyun,et</ReferencesmiddleName>
+                    <ReferenceslastName>al</ReferenceslastName>
+                    <ReferencesInitials></ReferencesInitials>
+                    <Referencesaffiliation></Referencesaffiliation>
+                    <Referencescountry></Referencescountry>
+                </author>
+            </authorList>
+            <ReferencesarticleTitle>A Preliminary Research on Tiantai Dialects </ReferencesarticleTitle>
+            <ReferencesfirstPage></ReferencesfirstPage>
+            <ReferenceslastPage></ReferenceslastPage>
+            <authorList>
+                <author>
+                    <ReferencesfirstName>Dai</ReferencesfirstName>
+                    <ReferencesmiddleName></ReferencesmiddleName>
+                    <ReferenceslastName>Shaoming</ReferenceslastName>
+                    <ReferencesInitials></ReferencesInitials>
+                    <Referencesaffiliation></Referencesaffiliation>
+                    <Referencescountry></Referencescountry>
+                </author>
+            </authorList>
+            <ReferencesarticleTitle>Sound Archives for Wenzhou Dialects </ReferencesarticleTitle>
+            <ReferencesfirstPage></ReferencesfirstPage>
+            <ReferenceslastPage></ReferenceslastPage>
+            <authorList>
+                <author>
+                    <ReferencesfirstName>Pan</ReferencesfirstName>
+                    <ReferencesmiddleName></ReferencesmiddleName>
+                    <ReferenceslastName>Wuyun</ReferenceslastName>
+                    <ReferencesInitials></ReferencesInitials>
+                    <Referencesaffiliation></Referencesaffiliation>
+                    <Referencescountry></Referencescountry>
+                </author>
+            </authorList>
+            <ReferencesarticleTitle>A Study on Contemporary Wu dialect </ReferencesarticleTitle>
+            <ReferencesfirstPage></ReferencesfirstPage>
+            <ReferenceslastPage></ReferenceslastPage>
+            <authorList>
+                <author>
+                    <ReferencesfirstName>Qian</ReferencesfirstName>
+                    <ReferencesmiddleName></ReferencesmiddleName>
+                    <ReferenceslastName>Nairong</ReferenceslastName>
+                    <ReferencesInitials></ReferencesInitials>
+                    <Referencesaffiliation></Referencesaffiliation>
+                    <Referencescountry></Referencescountry>
+                </author>
+            </authorList>
+            <ReferencesarticleTitle>The Historical Changes of Consonantal Codas in Burmese </ReferencesarticleTitle>
+            <ReferencesfirstPage></ReferencesfirstPage>
+            <ReferenceslastPage></ReferenceslastPage>
+            <authorList>
+                <author>
+                    <ReferencesfirstName>Wang</ReferencesfirstName>
+                    <ReferencesmiddleName></ReferencesmiddleName>
+                    <ReferenceslastName>Danian</ReferenceslastName>
+                    <ReferencesInitials></ReferencesInitials>
+                    <Referencesaffiliation></Referencesaffiliation>
+                    <Referencescountry></Referencescountry>
+                </author>
+            </authorList>
+            <ReferencesarticleTitle>Collection of Minority Language Studies: Investigation on the Tones of Dai Language [C]</ReferencesarticleTitle>
+            <ReferencesfirstPage></ReferencesfirstPage>
+            <ReferenceslastPage></ReferenceslastPage>
+            <authorList>
+                <author>
+                    <ReferencesfirstName>Wang</ReferencesfirstName>
+                    <ReferencesmiddleName></ReferencesmiddleName>
+                    <ReferenceslastName>Jingliu</ReferenceslastName>
+                    <ReferencesInitials></ReferencesInitials>
+                    <Referencesaffiliation></Referencesaffiliation>
+                    <Referencescountry></Referencescountry>
+                </author>
+                <author>
+                    <ReferencesfirstName>Chen</ReferencesfirstName>
+                    <ReferencesmiddleName></ReferencesmiddleName>
+                    <ReferenceslastName>Xiangmu</ReferenceslastName>
+                    <ReferencesInitials></ReferencesInitials>
+                    <Referencesaffiliation></Referencesaffiliation>
+                    <Referencescountry></Referencescountry>
+                </author>
+            </authorList>
+            <ReferencesarticleTitle>Gimson’s Pronunciation of English </ReferencesarticleTitle>
+            <ReferencesfirstPage></ReferencesfirstPage>
+            <ReferenceslastPage></ReferenceslastPage>
+            <authorList>
+                <author>
+                    <ReferencesfirstName>Cruttenden,</ReferencesfirstName>
+                    <ReferencesmiddleName></ReferencesmiddleName>
+                    <ReferenceslastName>Alan</ReferenceslastName>
+                    <ReferencesInitials></ReferencesInitials>
+                    <Referencesaffiliation></Referencesaffiliation>
+                    <Referencescountry></Referencescountry>
+                </author>
+            </authorList>
+            <ReferencesarticleTitle>A Grammar of Colloquial Chinese: As Exhibited in the Shanghai Dialect </ReferencesarticleTitle>
+            <ReferencesfirstPage></ReferencesfirstPage>
+            <ReferenceslastPage></ReferenceslastPage>
+            <authorList>
+                <author>
+                    <ReferencesfirstName>Edkins,</ReferencesfirstName>
+                    <ReferencesmiddleName></ReferencesmiddleName>
+                    <ReferenceslastName>Joseph</ReferenceslastName>
+                    <ReferencesInitials></ReferencesInitials>
+                    <Referencesaffiliation></Referencesaffiliation>
+                    <Referencescountry></Referencescountry>
+                </author>
+            </authorList>
+            <ReferencesarticleTitle>Principles of Linguistic Change: Internal Factors </ReferencesarticleTitle>
+            <ReferencesfirstPage></ReferencesfirstPage>
+            <ReferenceslastPage></ReferenceslastPage>
+            <authorList>
+                <author>
+                    <ReferencesfirstName>Labov,</ReferencesfirstName>
+                    <ReferencesmiddleName></ReferencesmiddleName>
+                    <ReferenceslastName>William</ReferenceslastName>
+                    <ReferencesInitials></ReferencesInitials>
+                    <Referencesaffiliation></Referencesaffiliation>
+                    <Referencescountry></Referencescountry>
+                </author>
+            </authorList>
+            <ReferencesarticleTitle>Language and the Study of Language </ReferencesarticleTitle>
+            <ReferencesfirstPage></ReferencesfirstPage>
+            <ReferenceslastPage></ReferenceslastPage>
+            <authorList>
+                <author>
+                    <ReferencesfirstName>Whitney,</ReferencesfirstName>
+                    <ReferencesmiddleName>William</ReferencesmiddleName>
+                    <ReferenceslastName>Dwight</ReferenceslastName>
+                    <ReferencesInitials></ReferencesInitials>
+                    <Referencesaffiliation></Referencesaffiliation>
+                    <Referencescountry></Referencescountry>
+                </author>
+            </authorList>
+        </References>
+    </Article>
+</ArticleSet>

@@ -1,6 +1,7 @@
 package trans.parse;
 
 import java.io.IOException;
+import java.sql.Ref;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,7 +16,10 @@ import org.apache.http.util.EntityUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
+import trans.file.FileHandle;
 import trans.xml.Author;
+import trans.xml.RefAuthor;
+import trans.xml.References;
 import trans.xml.Template;
 
 /**
@@ -89,6 +93,7 @@ public class HTMLParser {
 		String[] affilis = document.getElementsByAttribute("colspan").get(0).text().split(";");
 		List<Author> authorList = new ArrayList<>();
 		for (int i = 0; i < authors.length; i++) {
+			// 每个作者的名字
 			for (int j = 0; j < authors[i].length(); j++) {
 				if (authors[i].startsWith(" ")) {
 					authors[i] = authors[i].substring(1);
@@ -180,6 +185,12 @@ public class HTMLParser {
 		return "EN";
 	}
 
+	/**
+	 * 判断是否含有中文
+	 * 
+	 * @param c
+	 * @return
+	 */
 	public static boolean isChinese(char c) {
 		Character.UnicodeBlock ub = Character.UnicodeBlock.of(c);
 		if (ub == Character.UnicodeBlock.CJK_UNIFIED_IDEOGRAPHS
@@ -191,5 +202,66 @@ public class HTMLParser {
 			return true;
 		}
 		return false;
+	}
+
+	/**
+	 * 获取参考文献信息
+	 * 
+	 * @return
+	 */
+	public static List<References> parseReferences(String string) {
+		List<String> origins = FileHandle.readFileToLines("test.txt");
+		List<String> lines = new ArrayList<>();
+		int len = 0;
+		boolean lastEmpty = false;
+
+		for (String s : origins) {
+			if (s.equals("")) {
+				lastEmpty = true;
+				continue;
+			}
+			// 上一行是空，说明该行是上一文献的一部分
+			if (lastEmpty) {
+				lines.set(len - 1, lines.get(len - 1) + s);
+				lastEmpty = false;
+				continue;
+			}
+			lines.add(s);
+			len++;
+		}
+
+		List<References> referencesList = new ArrayList<>();
+		for (String line : lines) {
+			String[] temp = line.split("\\. |\\[J\\]\\.|\\[M\\]\\.|\\[A\\]\\.");
+			// 参考文献 文献名[2]
+			References references = new References();
+			// 文献作者
+			List<RefAuthor> refAuthorsList = new ArrayList<>();
+			String[] tempAuthor = temp[0].split("&");
+
+			for (String authorString : tempAuthor) {
+				for (int j = 0; j < authorString.length(); j++) {
+					if (authorString.startsWith(" ")) {
+						authorString = authorString.substring(1);
+					}
+				}
+				RefAuthor refAuthor = new RefAuthor();
+				String[] names = authorString.split(" ");//分开前后中名
+				refAuthor.setReferencesFirstName(names[0]);
+				if (names.length > 2) {
+					String mName = "";
+					for (int j = 1; j < names.length - 1; j++)
+						mName += names[j];
+					refAuthor.setReferencesMiddleName(mName);
+				}
+				refAuthor.setReferencesLastName(names[names.length - 1]);
+
+				refAuthorsList.add(refAuthor);
+			}
+			references.setReferencesarticleTitle(temp[2]); // 设置文献标题
+			references.setRefAuthorList(refAuthorsList); // 设置作者列表
+			referencesList.add(references);
+		}
+		return referencesList;
 	}
 }

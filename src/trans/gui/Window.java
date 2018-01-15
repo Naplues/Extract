@@ -236,8 +236,7 @@ public class Window implements ActionListener {
 		panel4.add(pdfUrlText);
 		pdfUrlText.setEditable(false);
 		panel4.add(fulltextLanguageText);
-		
-		
+
 		// 添加事件监听
 		loadButton.addActionListener(this);
 		exportButton.addActionListener(this);
@@ -338,6 +337,7 @@ public class Window implements ActionListener {
 			// 导出数据事件
 		} else if (e.getSource() == exportButton) {
 			// 根据模板生成XML文档
+			template.setReferencesList(HTMLParser.parseReferences(""));// 加入参考文献
 			XMLHandler.generateXML(template, input.getText() + ".xml");
 			JOptionPane.showMessageDialog(null, "成功导出XML!", "成功!", JOptionPane.INFORMATION_MESSAGE);
 		}

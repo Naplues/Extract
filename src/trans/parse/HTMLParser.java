@@ -60,7 +60,8 @@ public class HTMLParser {
 	/*
 	 * 使用jsoup解析网页信息
 	 */
-	public static void analyzeHTMLByString(Template template, String url, String html) {
+	public static Template analyzeHTMLByString(String url, String html) {
+		Template template = new Template();
 		//
 		Document document = Jsoup.parse(html);
 		// Journal OK
@@ -131,7 +132,7 @@ public class HTMLParser {
 		// String refs =
 		// document.getElementsByAttribute("colspan").get(7).children().text();
 		// System.out.println(refs);
-
+		return template;
 	}
 
 	/**
@@ -172,9 +173,8 @@ public class HTMLParser {
 	}
 
 	public static String getLanguage(String sentence) {
-		boolean hasCh = false;
 		for (int i = 0; i < sentence.length(); i++) {
-			if(isChinese(sentence.charAt(i)))
+			if (isChinese(sentence.charAt(i)))
 				return "EN,ZH";
 		}
 		return "EN";

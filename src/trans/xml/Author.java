@@ -27,7 +27,6 @@ public class Author {
 		this.authorLanguage = new String();
 		this.affiliation = new String();
 		this.country = new String();
-
 		this.authorEmails = new String();
 		//ignore
 		this.phone = new String();

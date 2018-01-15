@@ -1,42 +1,16 @@
-On Syntactic Characteristics of Jinwen Shangshu 
-„Then addressed King Wu‟s great-grandfather, grandfather and father.‟ 
-The semantic content and scope also have an influence on the choice of the verbs for the 
-double objects. The objects of “问(wè n)” and “告(gà o)” are generally single, but the 
-contents of “问(wè n)” and “告(gà o)” are complicated. Therefore, the semantic range of 
-double-object verbs like “问(wè n)” and “告(gà o)” is much larger. For example, the direct 
-object of the verb “告(gà o)” in Yu Xia Shu· Gan Shi (《虞夏书·甘誓》) is almost the whole 
-text of the oath. The contents of “锡(xī)” and “降(jià ng)” can only be specific or abstract 
-things, therefore, they have a smaller semantic range as the double-object verbs. 
- 
-Symbols and abbreviations 
-MP Modal Particle DRPR Double-reference Pronoun 
-PREP Preposition ADV Adverb 
-AUX Auxiliary Word AF Affix 
-SADV Scope Adverb COP Copula 
- 
-References 
-Cai Chen (Song dynasty). 1890. Shu Ji Zhuan [M]. Guilin: Gui Yuan Book Editions, Vol.4. 
-Guan Xiechu. 1981. A Study On the Grammar of the Inscriptions of Western Zhou Dynasty [M]. Beijing: 
-The Commercial Press. 
-Jin Zhaozi. 1980. A Study on Chinese Grammar [M]. Beijing: The Commercial Press. 
-Ma Jianzhong. 1898. Ma Shi Wen Tong [M]. Shanghai: The Commercial Press. 
-Qian Zongwu. 1994. There Is No “也” in Shangshu [J]. Ancient Chinese Research, 2:55-59. 
-Qian Zongwu. 1996. Language Research of Jinwen Shangshu (The Self-addressing Pronoun and Its 
-Features and “者” has not yet Appeared and the Similar Language Phenomena ) [M]. Changsha: Yuelu 
-Publishing House. 
-Qian Zongwu. 2002. A Research on Modal Particles in Jinwen Shangshu [J]. Hanyu Lun Cong, 10:1-18. 
-Qu Wanli. 1984. Shangshu Shi Yi [M]. Taipei: Taiwan University of Chinese Culture Press. 
-Ruan Yuan (Qing dynasty). 1979. The Collating Notes on the Thirteen Classics (photocopies) [M]. Beijing: 
-Zhonghua Book Company. 
-Sun Xingyan (Qing dynasty). 1986. Shangshu Jin Gu Wen Zhu Shu [M]. Beijing: Zhonghua Book 
-Company. 
-Wang Yinzhi (Qing dynasty). 1956. Jing Zhuan Shi Ci [M]. Beijing: Zhonghua Book Company. 
-Yang Bojun. 1989. Bai Hua Si Shu [M]. Changsha: Yuelu Publishing House. 
-Yi Mengchun. 1989. The Grammar of Pre-Qin Language [M]. Changsha: Hunan Education Press. 
-Zeng Yunqian. 1964. Shangshu Zheng Du [M]. Beijing: Zhonghua Book Company.  
-Zhou Bingjun. 1984. Shangshu Yi Jie [M]. Changsha: Yuelu Publishing House. 
-Zhou Bingjun. 1990. Bai Hua Shangshu [M]. Changsha: Yuelu Publishing House. 
-Zhou Fagao. 1959. Chinese Ancient Grammar [M]. Taipei: Institute of historical languages of Academia 
-Sinica, Special Issue 39. 
-(Translated by Shen Siqin, School of Foreign Languages, Xuzhou University of Technology, China) 
-Macrolinguistics (2017) 23 
+Crystal, David. 2008. A Dictionary of Linguistics and Phonetics [M] (6th Edition). Oxford: Blackwell.
+Gimba, Alhaji Maina. 2000. Bole Verb Morphology [D]. Unpublished PhD. Thesis. University of California, Los Angeles.
+Newman, Paul. 1992. The Development of Falling Contours from Tone Bending in Hausa [A]. Proceedings of the Berkeley Linguistics Society [C] 18S: 128-133.
+Newman, Paul. 2000. The Hausa Language: An Encyclopedic Reference Grammar [M]. New Haven: Yale University Press.
+Newman, Paul. and Newman, Roxana. Ma. 1977. Modern Hausa-English Dictionary (Sabon Ƙamus na Hausa zuwa Turanci) [M]. Ibadan & Zaria: University Press.
+Newman, Roxana Ma. and Newman, Paul. 2001. The Hausa Lexicographic Tradition [J]. Lexikos, 2:263-286.
+Sambo, Almustapha Wali. 2014. Karin Sauti A Sakkwatanci: NazarinBambance-Bambancen Karin Sauti Tsakanin Sakkwatanci da Daidaitacciyar Hausa [D]. Unpublished
+
+  B.A. Dissertation. Bayero University, Kano.
+Schuh, Russell and Gimba, Alhaji Maina. 2015. Bole-Hausa-English Dictionary [M]. UCLA.
+Viacheslav A. Chirikba. 2008. The problem of the Caucasian Sprachbund [A]. In Pieter Muysken, (ed.). From Linguistic Areas to Areal Linguistics [C]. John
+
+  Benjamins Publishing Co. 29-47.
+Yalwa, Lawan Xanladi. 2002. Autosegmental Account to Some Hausa Tonal Processes [J]. Algaita Journal of Current Research in Hausa Studies, 2(1):26-46.
+
+  www.ethnologue.com/subgroups/a-15 [OL], retrieved on 13th May, 2016 at 9:30p.m.

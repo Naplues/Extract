@@ -1,15 +1,23 @@
 package trans.gui;
 
 import java.awt.BorderLayout;
+
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+
+import trans.parse.HTMLParser;
+import trans.xml.Template;
+import trans.xml.XMLHandler;
 
 public class Window implements ActionListener {
 	// 创建 JFrame 实例
@@ -25,8 +33,11 @@ public class Window implements ActionListener {
 	public static JPanel panel3 = new JPanel(); // 3
 	public static JPanel panel4 = new JPanel(); // 4
 
+	// url输入框
+	public static JTextField input = new JTextField(20);
+
 	// journal标签16
-	public static JLabel publisherName = new JLabel(Label.publisherName);
+	public static JLabel publisherName = new JLabel(Label.publisherName, JLabel.RIGHT);
 	public static JLabel journalTitle = new JLabel(Label.journalTitle);
 	public static JLabel PISSN = new JLabel(Label.PISSN);
 	public static JLabel EISSN = new JLabel(Label.EISSN);
@@ -79,13 +90,34 @@ public class Window implements ActionListener {
 	public static JLabel fulltextLanguage = new JLabel("FulltextLanguage");
 
 	// article 输入框
+	public static JTextField articleTypeText = new JTextField(15);
+	public static JTextField articleTitleText = new JTextField(15);
+	public static JTextField subtitleText = new JTextField(15);
+	public static JTextField articleLanguageText = new JTextField(15);
+	public static JTextField articleOAText = new JTextField(15);
+	public static JTextField firstPageText = new JTextField(15);
+	public static JTextField lastPageText = new JTextField(15);
+	public static JTextField doiText = new JTextField(15);
+	public static JTextField abstractText = new JTextField(15);
+	public static JTextField abstractLanguageText = new JTextField(15);
+	public static JTextField keyWordsText = new JTextField(15);
+	public static JTextField fullTextText = new JTextField(15);
+	public static JTextField abstractUrlText = new JTextField(15);
+	public static JTextField pdfUrlText = new JTextField(15);
+	public static JTextField fulltextLanguageText = new JTextField(15);
 
 	// 创建操作按钮
 	public static JButton loadButton = new JButton("加载数据");
-	public static JButton exportButton = new JButton("导出");
+	public static JButton exportButton = new JButton("保存并导出");
 
-	private void placeComponents() {
-		frame.setSize(800, 700);
+	public Template template = new Template();
+
+	public Window() {
+		placeComponents(); // 摆放组件
+	}
+
+	public void placeComponents() {
+		frame.setSize(1000, 700);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setLocationRelativeTo(null); // 设置窗体居中显示
 		frame.add(Window.panel); // 添加面板
@@ -95,6 +127,7 @@ public class Window implements ActionListener {
 		panel.add(leftPanel, BorderLayout.WEST);
 		panel.add(bottomPanel, BorderLayout.SOUTH);
 		// 操作面板
+		operatePanel.add(input);
 		operatePanel.add(loadButton);
 		operatePanel.add(exportButton);
 
@@ -102,6 +135,7 @@ public class Window implements ActionListener {
 		// 添加标签
 		contentPanel.setLayout(new GridLayout(1, 4)); // 设置内容面板
 		panel1.setLayout(new GridLayout(16, 1)); // 设置布局
+		// panel1.setBorder(BorderFactory.createTitledBorder("Journal"));
 		panel2.setLayout(new GridLayout(16, 1)); // 设置布局
 		panel3.setLayout(new GridLayout(15, 1));
 		panel4.setLayout(new GridLayout(15, 1));
@@ -129,21 +163,34 @@ public class Window implements ActionListener {
 
 		// 创建文本域用于用户输入
 		panel2.add(publisherNameText);
+		publisherNameText.setEditable(false);
 		panel2.add(journalTitleText);
+		journalTitleText.setEditable(false);
 		panel2.add(PISSNText);
+		PISSNText.setEditable(false);
 		panel2.add(EISSNText);
+		EISSNText.setEditable(false);
 		panel2.add(volumeText);
+		volumeText.setEditable(false);
 		panel2.add(issueText);
+		issueText.setEditable(false);
 		panel2.add(partNumberText);
 		panel2.add(issueTopicText);
+		issueTopicText.setEditable(false);
 		panel2.add(issueLanguageText);
 		panel2.add(seasonText);
 		panel2.add(specialIssueText);
+		specialIssueText.setEditable(false);
 		panel2.add(supplementaryIssueText);
+		supplementaryIssueText.setEditable(false);
 		panel2.add(issueOAText);
+		issueOAText.setEditable(false);
 		panel2.add(pubDateYearText);
+		pubDateYearText.setEditable(false);
 		panel2.add(pubDateMonthText);
+		pubDateMonthText.setEditable(false);
 		panel2.add(pubDateDayText);
+		pubDateDayText.setEditable(false);
 
 		// 添加文章标签
 		panel3.add(articleType);
@@ -162,10 +209,104 @@ public class Window implements ActionListener {
 		panel3.add(pdfUrl);
 		panel3.add(fulltextLanguage);
 
+		// 添加 文章内容
+		panel4.add(articleTypeText);
+		articleTypeText.setEditable(false);
+		panel4.add(articleTitleText);
+		articleTitleText.setEditable(false);
+		panel4.add(subtitleText);
+		subtitleText.setEditable(false);
+		panel4.add(articleLanguageText);
+		panel4.add(articleOAText);
+		articleOAText.setEditable(false);
+		panel4.add(firstPageText);
+		firstPageText.setEditable(false);
+		panel4.add(lastPageText);
+		lastPageText.setEditable(false);
+		panel4.add(doiText);
+		doiText.setEditable(false);
+		panel4.add(abstractText);
+		abstractText.setEditable(false);
+		panel4.add(abstractLanguageText);
+		panel4.add(keyWordsText);
+		keyWordsText.setEditable(false);
+		panel4.add(fullTextText);
+		panel4.add(abstractUrlText);
+		abstractUrlText.setEditable(false);
+		panel4.add(pdfUrlText);
+		pdfUrlText.setEditable(false);
+		panel4.add(fulltextLanguageText);
+		
+		
 		// 添加事件监听
 		loadButton.addActionListener(this);
-
+		exportButton.addActionListener(this);
 		frame.setVisible(true);// 设置界面可见
+	}
+
+	/**
+	 * 读取模板
+	 * 
+	 * @param template
+	 */
+	public static void readTemplate(Template template) {
+		publisherNameText.setText(template.getPublisherName());
+		journalTitleText.setText(template.getJournalTitle());
+		PISSNText.setText(template.getpISSN());
+		EISSNText.setText(template.geteISSN());
+		volumeText.setText(template.getVolumn());
+		issueText.setText(template.getIssue());
+		partNumberText.setText(template.getPartNumber());
+		issueTopicText.setText(template.getIssueTopic());
+		issueLanguageText.setText(template.getIssueLanguage());
+		seasonText.setText(template.getSeason());
+		specialIssueText.setText(template.getSpecialIssue());
+		supplementaryIssueText.setText(template.getSupplementaryIssue());
+		issueOAText.setText(template.getIssueOA());
+		pubDateYearText.setText(template.getPubDateYear());
+		pubDateMonthText.setText(template.getPubDateMonth());
+		pubDateDayText.setText(template.getPubDateDay());
+
+		articleTypeText.setText(template.getArticleType());
+		articleTitleText.setText(template.getArticleTitle());
+		subtitleText.setText(template.getSubTitle());
+		articleLanguageText.setText(template.getArticleLanguage());
+		articleOAText.setText(template.getArticleOA());
+		firstPageText.setText(template.getFirstPage());
+		lastPageText.setText(template.getLastPage());
+		doiText.setText(template.getDoi());
+		abstractText.setText(template.getAbsTract());
+		abstractLanguageText.setText(template.getAbstractLanguage());
+		keyWordsText.setText(template.getKeyWords());
+		fullTextText.setText(template.getFullText());
+		abstractUrlText.setText(template.getUrlAbstract());
+		pdfUrlText.setText(template.getUrlPDF());
+		fulltextLanguageText.setText(template.getFullTextLanguage());
+
+	}
+
+	/**
+	 * 写入模板
+	 * 
+	 * @return
+	 */
+	public static void writeTemplate(Template template) {
+
+	}
+
+	/**
+	 * 判断是否为整数
+	 * 
+	 * @param str
+	 * @return
+	 */
+	public boolean isNumeric(String str) {
+		Pattern pattern = Pattern.compile("[0-9]*");
+		Matcher isNum = pattern.matcher(str);
+		if (!isNum.matches()) {
+			return false;
+		}
+		return true;
 	}
 
 	/**
@@ -174,16 +315,31 @@ public class Window implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		// 加载数据事件
 		if (e.getSource() == loadButton) {
-			publisherNameText.setText("hello world");
-		}
-		else if(e.getSource()==exportButton) {
-			
-		}
 
-	}
-	public static void main(String[] args) {
-		Window window = new Window();
-		window.placeComponents();// 添加组件
-	}
+			if (input.getText().trim().equals("")) {
+				JOptionPane.showMessageDialog(null, "请输入文章URL编号!", "提示!", JOptionPane.INFORMATION_MESSAGE);
+			} else if (!isNumeric(input.getText().trim())) {
+				JOptionPane.showMessageDialog(null, "请输入数字编号!", "提示!", JOptionPane.INFORMATION_MESSAGE);
+				input.setText("");
+				input.requestFocus();
+			} else {
+				try {
+					String url = "http://www.macrolinguistics.com/index.php?c=msg&id=" + input.getText() + "&";
+					String html = HTMLParser.pickData(url);
+					template = HTMLParser.analyzeHTMLByString(url, html);
+					readTemplate(template); // 读取模板内容并显示
+				} catch (Exception e2) {
+					JOptionPane.showMessageDialog(null, "请输入正确的URL编号!", "错误!", JOptionPane.ERROR_MESSAGE);
+					input.setText("");
+					input.requestFocus();
+				}
 
+			}
+			// 导出数据事件
+		} else if (e.getSource() == exportButton) {
+			// 根据模板生成XML文档
+			XMLHandler.generateXML(template, input.getText() + ".xml");
+			JOptionPane.showMessageDialog(null, "成功导出XML!", "成功!", JOptionPane.INFORMATION_MESSAGE);
+		}
+	}
 }

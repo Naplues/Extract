@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ArticleSet>
+    <Article>
+        <Journal>
+            <PublisherName>The Learned Press</PublisherName>
+            <JournalTitle>Macrolinguistics</JournalTitle>
+            <PISSN>1934-5755</PISSN>
+            <EISSN>2473-6376</EISSN>
+            <Volume>5</Volume>
+            <Issue>6</Issue>
+            <PartNumber></PartNumber>
+            <IssueTopic>Lingustic</IssueTopic>
+            <IssueLanguage>EN,ZH</IssueLanguage>
+            <Season>autumn</Season>
+            <SpecialIssue>N</SpecialIssue>
+            <SupplementaryIssue>N</SupplementaryIssue>
+            <IssueOA>Y</IssueOA>
+            <PubDate>
+                <Year>2017</Year>
+                <Month>10</Month>
+                <Day>01</Day>
+            </PubDate>
+        </Journal>
+        <ArticleType>Research Article</ArticleType>
+        <ArticleTitle>On Syntactic Characteristics of Jinwen Shangshu</ArticleTitle>
+        <SubTitle></SubTitle>
+        <ArticleLanguage>EN,ZH</ArticleLanguage>
+        <ArticleOA>Y</ArticleOA>
+        <FirstPage>1</FirstPage>
+        <LastPage>23</LastPage>
+        <AuthorList>
+            <Author>
+                <FirstName>Qian</FirstName>
+                <MiddleName></MiddleName>
+                <LastName>Zongwu</LastName>
+                <Initials></Initials>
+                <AuthorLanguage></AuthorLanguage>
+                <Affiliation>Yangzhou University, China</Affiliation>
+                <Country></Country>
+                <Phone></Phone>
+                <Fax></Fax>
+                <AuthorEmails></AuthorEmails>
+            </Author>
+        </AuthorList>
+        <DOI>doi:10.26478/ja2017.5.6.1</DOI>
+        <Abstract>Jinwen Shangshu consists of the earliest documents handed down in China, and it is the classic of political history compiled no less than 2600 or 2500 years ago. The article makes a thorough analysis on object-preposed sentences, passive sentences, judgment sentences, and double-object sentences in Jinwen Shangshu.By comparing various sentence patterns and investigating them systematically combining with the development and the changes of the documentation language, it sums up some syntactic characteristics of Jinwen Shangshu as well as the the evolution law of syntactic forms in the documentation language, and it is of reference value to the study of the history of Chinese grammar.</Abstract>
+        <AbstractLanguage>EN</AbstractLanguage>
+        <Keywords>Shangshu, Jinwen Shangshu, syntactic characteristics</Keywords>
+        <Fulltext></Fulltext>
+        <URLs>
+            <abstract>http://www.macrolinguistics.com/index.php?c=msg&amp;id=663&amp;</abstract>
+            <Fulltext>
+                <pdf>http://www.macrolinguistics.com/index.php?c=download&amp;id=483</pdf>
+            </Fulltext>
+        </URLs>
+        <FulltextLanguage>EN</FulltextLanguage>
+        <References></References>
+    </Article>
+</ArticleSet>

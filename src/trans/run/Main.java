@@ -12,7 +12,7 @@ import trans.xml.XMLHandler;
 public class Main {
 	public static void main(String[] args) {
 
-		Template template = new Template();  //
+		Template template = new Template(); //
 
 		// 解析PDF文件
 		// List<String> lines = PDFParser.parsePDF("article.pdf", "article.txt");
@@ -25,4 +25,6 @@ public class Main {
 		XMLHandler.generateXML(template, "article.xml");
 
 	}
+
+	
 }

@@ -14,8 +14,6 @@ import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
 
 import trans.xml.Author;
 import trans.xml.Template;
@@ -36,12 +34,9 @@ public class HTMLParser {
 			HttpGet httpget = new HttpGet(url);
 			CloseableHttpResponse response = httpclient.execute(httpget);
 			try {
-				// 获取响应实体
-				HttpEntity entity = response.getEntity();
-				// 打印响应状态
-				if (entity != null) {
-					return EntityUtils.toString(entity);
-				}
+				HttpEntity entity = response.getEntity(); // 获取响应实体
+				if (entity != null)
+					return EntityUtils.toString(entity); // 打印响应状态
 			} finally {
 				response.close();
 			}
@@ -69,8 +64,9 @@ public class HTMLParser {
 		//
 		Document document = Jsoup.parse(html);
 		// Journal OK
-		template.setVolumn(getVolume(document.getElementsByAttribute("colspan").get(1).text().split(" ")[1].split("_")[1]));
-		template.setIssue(document.getElementsByAttribute("colspan").get(1).text().split(" ")[1].split("_")[0]);
+		String[] VI = document.getElementsByAttribute("colspan").get(1).text().split(" ")[1].split("_");
+		template.setVolumn(getVolume(VI[1]));
+		template.setIssue(VI[0]);
 		String[] pubDate = document.getElementsByAttribute("colspan").get(3).text().split("-");
 		template.setPubDateYear(pubDate[0]);
 		template.setPubDateMonth(pubDate[1]);
@@ -124,19 +120,26 @@ public class HTMLParser {
 		template.setAbsTract(document.getElementsByTag("span").get(0).text());
 		template.setKeyWords(document.getElementsByAttribute("colspan").get(5).text());
 		template.setDoi(document.getElementsByAttribute("colspan").get(6).text());
-		template.setAbstractLanguage("EN");
+		template.setAbstractLanguage(getLanguage(document.getElementsByTag("span").get(0).text()));
 
 		// URL OK--
 		template.setUrlAbstract(url);
 		template.setUrlPDF("http://www.macrolinguistics.com/" + document.getElementsByTag("a").get(15).attr("href"));
 		template.setFullTextLanguage("EN");
-		
+
 		// References
-		 System.out.println(document.getElementsByAttribute("colspan").get(7));
-		
+		// String refs =
+		// document.getElementsByAttribute("colspan").get(7).children().text();
+		// System.out.println(refs);
 
 	}
 
+	/**
+	 * 获取季度
+	 * 
+	 * @param month
+	 * @return
+	 */
 	public static String getSeason(String month) {
 		int m = Integer.parseInt(month);
 		if (m >= 3 && m <= 5)
@@ -148,6 +151,12 @@ public class HTMLParser {
 		return "winter";
 	}
 
+	/**
+	 * 获取卷号
+	 * 
+	 * @param year
+	 * @return
+	 */
 	public static String getVolume(String year) {
 		if (year.equals("2007"))
 			return "1";
@@ -162,4 +171,25 @@ public class HTMLParser {
 		return "";
 	}
 
+	public static String getLanguage(String sentence) {
+		boolean hasCh = false;
+		for (int i = 0; i < sentence.length(); i++) {
+			if(isChinese(sentence.charAt(i)))
+				return "EN,ZH";
+		}
+		return "EN";
+	}
+
+	public static boolean isChinese(char c) {
+		Character.UnicodeBlock ub = Character.UnicodeBlock.of(c);
+		if (ub == Character.UnicodeBlock.CJK_UNIFIED_IDEOGRAPHS
+				|| ub == Character.UnicodeBlock.CJK_COMPATIBILITY_IDEOGRAPHS
+				|| ub == Character.UnicodeBlock.CJK_UNIFIED_IDEOGRAPHS_EXTENSION_A
+				|| ub == Character.UnicodeBlock.GENERAL_PUNCTUATION
+				|| ub == Character.UnicodeBlock.CJK_SYMBOLS_AND_PUNCTUATION
+				|| ub == Character.UnicodeBlock.HALFWIDTH_AND_FULLWIDTH_FORMS) {
+			return true;
+		}
+		return false;
+	}
 }

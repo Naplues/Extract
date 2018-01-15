@@ -65,7 +65,7 @@ public class Template {
 		this.eISSN = new String("2473-6376");
 		this.issueTopic = new String("Lingustic");
 		this.issueLanguage = new String("EN,ZH");
-		this.articleType = new String("researchArticle");
+		this.articleType = new String("Research Article");
 		this.specialIssue = new String("N");
 		this.supplementaryIssue = new String("N");
 		this.issueOA = new String("Y");

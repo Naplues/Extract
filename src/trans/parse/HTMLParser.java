@@ -1,7 +1,7 @@
 package trans.parse;
 
 import java.io.IOException;
-import java.sql.Ref;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,8 +15,6 @@ import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
-
-import trans.file.FileHandle;
 import trans.xml.Author;
 import trans.xml.RefAuthor;
 import trans.xml.References;
@@ -134,10 +132,83 @@ public class HTMLParser {
 		template.setFullTextLanguage("EN");
 
 		// References
-		// String refs =
-		// document.getElementsByAttribute("colspan").get(7).children().text();
-		// System.out.println(refs);
+
+		String[] refs = document.getElementsByAttribute("colspan").get(7).select("span").html()
+				.split("<br>|</br>|&nbsp;");
+		List<String> origin = new ArrayList<>();
+		for (int i = 0; i < refs.length; i++) {
+			if (refs[i].endsWith("\n")) {
+				origin.add(refs[i].replace("\n", ""));
+				if (i != refs.length - 1) //非最后一句
+					origin.add("");
+			} else if (!refs[i].trim().equals("")) {
+				origin.add(refs[i]);
+			}
+		}
+
+		template.setReferencesList(parseReferences(origin));
 		return template;
+	}
+
+	/**
+	 * 获取参考文献信息,处理换行
+	 * 
+	 * @return
+	 */
+	public static List<References> parseReferences(List<String> origins) {
+
+		List<String> lines = new ArrayList<>();
+		int len = 0;
+		boolean lastEmpty = false;
+		for (String s : origins) {
+			if (s.equals("")) {
+				lastEmpty = true;
+				continue;
+			}
+			// 上一行是空，说明该行是上一文献的一部分
+			if (lastEmpty) {
+				lines.set(len - 1, lines.get(len - 1) + s);
+				lastEmpty = false;
+				continue;
+			}
+			lines.add(s);
+			len++;
+		}
+
+		List<References> referencesList = new ArrayList<>();
+		for (String line : lines) {
+			// 分离参考文献的组成部分". ", "[A]"
+			String[] temp = line.split("\\. |\\[A\\]\\.|\\[C\\]\\.|\\[D\\]\\.|\\[J\\]\\.|\\[M\\]\\.|\\[M\\],");
+			// 参考文献 文献名[2]
+			References references = new References();
+			// 文献作者
+			List<RefAuthor> refAuthorsList = new ArrayList<>();
+			String[] tempAuthor = temp[0].split("&");
+
+			for (String authorString : tempAuthor) {
+				for (int j = 0; j < authorString.length(); j++) {
+					if (authorString.startsWith(" ")) {
+						authorString = authorString.substring(1);
+					}
+				}
+				RefAuthor refAuthor = new RefAuthor();
+				String[] names = authorString.split(" ");// 分开前后中名
+				refAuthor.setReferencesFirstName(names[0]);
+				if (names.length > 2) {
+					String mName = "";
+					for (int j = 1; j < names.length - 1; j++)
+						mName += names[j];
+					refAuthor.setReferencesMiddleName(mName);
+				}
+				refAuthor.setReferencesLastName(names[names.length - 1]);
+
+				refAuthorsList.add(refAuthor);
+			}
+			references.setReferencesarticleTitle(temp[2]); // 设置文献标题
+			references.setRefAuthorList(refAuthorsList); // 设置作者列表
+			referencesList.add(references);
+		}
+		return referencesList;
 	}
 
 	/**
@@ -204,64 +275,4 @@ public class HTMLParser {
 		return false;
 	}
 
-	/**
-	 * 获取参考文献信息
-	 * 
-	 * @return
-	 */
-	public static List<References> parseReferences(String string) {
-		List<String> origins = FileHandle.readFileToLines("test.txt");
-		List<String> lines = new ArrayList<>();
-		int len = 0;
-		boolean lastEmpty = false;
-
-		for (String s : origins) {
-			if (s.equals("")) {
-				lastEmpty = true;
-				continue;
-			}
-			// 上一行是空，说明该行是上一文献的一部分
-			if (lastEmpty) {
-				lines.set(len - 1, lines.get(len - 1) + s);
-				lastEmpty = false;
-				continue;
-			}
-			lines.add(s);
-			len++;
-		}
-
-		List<References> referencesList = new ArrayList<>();
-		for (String line : lines) {
-			String[] temp = line.split("\\. |\\[J\\]\\.|\\[M\\]\\.|\\[A\\]\\.");
-			// 参考文献 文献名[2]
-			References references = new References();
-			// 文献作者
-			List<RefAuthor> refAuthorsList = new ArrayList<>();
-			String[] tempAuthor = temp[0].split("&");
-
-			for (String authorString : tempAuthor) {
-				for (int j = 0; j < authorString.length(); j++) {
-					if (authorString.startsWith(" ")) {
-						authorString = authorString.substring(1);
-					}
-				}
-				RefAuthor refAuthor = new RefAuthor();
-				String[] names = authorString.split(" ");//分开前后中名
-				refAuthor.setReferencesFirstName(names[0]);
-				if (names.length > 2) {
-					String mName = "";
-					for (int j = 1; j < names.length - 1; j++)
-						mName += names[j];
-					refAuthor.setReferencesMiddleName(mName);
-				}
-				refAuthor.setReferencesLastName(names[names.length - 1]);
-
-				refAuthorsList.add(refAuthor);
-			}
-			references.setReferencesarticleTitle(temp[2]); // 设置文献标题
-			references.setRefAuthorList(refAuthorsList); // 设置作者列表
-			referencesList.add(references);
-		}
-		return referencesList;
-	}
 }

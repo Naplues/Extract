@@ -1,19 +1,21 @@
 package trans.gui;
 
 import java.awt.BorderLayout;
-
+import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.border.TitledBorder;
 
 import trans.parse.HTMLParser;
 import trans.xml.Template;
@@ -25,6 +27,7 @@ public class Window implements ActionListener {
 
 	public static JPanel panel = new JPanel();
 	public static JPanel leftPanel = new JPanel();
+	public static JPanel rightPanel = new JPanel();
 	public static JPanel bottomPanel = new JPanel();
 	public static JPanel operatePanel = new JPanel(); // 操作面板
 	public static JPanel contentPanel = new JPanel(); // 内容面板
@@ -34,25 +37,26 @@ public class Window implements ActionListener {
 	public static JPanel panel4 = new JPanel(); // 4
 
 	// url输入框
-	public static JTextField input = new JTextField(20);
+	public static JLabel info = new JLabel("请输入文章的url编号(数字):");
+	public static JTextField input = new JTextField(10);
 
 	// journal标签16
-	public static JLabel publisherName = new JLabel(Label.publisherName, JLabel.RIGHT);
-	public static JLabel journalTitle = new JLabel(Label.journalTitle);
-	public static JLabel PISSN = new JLabel(Label.PISSN);
-	public static JLabel EISSN = new JLabel(Label.EISSN);
-	public static JLabel volume = new JLabel(Label.volume);
-	public static JLabel issue = new JLabel(Label.isssue);
-	public static JLabel partNumber = new JLabel(Label.partNumber);
-	public static JLabel issueTopic = new JLabel(Label.issueTopic);
-	public static JLabel issueLanguage = new JLabel(Label.issueLanguage);
-	public static JLabel season = new JLabel(Label.season);
-	public static JLabel specialIssue = new JLabel(Label.specialIssue);
-	public static JLabel supplementaryIssue = new JLabel(Label.supplementaryIssue);
-	public static JLabel issueOA = new JLabel(Label.issueOA);
-	public static JLabel pubDateYear = new JLabel(Label.pubDateYear);
-	public static JLabel pubDateMonth = new JLabel(Label.pubDateMonth);
-	public static JLabel pubDateDay = new JLabel(Label.pubDateDay);
+	public static JLabel publisherName = new JLabel(Label.publisherName, JLabel.CENTER);
+	public static JLabel journalTitle = new JLabel(Label.journalTitle, JLabel.CENTER);
+	public static JLabel PISSN = new JLabel(Label.PISSN, JLabel.CENTER);
+	public static JLabel EISSN = new JLabel(Label.EISSN, JLabel.CENTER);
+	public static JLabel volume = new JLabel(Label.volume, JLabel.CENTER);
+	public static JLabel issue = new JLabel(Label.isssue, JLabel.CENTER);
+	public static JLabel partNumber = new JLabel(Label.partNumber, JLabel.CENTER);
+	public static JLabel issueTopic = new JLabel(Label.issueTopic, JLabel.CENTER);
+	public static JLabel issueLanguage = new JLabel(Label.issueLanguage, JLabel.CENTER);
+	public static JLabel season = new JLabel(Label.season, JLabel.CENTER);
+	public static JLabel specialIssue = new JLabel(Label.specialIssue, JLabel.CENTER);
+	public static JLabel supplementaryIssue = new JLabel(Label.supplementaryIssue, JLabel.CENTER);
+	public static JLabel issueOA = new JLabel(Label.issueOA, JLabel.CENTER);
+	public static JLabel pubDateYear = new JLabel(Label.pubDateYear, JLabel.CENTER);
+	public static JLabel pubDateMonth = new JLabel(Label.pubDateMonth, JLabel.CENTER);
+	public static JLabel pubDateDay = new JLabel(Label.pubDateDay, JLabel.CENTER);
 
 	// journal输入框
 	public static JTextField publisherNameText = new JTextField(15);
@@ -73,21 +77,21 @@ public class Window implements ActionListener {
 	public static JTextField pubDateDayText = new JTextField(15);
 
 	// article 标签
-	public static JLabel articleType = new JLabel("ArticleType");
-	public static JLabel articleTitle = new JLabel("ArticleTitle");
-	public static JLabel subtitle = new JLabel("SubTitle");
-	public static JLabel articleLanguage = new JLabel("ArticleLanguage");
-	public static JLabel articleOA = new JLabel("ArticleOA");
-	public static JLabel firstPage = new JLabel("FirstPage");
-	public static JLabel lastPage = new JLabel("LastPage");
-	public static JLabel doi = new JLabel("DOI");
-	public static JLabel absTract = new JLabel("Abstract");
-	public static JLabel abstractLanguage = new JLabel("AbstractLanguage");
-	public static JLabel keyWords = new JLabel("Keywords");
-	public static JLabel fullText = new JLabel("Fulltext");
-	public static JLabel abstractUrl = new JLabel("Urls abstract");
-	public static JLabel pdfUrl = new JLabel("Urls pdf");
-	public static JLabel fulltextLanguage = new JLabel("FulltextLanguage");
+	public static JLabel articleType = new JLabel("ArticleType", JLabel.CENTER);
+	public static JLabel articleTitle = new JLabel("ArticleTitle", JLabel.CENTER);
+	public static JLabel subtitle = new JLabel("SubTitle", JLabel.CENTER);
+	public static JLabel articleLanguage = new JLabel("ArticleLanguage", JLabel.CENTER);
+	public static JLabel articleOA = new JLabel("ArticleOA", JLabel.CENTER);
+	public static JLabel firstPage = new JLabel("FirstPage", JLabel.CENTER);
+	public static JLabel lastPage = new JLabel("LastPage", JLabel.CENTER);
+	public static JLabel doi = new JLabel("DOI", JLabel.CENTER);
+	public static JLabel absTract = new JLabel("Abstract", JLabel.CENTER);
+	public static JLabel abstractLanguage = new JLabel("AbstractLanguage", JLabel.CENTER);
+	public static JLabel keyWords = new JLabel("Keywords", JLabel.CENTER);
+	public static JLabel fullText = new JLabel("Fulltext", JLabel.CENTER);
+	public static JLabel abstractUrl = new JLabel("Urls abstract", JLabel.CENTER);
+	public static JLabel pdfUrl = new JLabel("Urls pdf", JLabel.CENTER);
+	public static JLabel fulltextLanguage = new JLabel("FulltextLanguage", JLabel.CENTER);
 
 	// article 输入框
 	public static JTextField articleTypeText = new JTextField(15);
@@ -125,8 +129,11 @@ public class Window implements ActionListener {
 		panel.add(operatePanel, BorderLayout.NORTH); // 操作面板
 		panel.add(contentPanel, BorderLayout.CENTER); // 内容面板
 		panel.add(leftPanel, BorderLayout.WEST);
+		panel.add(rightPanel, BorderLayout.EAST);
 		panel.add(bottomPanel, BorderLayout.SOUTH);
 		// 操作面板
+		operatePanel.setBorder(BorderFactory.createLineBorder(new Color(0, 128, 0)));
+		operatePanel.add(info);
 		operatePanel.add(input);
 		operatePanel.add(loadButton);
 		operatePanel.add(exportButton);
@@ -134,6 +141,8 @@ public class Window implements ActionListener {
 		// 内容面板
 		// 添加标签
 		contentPanel.setLayout(new GridLayout(1, 4)); // 设置内容面板
+		contentPanel.setBorder(new TitledBorder(null, "信息面板(白色文本框的信息可能需要修改)", TitledBorder.DEFAULT_JUSTIFICATION,
+				TitledBorder.DEFAULT_POSITION, null, Color.RED));
 		panel1.setLayout(new GridLayout(16, 1)); // 设置布局
 		// panel1.setBorder(BorderFactory.createTitledBorder("Journal"));
 		panel2.setLayout(new GridLayout(16, 1)); // 设置布局
@@ -281,7 +290,25 @@ public class Window implements ActionListener {
 		abstractUrlText.setText(template.getUrlAbstract());
 		pdfUrlText.setText(template.getUrlPDF());
 		fulltextLanguageText.setText(template.getFullTextLanguage());
+	}
 
+	/**
+	 * 清除消息
+	 */
+	public static void clear() {
+		Template temp = new Template();
+		readTemplate(temp);
+		publisherNameText.setText("");
+		journalTitleText.setText("");
+		PISSNText.setText("");
+		EISSNText.setText("");
+		issueTopicText.setText("");
+		issueLanguageText.setText("");
+		specialIssueText.setText("");
+		supplementaryIssueText.setText("");
+		issueOAText.setText("");
+		articleTypeText.setText("");
+		articleOAText.setText("");
 	}
 
 	/**
@@ -290,7 +317,15 @@ public class Window implements ActionListener {
 	 * @return
 	 */
 	public static void writeTemplate(Template template) {
-
+		// journal信息
+		template.setPartNumber(partNumberText.getText());
+		template.setIssueLanguage(issueLanguageText.getText());
+		template.setSeason(seasonText.getText());
+		// 文章信息
+		template.setArticleLanguage(articleLanguageText.getText());
+		template.setAbstractLanguage(abstractLanguageText.getText());
+		template.setFullText(fullTextText.getText());
+		template.setFullTextLanguage(fulltextLanguageText.getText());
 	}
 
 	/**
@@ -317,10 +352,12 @@ public class Window implements ActionListener {
 
 			if (input.getText().trim().equals("")) {
 				JOptionPane.showMessageDialog(null, "请输入文章URL编号!", "提示!", JOptionPane.INFORMATION_MESSAGE);
+				clear();
 			} else if (!isNumeric(input.getText().trim())) {
 				JOptionPane.showMessageDialog(null, "请输入数字编号!", "提示!", JOptionPane.INFORMATION_MESSAGE);
 				input.setText("");
 				input.requestFocus();
+				clear();
 			} else {
 				try {
 					String url = "http://www.macrolinguistics.com/index.php?c=msg&id=" + input.getText() + "&";
@@ -331,15 +368,21 @@ public class Window implements ActionListener {
 					JOptionPane.showMessageDialog(null, "请输入正确的URL编号!", "错误!", JOptionPane.ERROR_MESSAGE);
 					input.setText("");
 					input.requestFocus();
+					clear();
 				}
-
 			}
 			// 导出数据事件
 		} else if (e.getSource() == exportButton) {
 			// 根据模板生成XML文档
-			template.setReferencesList(HTMLParser.parseReferences(""));// 加入参考文献
-			XMLHandler.generateXML(template, input.getText() + ".xml");
-			JOptionPane.showMessageDialog(null, "成功导出XML!", "成功!", JOptionPane.INFORMATION_MESSAGE);
+			if (publisherNameText.getText().trim().equals("")) {
+				JOptionPane.showMessageDialog(null, "请先点击加载数据按钮!", "错误!", JOptionPane.ERROR_MESSAGE);
+			} else {
+				writeTemplate(template);
+				XMLHandler.generateXML(template, input.getText() + ".xml");
+				JOptionPane.showMessageDialog(null, "成功导出" + input.getText() + ".xml!", "成功!",
+						JOptionPane.INFORMATION_MESSAGE);
+			}
+
 		}
 	}
 }

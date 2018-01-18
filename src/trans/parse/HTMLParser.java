@@ -113,7 +113,7 @@ public class HTMLParser {
 			if (tempA[tempA.length - 1].trim().equals("China")
 					|| tempA[tempA.length - 1].trim().equals("Nanjing University")
 					|| tempA[tempA.length - 1].trim().equals("Hangzhou Dianzi University")
-					|| tempA[tempA.length - 1].trim().equals("China")) {
+					|| tempA[tempA.length - 1].trim().equals("Zhejiang University")) {
 				tempAuthor.setFirstName(names[names.length - 1]); // First Name
 				tempAuthor.setLastName(names[0]); // Last Name
 				tempAuthor.setCountry("China");

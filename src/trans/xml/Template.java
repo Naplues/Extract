@@ -63,7 +63,7 @@ public class Template {
 		this.journalTitle = new String("Macrolinguistics");
 		this.pISSN = new String("1934-5755");
 		this.eISSN = new String("2473-6376");
-		this.issueTopic = new String("Lingustic");
+		this.issueTopic = new String("Lingustics");
 		this.issueLanguage = new String("EN,ZH");
 		this.articleType = new String("Research Article");
 		this.specialIssue = new String("N");

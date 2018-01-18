@@ -1,5 +1,6 @@
 package trans.run;
 
+
 import trans.gui.Window;
 
 /**
@@ -8,6 +9,7 @@ import trans.gui.Window;
  *
  */
 public class Main {
+	
 	public static void main(String[] args) {
 		new Window();
 	}

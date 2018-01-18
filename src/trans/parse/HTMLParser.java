@@ -8,6 +8,8 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.ParseException;
@@ -67,6 +69,7 @@ public class HTMLParser {
 	 * 使用jsoup解析网页信息
 	 */
 	public static Template analyzeHTMLByString(String url, String html) {
+		boolean isChina = false;
 		Template template = new Template();
 		//
 		Document document = Jsoup.parse(html);
@@ -95,31 +98,37 @@ public class HTMLParser {
 		String[] affilis = document.getElementsByAttribute("colspan").get(0).text().split(";");
 		List<Author> authorList = new ArrayList<>();
 		for (int i = 0; i < authors.length; i++) {
-			// 每个作者的名字
-			for (int j = 0; j < authors[i].length(); j++) {
-				if (authors[i].startsWith(" ")) {
-					authors[i] = authors[i].substring(1);
-				}
-			}
+			// 每个作者
+			authors[i] = authors[i].trim();// 去掉首尾的空格
 			Author tempAuthor = new Author();
 			String[] names = authors[i].split(" ");
-
-			tempAuthor.setFirstName(names[0]);
-			if (names.length > 2) {
-				String mName = "";
-				for (int j = 1; j < names.length - 1; j++)
-					mName += names[j];
-				tempAuthor.setMiddleName(mName);
-			}
-			tempAuthor.setLastName(names[names.length - 1]);
-			tempAuthor.setAuthorLanguage("");
+			// 多个工作单位
 			if (affilis.length > 1)
 				tempAuthor.setAffiliation(affilis[i]);
 			else
 				tempAuthor.setAffiliation(affilis[0]);
-			tempAuthor.setCountry("");
+
+			String[] tempA = tempAuthor.getAffiliation().split(",");
+			// 中文姓名
+			if (tempA[tempA.length - 1].trim().equals("China")
+					|| tempA[tempA.length - 1].trim().equals("Nanjing University")
+					|| tempA[tempA.length - 1].trim().equals("Hangzhou Dianzi University")
+					|| tempA[tempA.length - 1].trim().equals("China")) {
+				tempAuthor.setFirstName(names[names.length - 1]); // First Name
+				tempAuthor.setLastName(names[0]); // Last Name
+				tempAuthor.setCountry("China");
+				isChina = true;
+			} else {
+				// 外文姓名
+				tempAuthor.setFirstName(names[0]); // First Name
+				tempAuthor.setLastName(names[names.length - 1]); // Last Name
+				tempAuthor.setCountry(tempA[tempA.length - 1].trim()); // 其他国家名称
+			}
+
+			tempAuthor.setAuthorLanguage("");
 			tempAuthor.setAuthorEmails("");
-			//tempAuthor.setAuthorEmails("http://www.macrolinguistics.com/" + document.getElementsByTag("a").get(15).attr("href"));
+			// tempAuthor.setAuthorEmails("http://www.macrolinguistics.com/" +
+			// document.getElementsByTag("a").get(15).attr("href"));
 			// 文章地址
 			authorList.add(tempAuthor);
 		}
@@ -151,7 +160,7 @@ public class HTMLParser {
 			}
 		}
 
-		template.setReferencesList(parseReferences(origin));
+		template.setReferencesList(parseReferences(origin, isChina));
 		return template;
 	}
 
@@ -160,7 +169,7 @@ public class HTMLParser {
 	 * 
 	 * @return
 	 */
-	public static List<References> parseReferences(List<String> origins) {
+	public static List<References> parseReferences(List<String> origins, boolean isChina) {
 
 		List<String> lines = new ArrayList<>();
 		int len = 0;
@@ -198,19 +207,28 @@ public class HTMLParser {
 				}
 				RefAuthor refAuthor = new RefAuthor();
 				String[] names = authorString.split(" ");// 分开前后中名
-				refAuthor.setReferencesFirstName(names[0]);
-				if (names.length > 2) {
-					String mName = "";
-					for (int j = 1; j < names.length - 1; j++)
-						mName += names[j];
-					refAuthor.setReferencesMiddleName(mName);
+
+				if (isChina) {
+					refAuthor.setReferencesFirstName(names[names.length - 1]);
+					refAuthor.setReferencesLastName(names[0]);
+				} else {
+					refAuthor.setReferencesFirstName(names[0]);
+					refAuthor.setReferencesLastName(names[names.length - 1]);
 				}
-				refAuthor.setReferencesLastName(names[names.length - 1]);
 
 				refAuthorsList.add(refAuthor);
 			}
 			if (temp.length > 2)
 				references.setReferencesarticleTitle(temp[2]); // 设置文献标题
+
+			String page = findString(temp[temp.length - 1]);
+			// 设置页码
+			if (!page.equals("")) {
+				String[] tempPage = page.split("-");
+				references.setReferencesFirstPage(tempPage[0]);
+				references.setReferencesLastPage(tempPage[1]);
+			}
+
 			references.setRefAuthorList(refAuthorsList); // 设置作者列表
 			referencesList.add(references);
 		}
@@ -316,5 +334,21 @@ public class HTMLParser {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+
+	/**
+	 * 匹配页码
+	 * 
+	 * @param str
+	 * @return
+	 */
+	public static String findString(String str) {
+		str = str.replace(" ", "");// 去掉空格
+		Pattern p = Pattern.compile("[0-9]*[1-9][0-9]*-[0-9]*[1-9][0-9]*"); // 使用正则表达式匹配
+		Matcher m = p.matcher(str);
+		while (m.find()) {
+			return m.group();
+		}
+		return "";
 	}
 }

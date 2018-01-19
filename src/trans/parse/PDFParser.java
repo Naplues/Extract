@@ -5,11 +5,9 @@ import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.canvas.parser.PdfCanvasProcessor;
 import com.itextpdf.kernel.pdf.canvas.parser.listener.LocationTextExtractionStrategy;
 
-import trans.file.FileHandle;
-
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * 解析pdf文件
@@ -24,41 +22,36 @@ public class PDFParser {
 	 * 
 	 * @param filePath
 	 */
-	public static List<String> parsePDF(String filePath, String outPath) {
-
+	public static String parsePDF(String filePath) {
+		String string = null;
 		try {
 			PdfDocument doc = new PdfDocument(new PdfReader(filePath));
-			FileOutputStream fos = new FileOutputStream(outPath);
 			LocationTextExtractionStrategy strategy = new LocationTextExtractionStrategy();
 			PdfCanvasProcessor parser = new PdfCanvasProcessor(strategy);
-
-			for (int i = 0; i < doc.getNumberOfPages(); i++) {
-				parser.processPageContent(doc.getPage(i + 1));
-				fos.write(strategy.getResultantText().getBytes("UTF-8"));
-				if(i+1 == 17) {
-					System.out.println(strategy.getResultantText());
-				}
-			}
-
-			System.out.println("对象数： " + doc.getNumberOfPdfObjects());
-
-			fos.flush();
-			fos.close();
+			parser.processPageContent(doc.getFirstPage());
+			string = strategy.getResultantText();
 			doc.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
-		return FileHandle.readFileToLines(outPath);
-
+		return string;
 	}
-	
-	
+
 	/**
-	 * 解析参考文献
-	 * @param list
+	 * 正则表达式匹配:寻找字符串中的邮箱
+	 * 
+	 * @param str
+	 * @return
 	 */
-	public static void parseReferences(List<String> list) {
-		
+	public static String findEmailNo(String str) {
+
+		str = str.replace(" ", "");// 去掉空格
+		Pattern p = Pattern.compile("\\w+(\\.\\w)*@\\w+(\\.\\w{2,3}){1,3}"); // 使用正则表达式匹配
+		Matcher m = p.matcher(str);
+		while (m.find()) {
+			System.out.println(m.group());
+			return m.group();
+		}
+		return "";
 	}
 }

@@ -1,7 +1,11 @@
 package trans.parse;
 
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
-
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -115,7 +119,8 @@ public class HTMLParser {
 				tempAuthor.setAffiliation(affilis[0]);
 			tempAuthor.setCountry("");
 			tempAuthor.setAuthorEmails("");
-
+			//tempAuthor.setAuthorEmails("http://www.macrolinguistics.com/" + document.getElementsByTag("a").get(15).attr("href"));
+			// 文章地址
 			authorList.add(tempAuthor);
 		}
 		template.setAuthorList(authorList);
@@ -139,7 +144,7 @@ public class HTMLParser {
 		for (int i = 0; i < refs.length; i++) {
 			if (refs[i].endsWith("\n")) {
 				origin.add(refs[i].replace("\n", ""));
-				if (i != refs.length - 1) //非最后一句
+				if (i != refs.length - 1) // 非最后一句
 					origin.add("");
 			} else if (!refs[i].trim().equals("")) {
 				origin.add(refs[i]);
@@ -204,7 +209,8 @@ public class HTMLParser {
 
 				refAuthorsList.add(refAuthor);
 			}
-			references.setReferencesarticleTitle(temp[2]); // 设置文献标题
+			if (temp.length > 2)
+				references.setReferencesarticleTitle(temp[2]); // 设置文献标题
 			references.setRefAuthorList(refAuthorsList); // 设置作者列表
 			referencesList.add(references);
 		}
@@ -275,4 +281,40 @@ public class HTMLParser {
 		return false;
 	}
 
+	/**
+	 * 
+	 * @author gzq
+	 * @date Sep 11, 2015 11:45:31 AM
+	 * @param fileUrl
+	 *            远程地址
+	 * @param fileLocal
+	 *            本地路径
+	 * @throws Exception
+	 */
+	public static void downloadFile(String fileUrl, String fileLocal) {
+		try {
+
+			URL url = new URL(fileUrl);
+			HttpURLConnection urlCon = (HttpURLConnection) url.openConnection();
+			urlCon.setConnectTimeout(100000);
+			urlCon.setReadTimeout(100000);
+			int code = urlCon.getResponseCode();
+			if (code != HttpURLConnection.HTTP_OK) {
+				throw new Exception("文件读取失败");
+			}
+			// 读文件流
+			DataInputStream in = new DataInputStream(urlCon.getInputStream());
+			DataOutputStream out = new DataOutputStream(new FileOutputStream(fileLocal));
+			byte[] buffer = new byte[2048];
+			int count = 0;
+			while ((count = in.read(buffer)) > 0) {
+				out.write(buffer, 0, count);
+			}
+			out.close();
+			in.close();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 }

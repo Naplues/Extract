@@ -150,6 +150,7 @@ public class HTMLParser {
 		String[] refs = document.getElementsByAttribute("colspan").get(7).select("span").html()
 				.split("<br>|</br>|&nbsp;");
 		List<String> origin = new ArrayList<>();
+
 		for (int i = 0; i < refs.length; i++) {
 			if (refs[i].endsWith("\n")) {
 				origin.add(refs[i].replace("\n", ""));
@@ -162,6 +163,14 @@ public class HTMLParser {
 
 		template.setReferencesList(parseReferences(origin, isChina));
 		return template;
+	}
+
+	public static List<References> parseReferences(String[] origins, boolean isChina) {
+		List<String> list = new ArrayList<>();
+		for (String s : origins) {
+			list.add(s);
+		}
+		return parseReferences(list, isChina);
 	}
 
 	/**
@@ -181,11 +190,18 @@ public class HTMLParser {
 			}
 			// 上一行是空，说明该行是上一文献的一部分
 			if (lastEmpty) {
-				lines.set(len - 1, lines.get(len - 1) + s);
+				// 上一行结束
+				if (lines.get(len - 1).endsWith(".")) {
+					lines.add(s.trim());
+					len++;
+					continue;
+				}
+
+				lines.set(len - 1, lines.get(len - 1) + s.trim());
 				lastEmpty = false;
 				continue;
 			}
-			lines.add(s);
+			lines.add(s.trim());
 			len++;
 		}
 
@@ -230,7 +246,8 @@ public class HTMLParser {
 			}
 
 			references.setRefAuthorList(refAuthorsList); // 设置作者列表
-			referencesList.add(references);
+			if (!references.getReferencesarticleTitle().equals(""))
+				referencesList.add(references);
 		}
 		return referencesList;
 	}

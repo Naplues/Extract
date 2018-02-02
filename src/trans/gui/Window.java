@@ -14,6 +14,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
 
@@ -110,10 +112,15 @@ public class Window implements ActionListener {
 	public static JTextField pdfUrlText = new JTextField(15);
 	public static JTextField fulltextLanguageText = new JTextField(15);
 
+	
+	public static JTextArea referencesArea = new JTextArea(10, 88);
+	public static JScrollPane jsp=new JScrollPane(referencesArea);
+	
 	// 创建操作按钮
 	public static JButton loadButton = new JButton("加载数据");
 	public static JButton exportButton = new JButton("保存并导出");
 
+	
 	public Template template = new Template();
 
 	public Window() {
@@ -121,7 +128,7 @@ public class Window implements ActionListener {
 	}
 
 	public void placeComponents() {
-		frame.setSize(1000, 700);
+		frame.setSize(1000, 800);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setLocationRelativeTo(null); // 设置窗体居中显示
 		frame.add(Window.panel); // 添加面板
@@ -143,6 +150,7 @@ public class Window implements ActionListener {
 		contentPanel.setLayout(new GridLayout(1, 4)); // 设置内容面板
 		contentPanel.setBorder(new TitledBorder(null, "信息面板(白色文本框的信息可能需要修改)", TitledBorder.DEFAULT_JUSTIFICATION,
 				TitledBorder.DEFAULT_POSITION, null, Color.RED));
+		
 		panel1.setLayout(new GridLayout(16, 1)); // 设置布局
 		// panel1.setBorder(BorderFactory.createTitledBorder("Journal"));
 		panel2.setLayout(new GridLayout(16, 1)); // 设置布局
@@ -246,6 +254,10 @@ public class Window implements ActionListener {
 		pdfUrlText.setEditable(false);
 		panel4.add(fulltextLanguageText);
 
+		//参考文献输入框
+		bottomPanel.add(jsp);
+		bottomPanel.setBorder(new TitledBorder(null, "参考文献列表", TitledBorder.DEFAULT_JUSTIFICATION,
+				TitledBorder.DEFAULT_POSITION, null, Color.BLACK));
 		// 添加事件监听
 		loadButton.addActionListener(this);
 		exportButton.addActionListener(this);
@@ -366,7 +378,7 @@ public class Window implements ActionListener {
 					String html = HTMLParser.pickData(url);
 					template = HTMLParser.analyzeHTMLByString(url, html);
 					readTemplate(template); // 读取模板内容并显示
-
+					
 					/*
 					String pdfUrl = template.getAuthorList().get(0).getAuthorEmails(); // pdfurl
 					HTMLParser.downloadFile(pdfUrl, "./" + input.getText() + ".pdf");
@@ -388,11 +400,12 @@ public class Window implements ActionListener {
 				JOptionPane.showMessageDialog(null, "请先点击加载数据按钮!", "错误!", JOptionPane.ERROR_MESSAGE);
 			} else {
 				writeTemplate(template);
+				template.setReferencesList(HTMLParser.parseReferences(referencesArea.getText().trim().split("\n"), false));
+				System.out.println(template.getReferencesList().size());
 				XMLHandler.generateXML(template, input.getText() + ".xml");
 				JOptionPane.showMessageDialog(null, "成功导出" + input.getText() + ".xml!", "成功!",
 						JOptionPane.INFORMATION_MESSAGE);
 			}
-
 		}
 	}
 }

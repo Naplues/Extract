@@ -84,14 +84,15 @@ public class FileHandle {
 			e.printStackTrace();
 		}
 	}
+
 	/**
 	 * 
 	 * @param filePath
 	 * @param string
 	 * @param a
 	 */
-	public static void writeLinesToFile(String filePath, List<String> lines, boolean...a) {
-		for(String t: lines) {
+	public static void writeLinesToFile(String filePath, List<String> lines, boolean... a) {
+		for (String t : lines) {
 			writeStringToFile(filePath, t + "\n", a);
 		}
 	}
@@ -128,6 +129,18 @@ public class FileHandle {
 			e.printStackTrace();
 		}
 		return null;
+	}
+
+	
+	public static void fixXML(String filePath) {
+		List<String> lines = readFileToLines(filePath);
+		for (int i = 0; i < lines.size(); i++) {
+			if (lines.get(i).contains("&amp;")) {
+				lines.set(i, lines.get(i).replace("&amp;", "&"));
+			}
+		}
+		writeStringToFile(filePath, "", false); //清空原文件
+		writeLinesToFile(filePath, lines, true);
 	}
 
 }

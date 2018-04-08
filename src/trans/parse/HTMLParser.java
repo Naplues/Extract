@@ -27,7 +27,7 @@ import trans.xml.Template;
  *
  */
 public class HTMLParser {
-	public static boolean isChina = false;
+	public static boolean isChina = true;
 	/*
 	 * 爬取网页信息
 	 */

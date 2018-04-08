@@ -1,34 +1,48 @@
 package trans.xml;
 
 /**
- * 文章作者信息
+ * 文章作者信息10(,6,4)
+ * 
+ * 2 firstName
+ * 
+ * 2 lastName
+ * 
+ * 2 作者所属国家语言ZH/EN
+ * 
+ * 2 工作单位
+ * 
+ * 2 国家
+ * 
+ * 2 邮箱
+ * 
+ * 3 middleName||首字母||电话||传真
  * 
  * @author naplues
  *
  */
 public class Author {
-	private String firstName; // 前名  名2
-	private String middleName; // 中名2
-	private String lastName; // 后名 姓2
-	private String initials; // 首字母3不要
-	private String authorLanguage; // 作者所属国家的语言ZH,其他 EN
-	private String affiliation; // 工作单位2
-	private String country; // 作者 国家2
-	private String phone; // 电话号3
-	private String fax; // 传真号3
-	private String authorEmails; // 作者邮箱文章有
+	private String firstName;
+	private String middleName;
+	private String lastName;
+	private String initials;
+	private String authorLanguage;
+	private String affiliation;
+	private String country;
+	private String phone;
+	private String fax;
+	private String authorEmails;
 
 	public Author() {
 		super();
 		this.firstName = new String();
-		this.middleName = new String();
 		this.lastName = new String();
-		this.initials = new String();
 		this.authorLanguage = new String();
 		this.affiliation = new String();
 		this.country = new String();
 		this.authorEmails = new String();
-		//ignore
+
+		this.middleName = new String();
+		this.initials = new String();
 		this.phone = new String();
 		this.fax = new String();
 	}

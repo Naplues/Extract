@@ -4,17 +4,25 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 参考文献信息
+ * 参考文献信息4(,4,)
+ * 
+ * 2 引用文章标题
+ * 
+ * 2 引用文章起始页
+ * 
+ * 2 引用文章结束页
+ * 
+ * 2 引用作者列表
  * 
  * @author naplues
  *
  */
 public class References {
 	// 参考文献信息
-	private String referencesarticleTitle; // 引用文章标题
-	private String referencesFirstPage; // 引用文章起始页
-	private String referencesLastPage; // 引用文章结束页
-	private List<RefAuthor> refAuthorList; // 引用文章作者列表
+	private String referencesarticleTitle;
+	private String referencesFirstPage; 
+	private String referencesLastPage;
+	private List<RefAuthor> refAuthorList;
 
 	public References() {
 		super();

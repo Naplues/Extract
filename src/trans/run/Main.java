@@ -1,6 +1,5 @@
 package trans.run;
 
-
 import trans.gui.Window;
 
 /**

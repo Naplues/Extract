@@ -370,23 +370,11 @@ public class Window implements ActionListener {
 				input.requestFocus();
 				clear();
 			} else {
-
 				try {
-
 					String url = "http://www.macrolinguistics.com/index.php?c=msg&id=" + input.getText() + "&";
 					String html = HTMLParser.pickData(url);
 					template = HTMLParser.analyzeHTMLByString(url, html);
 					readTemplate(template); // 读取模板内容并显示
-
-					/*
-					 * String pdfUrl = template.getAuthorList().get(0).getAuthorEmails(); // pdfurl
-					 * HTMLParser.downloadFile(pdfUrl, "./" + input.getText() + ".pdf");
-					 * 
-					 * JOptionPane.showMessageDialog(null, "PDF文件下载文成!", "下载完成!",
-					 * JOptionPane.INFORMATION_MESSAGE); String emails =
-					 * PDFParser.findEmailNo(PDFParser.parsePDF("./" + input.getText() + ".pdf"));
-					 * // 查找email System.out.println(emails);
-					 */
 				} catch (Exception e2) {
 					JOptionPane.showMessageDialog(null, "请输入正确的URL编号!", "错误!", JOptionPane.ERROR_MESSAGE);
 					input.setText("");
@@ -402,14 +390,11 @@ public class Window implements ActionListener {
 			} else {
 				writeTemplate(template);
 				template.setReferencesList(
-						HTMLParser.parseReferences(referencesArea.getText().trim().split("\n"), false));
-				System.out.println(template.getReferencesList().size());
+						HTMLParser.parseReferences(referencesArea.getText().trim().split("\n"), HTMLParser.isChina));
 				XMLHandler.generateXML(template, input.getText() + ".xml");
 				JOptionPane.showMessageDialog(null, "成功导出" + input.getText() + ".xml!", "成功!",
 						JOptionPane.INFORMATION_MESSAGE);
 			}
-
-			
 			//可以删除不用
 			FileHandle.fixXML(input.getText() + ".xml");
 

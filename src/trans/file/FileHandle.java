@@ -131,7 +131,10 @@ public class FileHandle {
 		return null;
 	}
 
-	
+	/**
+	 * 修复XML文件中的URL格式
+	 * @param filePath
+	 */
 	public static void fixXML(String filePath) {
 		List<String> lines = readFileToLines(filePath);
 		for (int i = 0; i < lines.size(); i++) {

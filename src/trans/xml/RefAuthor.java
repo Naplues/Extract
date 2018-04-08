@@ -1,18 +1,24 @@
 package trans.xml;
 
 /**
- * 参考文献中的作者信息
+ * 参考文献中的作者信息6(,2,4)
+ *
+ * 2 firstName
+ * 
+ * 2 lastName
+ * 
+ * 3 middleName||首字母||工作单位||国家
  * 
  * @author naplues
  *
  */
 public class RefAuthor {
-	private String referencesFirstName; // 前名
-	private String referencesMiddleName; // 中名
-	private String referencesLastName; // 后名
-	private String referencesInitials; // 首字母缩略字3
-	private String referencesAffiliation; //工作单位3
-	private String referencesCountry; // 国家3
+	private String referencesFirstName;
+	private String referencesMiddleName;
+	private String referencesLastName;
+	private String referencesInitials;
+	private String referencesAffiliation;
+	private String referencesCountry;
 
 	public RefAuthor() {
 		super();

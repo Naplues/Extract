@@ -1,11 +1,6 @@
 package trans.parse;
 
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -32,7 +27,7 @@ import trans.xml.Template;
  *
  */
 public class HTMLParser {
-
+	public static boolean isChina = false;
 	/*
 	 * 爬取网页信息
 	 */
@@ -69,9 +64,9 @@ public class HTMLParser {
 	 * 使用jsoup解析网页信息
 	 */
 	public static Template analyzeHTMLByString(String url, String html) {
-		boolean isChina = false;
+		isChina = false;
 		Template template = new Template();
-		//
+		
 		Document document = Jsoup.parse(html);
 		// Journal OK
 		String[] VI = document.getElementsByAttribute("colspan").get(1).text().split(" ")[1].split("_");
@@ -109,7 +104,7 @@ public class HTMLParser {
 				tempAuthor.setAffiliation(affilis[0]);
 
 			String[] tempA = tempAuthor.getAffiliation().split(",");
-			// 中文姓名
+			// 中国姓名
 			if (tempA[tempA.length - 1].trim().equals("China")
 					|| tempA[tempA.length - 1].trim().equals("Nanjing University")
 					|| tempA[tempA.length - 1].trim().equals("Hangzhou Dianzi University")
@@ -119,7 +114,7 @@ public class HTMLParser {
 				tempAuthor.setCountry("China");
 				isChina = true;
 			} else {
-				// 外文姓名
+				// 外国姓名
 				tempAuthor.setFirstName(names[0]); // First Name
 				tempAuthor.setLastName(names[names.length - 1]); // Last Name
 				tempAuthor.setCountry(tempA[tempA.length - 1].trim()); // 其他国家名称
@@ -127,9 +122,6 @@ public class HTMLParser {
 
 			tempAuthor.setAuthorLanguage("");
 			tempAuthor.setAuthorEmails("");
-			// tempAuthor.setAuthorEmails("http://www.macrolinguistics.com/" +
-			// document.getElementsByTag("a").get(15).attr("href"));
-			// 文章地址
 			authorList.add(tempAuthor);
 		}
 		template.setAuthorList(authorList);
@@ -146,7 +138,6 @@ public class HTMLParser {
 		template.setFullTextLanguage("EN");
 
 		// References
-
 		String[] refs = document.getElementsByAttribute("colspan").get(7).select("span").html()
 				.split("<br>|</br>|&nbsp;");
 		List<String> origin = new ArrayList<>();
@@ -164,7 +155,13 @@ public class HTMLParser {
 		template.setReferencesList(parseReferences(origin, isChina));
 		return template;
 	}
-
+	
+	/**
+	 * 解析参考文献
+	 * @param origins
+	 * @param isChina
+	 * @return
+	 */
 	public static List<References> parseReferences(String[] origins, boolean isChina) {
 		List<String> list = new ArrayList<>();
 		for (String s : origins) {
@@ -223,7 +220,6 @@ public class HTMLParser {
 				}
 				RefAuthor refAuthor = new RefAuthor();
 				String[] names = authorString.split(" ");// 分开前后中名
-
 				if (isChina) {
 					refAuthor.setReferencesFirstName(names[names.length - 1]);
 					refAuthor.setReferencesLastName(names[0]);
@@ -314,43 +310,6 @@ public class HTMLParser {
 			return true;
 		}
 		return false;
-	}
-
-	/**
-	 * 
-	 * @author gzq
-	 * @date Sep 11, 2015 11:45:31 AM
-	 * @param fileUrl
-	 *            远程地址
-	 * @param fileLocal
-	 *            本地路径
-	 * @throws Exception
-	 */
-	public static void downloadFile(String fileUrl, String fileLocal) {
-		try {
-
-			URL url = new URL(fileUrl);
-			HttpURLConnection urlCon = (HttpURLConnection) url.openConnection();
-			urlCon.setConnectTimeout(100000);
-			urlCon.setReadTimeout(100000);
-			int code = urlCon.getResponseCode();
-			if (code != HttpURLConnection.HTTP_OK) {
-				throw new Exception("文件读取失败");
-			}
-			// 读文件流
-			DataInputStream in = new DataInputStream(urlCon.getInputStream());
-			DataOutputStream out = new DataOutputStream(new FileOutputStream(fileLocal));
-			byte[] buffer = new byte[2048];
-			int count = 0;
-			while ((count = in.read(buffer)) > 0) {
-				out.write(buffer, 0, count);
-			}
-			out.close();
-			in.close();
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
 	}
 
 	/**

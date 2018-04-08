@@ -4,61 +4,116 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * xml模板
+ * XML模板: 1.固定  2.网页  3.舍弃 31(11, ,2)
+ * 
+ * 1 The Learned Press 杂志的出版商名称
+ * 
+ * 1 Macrolinguistics 杂志 的标题
+ * 
+ * 1 1934-5755 该杂志的印刷期刊号
+ * 
+ * 1 2473-6376 该杂志的电子期刊号
+ * 
+ * 1 Lingustic 议题
+ * 
+ * 1 EN,ZH 对该问题发表的文章的用语
+ * 
+ * 1 N 特殊议题
+ * 
+ * 1 N 补充议题
+ * 
+ * 1 Y issueOA议题开放
+ * 
+ * 1 researchArticle 文章类型
+ * 
+ * 1 Y articleOA文章开放
+ * 
+ * 2 2017-5 2016-4 2009-3 2008-2 2007-1 卷数
+ * 
+ * 2 期
+ * 
+ * 2 季度 （summer, autumn, spring, winter）
+ * 
+ * 2 出版时间
+ * 
+ * 2 文章标题
+ * 
+ * 2 副标题 看具体文章
+ * 
+ * 2 文章语言
+ * 
+ * 2 文章开始页码
+ * 
+ * 2 文章结束页码
+ * 
+ * 2 作者列表
+ * 
+ * 2 doi 文章标题的数字对象标识符
+ * 
+ * 2 摘要
+ * 
+ * 2 摘要语言 EN
+ * 
+ * 2 关键字
+ * 
+ * 2 摘要url
+ * 
+ * 2 PDF url
+ * 
+ * 2 全文语言EN,ZH
+ * 
+ * 2 参考文献
+ * 
+ * 3 零件号 partNumber
+ * 
+ * 3 全文
  * 
  * @author naplues
  *
  */
 public class Template {
 	// 杂志信息Journal
-	// 1.固定 2.网页 3.舍弃
-	private String publisherName; // 杂志的出版商名称 1 The Learned Press
-	private String journalTitle; // 杂志 的标题 1 Macrolinguistics
-	private String pISSN; // 该杂志的印刷期刊号 1 1934-5755
-	private String eISSN; // 该杂志的电子期刊号 1 2473-6376
-	private String volumn; // 卷数2 2017-5 2016-4 2009-3 2008-2 2007-1
-	private String issue; // 期 2
-	private String partNumber; // 零件号3
-	private String issueTopic; // 议题1 Lingustic
-	private String issueLanguage; // 对该问题发表的文章的用语 1. EN,ZH
-	private String season; // 如果问题是季节性的（summer, autumn, spring, winter）春秋根据月份
-	private String specialIssue; // 特殊议题N
-	private String supplementaryIssue; // 补充议题N
-	private String issueOA; // 开放Y
-	private String pubDateYear; // 出版时间 2
-	private String pubDateMonth; // 2
-	private String pubDateDay; // 2
-
+	private String publisherName;
+	private String journalTitle;
+	private String pISSN;
+	private String eISSN;
+	private String volumn;
+	private String issue;
+	private String partNumber;
+	private String issueTopic;
+	private String issueLanguage;
+	private String season;
+	private String specialIssue;
+	private String supplementaryIssue;
+	private String issueOA;
+	private String pubDateYear;
+	private String pubDateMonth;
+	private String pubDateDay;
 	// 文章信息
-	private String articleType; // researchArticle 1
-	private String articleTitle; // 文章标题 2
-	private String subTitle; // 副标题 看具体文章2
-	private String articleLanguage; // 文章语言
-	private String articleOA; // Y
-	private String firstPage; // 文章开始页码 2
-	private String lastPage; // 文章结束页码 2
-
+	private String articleType;
+	private String articleTitle;
+	private String subTitle;
+	private String articleLanguage;
+	private String articleOA;
+	private String firstPage;
+	private String lastPage;
 	// 作者列表
-	private List<Author> authorList; // 作者列表
-
+	private List<Author> authorList; 
 	// 文章信息
-	private String doi; // 文章标题的数字对象标识符 2
-	private String absTract; // 摘要 2
-	private String abstractLanguage; // 摘要语言 EN
-	private String keyWords; // 关键字 2
-	private String fullText; // 全文3
-
+	private String doi;
+	private String absTract;
+	private String abstractLanguage;
+	private String keyWords;
+	private String fullText;
 	// URL信息
-	private String urlAbstract; // 摘要url
-	private String urlPDF; // PDF url
-	private String fullTextLanguage; // 全文语言EN,ZH
-
+	private String urlAbstract;
+	private String urlPDF;
+	private String fullTextLanguage;
 	// 参考文献信息
-	private List<References> referencesList; // 参考文献
+	private List<References> referencesList;
 
 	public Template() {
 		super();
-		//
 		this.publisherName = new String("The Learned Press");
 		this.journalTitle = new String("Macrolinguistics");
 		this.pISSN = new String("1934-5755");
@@ -70,10 +125,9 @@ public class Template {
 		this.supplementaryIssue = new String("N");
 		this.issueOA = new String("Y");
 		this.articleOA = new String("Y");
-		
+
 		this.volumn = new String();
 		this.issue = new String();
-		this.partNumber = new String();//ignore
 		this.season = new String();
 		this.pubDateYear = new String();
 		this.pubDateMonth = new String();
@@ -88,11 +142,13 @@ public class Template {
 		this.absTract = new String();
 		this.abstractLanguage = new String();
 		this.keyWords = new String();
-		this.fullText = new String();
 		this.urlAbstract = new String();
 		this.urlPDF = new String();
 		this.fullTextLanguage = new String();
 		this.referencesList = new ArrayList<>();
+		
+		this.fullText = new String();
+		this.partNumber = new String();// ignore
 	}
 
 	public String getPublisherName() {

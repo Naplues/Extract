@@ -3,8 +3,6 @@ package trans.parse;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.ParseException;
@@ -27,7 +25,7 @@ import trans.xml.Template;
  *
  */
 public class HTMLParser {
-	public static boolean isChina = true;
+	public static boolean isChina = false;  //中国作者
 	/*
 	 * 爬取网页信息
 	 */
@@ -204,19 +202,24 @@ public class HTMLParser {
 
 		List<References> referencesList = new ArrayList<>();
 		for (String line : lines) {
-			// 分离参考文献的组成部分". ", "[A]"
-			String[] temp = line.split("\\. |\\[A\\]\\.|\\[C\\]\\.|\\[D\\]\\.|\\[J\\]\\.|\\[M\\]\\.|\\[M\\],");
-			// 参考文献 文献名[2]
+			//对参考文献进行预处理
+			String mattersInfo = line.split("\\[A\\]|\\[C\\]|\\[D\\]|\\[J\\]|\\[M\\]|\\[M\\]")[0];
+			String[] temps = mattersInfo.split("\\. ");
+			String articleTitle = temps[temps.length-1]; //文章标题
+			String year = temps[temps.length-2]; //时间
+			String articleAuthor = mattersInfo.replace(articleTitle, "").replace(year + ". ", "");
+			articleAuthor = articleAuthor.substring(0, articleAuthor.length()-2);
+
+			// 单个参考文献声明
 			References references = new References();
-			// 文献作者
+			// 文献作者列表
 			List<RefAuthor> refAuthorsList = new ArrayList<>();
-			String[] tempAuthor = temp[0].split("&");
+			String[] tempAuthor = articleAuthor.split(",|&amp;|and");
 
 			for (String authorString : tempAuthor) {
 				for (int j = 0; j < authorString.length(); j++) {
-					if (authorString.startsWith(" ")) {
+					if (authorString.startsWith(" "))
 						authorString = authorString.substring(1);
-					}
 				}
 				RefAuthor refAuthor = new RefAuthor();
 				String[] names = authorString.split(" ");// 分开前后中名
@@ -227,21 +230,12 @@ public class HTMLParser {
 					refAuthor.setReferencesFirstName(names[0]);
 					refAuthor.setReferencesLastName(names[names.length - 1]);
 				}
-
 				refAuthorsList.add(refAuthor);
 			}
-			if (temp.length > 2)
-				references.setReferencesarticleTitle(temp[2]); // 设置文献标题
-
-			String page = findString(temp[temp.length - 1]);
-			// 设置页码
-			if (!page.equals("")) {
-				String[] tempPage = page.split("-");
-				references.setReferencesFirstPage(tempPage[0]);
-				references.setReferencesLastPage(tempPage[1]);
-			}
-
-			references.setRefAuthorList(refAuthorsList); // 设置作者列表
+			
+			//设置参考文献标题和作者
+			references.setReferencesarticleTitle(articleTitle);
+			references.setRefAuthorList(refAuthorsList);
 			if (!references.getReferencesarticleTitle().equals(""))
 				referencesList.add(references);
 		}
@@ -312,19 +306,4 @@ public class HTMLParser {
 		return false;
 	}
 
-	/**
-	 * 匹配页码
-	 * 
-	 * @param str
-	 * @return
-	 */
-	public static String findString(String str) {
-		str = str.replace(" ", "");// 去掉空格
-		Pattern p = Pattern.compile("[0-9]*[1-9][0-9]*-[0-9]*[1-9][0-9]*"); // 使用正则表达式匹配
-		Matcher m = p.matcher(str);
-		while (m.find()) {
-			return m.group();
-		}
-		return "";
-	}
 }

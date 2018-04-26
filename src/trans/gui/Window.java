@@ -360,7 +360,6 @@ public class Window implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		// 加载数据事件
 		if (e.getSource() == loadButton) {
-
 			if (input.getText().trim().equals("")) {
 				JOptionPane.showMessageDialog(null, "请输入文章URL编号!", "提示!", JOptionPane.INFORMATION_MESSAGE);
 				clear();
@@ -376,6 +375,8 @@ public class Window implements ActionListener {
 					template = HTMLParser.analyzeHTMLByString(url, html);
 					readTemplate(template); // 读取模板内容并显示
 				} catch (Exception e2) {
+					e2.getMessage();
+					e2.printStackTrace();
 					JOptionPane.showMessageDialog(null, "请输入正确的URL编号!", "错误!", JOptionPane.ERROR_MESSAGE);
 					input.setText("");
 					input.requestFocus();

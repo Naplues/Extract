@@ -25,10 +25,11 @@ import trans.xml.Template;
  *
  */
 public class HTMLParser {
-	public static boolean isChina = false;  //中国作者
+	public static boolean isChina = false; // 中国作者
 	/*
 	 * 爬取网页信息
 	 */
+
 	public static String pickData(String url) {
 		CloseableHttpClient httpclient = HttpClients.createDefault();
 		try {
@@ -62,9 +63,8 @@ public class HTMLParser {
 	 * 使用jsoup解析网页信息
 	 */
 	public static Template analyzeHTMLByString(String url, String html) {
-		isChina = false;
 		Template template = new Template();
-		
+
 		Document document = Jsoup.parse(html);
 		// Journal OK
 		String[] VI = document.getElementsByAttribute("colspan").get(1).text().split(" ")[1].split("_");
@@ -117,7 +117,6 @@ public class HTMLParser {
 				tempAuthor.setLastName(names[names.length - 1]); // Last Name
 				tempAuthor.setCountry(tempA[tempA.length - 1].trim()); // 其他国家名称
 			}
-
 			tempAuthor.setAuthorLanguage("");
 			tempAuthor.setAuthorEmails("");
 			authorList.add(tempAuthor);
@@ -149,13 +148,13 @@ public class HTMLParser {
 				origin.add(refs[i]);
 			}
 		}
-
-		template.setReferencesList(parseReferences(origin, isChina));
+		//template.setReferencesList(parseReferences(origin, isChina));
 		return template;
 	}
-	
+
 	/**
 	 * 解析参考文献
+	 * 
 	 * @param origins
 	 * @param isChina
 	 * @return
@@ -191,7 +190,6 @@ public class HTMLParser {
 					len++;
 					continue;
 				}
-
 				lines.set(len - 1, lines.get(len - 1) + s.trim());
 				lastEmpty = false;
 				continue;
@@ -202,13 +200,15 @@ public class HTMLParser {
 
 		List<References> referencesList = new ArrayList<>();
 		for (String line : lines) {
-			//对参考文献进行预处理
+			// 对参考文献进行预处理
 			String mattersInfo = line.split("\\[A\\]|\\[C\\]|\\[D\\]|\\[J\\]|\\[M\\]|\\[M\\]")[0];
+			System.out.println(mattersInfo);
 			String[] temps = mattersInfo.split("\\. ");
-			String articleTitle = temps[temps.length-1]; //文章标题
-			String year = temps[temps.length-2]; //时间
+			String articleTitle = temps[temps.length - 1]; // 文章标题
+			String year = temps[temps.length - 2]; // 时间
 			String articleAuthor = mattersInfo.replace(articleTitle, "").replace(year + ". ", "");
-			articleAuthor = articleAuthor.substring(0, articleAuthor.length()-2);
+			if (articleAuthor.endsWith(". "))
+				articleAuthor = articleAuthor.substring(0, articleAuthor.length() - 2);
 
 			// 单个参考文献声明
 			References references = new References();
@@ -225,15 +225,17 @@ public class HTMLParser {
 				String[] names = authorString.split(" ");// 分开前后中名
 				if (isChina) {
 					refAuthor.setReferencesFirstName(names[names.length - 1]);
-					refAuthor.setReferencesLastName(names[0]);
+					if (names.length > 1)
+						refAuthor.setReferencesLastName(names[0]);
 				} else {
 					refAuthor.setReferencesFirstName(names[0]);
-					refAuthor.setReferencesLastName(names[names.length - 1]);
+					if (names.length > 1)
+						refAuthor.setReferencesLastName(names[names.length - 1]);
 				}
 				refAuthorsList.add(refAuthor);
 			}
-			
-			//设置参考文献标题和作者
+
+			// 设置参考文献标题和作者
 			references.setReferencesarticleTitle(articleTitle);
 			references.setRefAuthorList(refAuthorsList);
 			if (!references.getReferencesarticleTitle().equals(""))

@@ -14,6 +14,8 @@ import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+
+import trans.gui.Window;
 import trans.xml.Author;
 import trans.xml.RefAuthor;
 import trans.xml.References;
@@ -25,7 +27,6 @@ import trans.xml.Template;
  *
  */
 public class HTMLParser {
-	public static boolean isChina = false; // 中国作者
 	/*
 	 * 爬取网页信息
 	 */
@@ -110,7 +111,7 @@ public class HTMLParser {
 				tempAuthor.setFirstName(names[names.length - 1]); // First Name
 				tempAuthor.setLastName(names[0]); // Last Name
 				tempAuthor.setCountry("China");
-				isChina = true;
+				Window.isChina = true;
 			} else {
 				// 外国姓名
 				tempAuthor.setFirstName(names[0]); // First Name
@@ -128,12 +129,13 @@ public class HTMLParser {
 		template.setKeyWords(document.getElementsByAttribute("colspan").get(5).text());
 		template.setDoi(document.getElementsByAttribute("colspan").get(6).text());
 		template.setAbstractLanguage(getLanguage(document.getElementsByTag("span").get(0).text()));
-
+		
 		// URL OK--
 		template.setUrlAbstract(url);
 		template.setUrlPDF("http://www.macrolinguistics.com/" + document.getElementsByTag("a").get(15).attr("href"));
 		template.setFullTextLanguage("EN");
-
+		// fullText
+		template.setFullText(template.getAbsTract() + " "  + template.getUrlPDF());
 		// References
 		String[] refs = document.getElementsByAttribute("colspan").get(7).select("span").html()
 				.split("<br>|</br>|&nbsp;");

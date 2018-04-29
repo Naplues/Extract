@@ -120,6 +120,7 @@ public class Template {
 		this.eISSN = new String("2473-6376");
 		this.issueTopic = new String("Lingustics");
 		this.issueLanguage = new String("EN,ZH");
+		
 		this.articleType = new String("Research Article");
 		this.specialIssue = new String("N");
 		this.supplementaryIssue = new String("N");
@@ -134,21 +135,23 @@ public class Template {
 		this.pubDateDay = new String();
 		this.articleTitle = new String();
 		this.subTitle = new String();
-		this.articleLanguage = new String();
+		this.articleLanguage = new String("EN,ZH");
 		this.firstPage = new String();
 		this.lastPage = new String();
 		this.authorList = new ArrayList<>();
 		this.doi = new String();
 		this.absTract = new String();
-		this.abstractLanguage = new String();
+		this.abstractLanguage = new String("EN,ZH");
 		this.keyWords = new String();
 		this.urlAbstract = new String();
 		this.urlPDF = new String();
-		this.fullTextLanguage = new String();
+		this.fullTextLanguage = new String("EN,ZH");
 		this.referencesList = new ArrayList<>();
 		
 		this.fullText = new String();
 		this.partNumber = new String();// ignore
+		
+		
 	}
 
 	public String getPublisherName() {

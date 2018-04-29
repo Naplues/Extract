@@ -10,6 +10,7 @@ import java.util.regex.Pattern;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -39,10 +40,14 @@ public class Window implements ActionListener {
 	public static JPanel panel3 = new JPanel(); // 3
 	public static JPanel panel4 = new JPanel(); // 4
 
-	// url输入框
+	// 操作部分: url输入框,按钮，中英文选项
 	public static JLabel info = new JLabel("请输入文章的url编号(数字):");
 	public static JTextField input = new JTextField(10);
-
+	public static JComboBox<String> comboBox = new JComboBox<>();
+	public static JButton loadButton = new JButton("加载数据");
+	public static JButton exportButton = new JButton("保存并导出");
+	
+	
 	// journal标签16
 	public static JLabel publisherName = new JLabel(Label.publisherName, JLabel.CENTER);
 	public static JLabel journalTitle = new JLabel(Label.journalTitle, JLabel.CENTER);
@@ -116,13 +121,16 @@ public class Window implements ActionListener {
 	public static JTextArea referencesArea = new JTextArea(10, 88);
 	public static JScrollPane jsp = new JScrollPane(referencesArea);
 
-	// 创建操作按钮
-	public static JButton loadButton = new JButton("加载数据");
-	public static JButton exportButton = new JButton("保存并导出");
-
+	public static boolean isChina;
 	public Template template = new Template();
 
 	public Window() {
+		if(comboBox.getSelectedIndex()==0) {
+			isChina = true;
+		}
+		else {
+			isChina = false;
+		}
 		placeComponents(); // 摆放组件
 	}
 
@@ -141,6 +149,9 @@ public class Window implements ActionListener {
 		operatePanel.setBorder(BorderFactory.createLineBorder(new Color(0, 128, 0)));
 		operatePanel.add(info);
 		operatePanel.add(input);
+		comboBox.addItem("中文版");
+		comboBox.addItem("英文版");
+		operatePanel.add(comboBox);
 		operatePanel.add(loadButton);
 		operatePanel.add(exportButton);
 
@@ -258,6 +269,7 @@ public class Window implements ActionListener {
 		bottomPanel.setBorder(new TitledBorder(null, "参考文献列表", TitledBorder.DEFAULT_JUSTIFICATION,
 				TitledBorder.DEFAULT_POSITION, null, Color.BLACK));
 		// 添加事件监听
+		comboBox.addActionListener(this);
 		loadButton.addActionListener(this);
 		exportButton.addActionListener(this);
 		frame.setVisible(true);// 设置界面可见
@@ -358,8 +370,16 @@ public class Window implements ActionListener {
 	 * 动作实现
 	 */
 	public void actionPerformed(ActionEvent e) {
-		// 加载数据事件
-		if (e.getSource() == loadButton) {
+		//
+		if(e.getSource() == comboBox) {
+			if(comboBox.getSelectedIndex() == 0) {
+				Window.isChina = true;
+			} else if(comboBox.getSelectedIndex()==1) {
+				Window.isChina = false;
+				System.out.println(Window.isChina);
+			}
+			// 加载数据事件
+		} else if(e.getSource() == loadButton) {
 			if (input.getText().trim().equals("")) {
 				JOptionPane.showMessageDialog(null, "请输入文章URL编号!", "提示!", JOptionPane.INFORMATION_MESSAGE);
 				clear();
@@ -370,9 +390,19 @@ public class Window implements ActionListener {
 				clear();
 			} else {
 				try {
+					clear(); //加载之前清空文本框
 					String url = "http://www.macrolinguistics.com/index.php?c=msg&id=" + input.getText() + "&";
 					String html = HTMLParser.pickData(url);
 					template = HTMLParser.analyzeHTMLByString(url, html);
+					//判断国籍
+					if(comboBox.getSelectedIndex()==1) {
+						template.setIssueLanguage("EN");
+						template.setArticleLanguage("EN");
+						template.setAbstractLanguage("EN");
+						template.setFullTextLanguage("EN");
+					}
+					System.out.println(Window.isChina);
+					System.out.println(template.getArticleLanguage());
 					readTemplate(template); // 读取模板内容并显示
 				} catch (Exception e2) {
 					e2.getMessage();
@@ -391,7 +421,7 @@ public class Window implements ActionListener {
 			} else {
 				writeTemplate(template);
 				template.setReferencesList(
-						HTMLParser.parseReferences(referencesArea.getText().trim().split("\n"), HTMLParser.isChina));
+						HTMLParser.parseReferences(referencesArea.getText().trim().split("\n"), Window.isChina));
 				XMLHandler.generateXML(template, input.getText() + ".xml");
 				JOptionPane.showMessageDialog(null, "成功导出" + input.getText() + ".xml!", "成功!",
 						JOptionPane.INFORMATION_MESSAGE);

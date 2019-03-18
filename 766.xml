@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ArticleSet>
+    <Article>
+        <Journal>
+            <PublisherName>The Learned Press</PublisherName>
+            <JournalTitle>Macrolinguistics</JournalTitle>
+            <PISSN>1934-5755</PISSN>
+            <EISSN>2473-6376</EISSN>
+            <Volume></Volume>
+            <Issue>9</Issue>
+            <PartNumber></PartNumber>
+            <IssueTopic>Lingustics</IssueTopic>
+            <IssueLanguage>EN</IssueLanguage>
+            <Season>winter</Season>
+            <SpecialIssue>N</SpecialIssue>
+            <SupplementaryIssue>N</SupplementaryIssue>
+            <IssueOA>Y</IssueOA>
+            <PubDate>
+                <Year>2018</Year>
+                <Month>12</Month>
+                <Day>30</Day>
+            </PubDate>
+        </Journal>
+        <ArticleType>Research Article</ArticleType>
+        <ArticleTitle>Negation in Amharic and Ezha: A comparative perspective</ArticleTitle>
+        <SubTitle></SubTitle>
+        <ArticleLanguage>EN</ArticleLanguage>
+        <ArticleOA>Y</ArticleOA>
+        <FirstPage>16</FirstPage>
+        <LastPage>35</LastPage>
+        <AuthorList>
+            <Author>
+                <FirstName>Endalew</FirstName>
+                <MiddleName></MiddleName>
+                <LastName>Assefa</LastName>
+                <Initials></Initials>
+                <AuthorLanguage></AuthorLanguage>
+                <Affiliation>Addis Ababa University, Ethiopia</Affiliation>
+                <Country>Ethiopia</Country>
+                <Phone></Phone>
+                <Fax></Fax>
+                <AuthorEmails></AuthorEmails>
+            </Author>
+        </AuthorList>
+        <DOI>doi: 10.26478/ja2018.6.9.2</DOI>
+        <Abstract>This article offers a description of negation marking in the two Ethio-Semitic languages: Amharic and Ezha. The description has been made from the perspective of synchronic comparison. The article discloses that both Amharic and Ezha make use of negative prefixes in order to reverse the truth condition of an affirmative expression. The negative morphemes employed by each of the two languages have two allomorphic variants whose alternation is grammatically conditioned. The two allomorphs of the negative marker in Amharic are al- which occurs with perfective and imperative verbs, and a- that surfaces with imperfective and jussive verbal conjugations. Similarly, the Ezha negative prefix appears as an- with perfective verbal bases, and as a- with imperfective, jussive and imperative verb forms. In both languages, the negative prefixes attach to verbs preceding person prefixes and following subordinators in negative subordinate clauses. When it comes to copular and existential verbs, as compared to prototypical verbs, negation in both languages can be expressed in two ways: in some cases, the aforementioned negative prefixes are employed; and in some other cases, completely different verb forms rendering negative readings are introduced, hence, lexical negation via suppletion.</Abstract>
+        <AbstractLanguage>EN</AbstractLanguage>
+        <Keywords>negation, allomorph, prototypical verb, copular verb, existential verb</Keywords>
+        <Fulltext>This article offers a description of negation marking in the two Ethio-Semitic languages: Amharic and Ezha. The description has been made from the perspective of synchronic comparison. The article discloses that both Amharic and Ezha make use of negative prefixes in order to reverse the truth condition of an affirmative expression. The negative morphemes employed by each of the two languages have two allomorphic variants whose alternation is grammatically conditioned. The two allomorphs of the negative marker in Amharic are al- which occurs with perfective and imperative verbs, and a- that surfaces with imperfective and jussive verbal conjugations. Similarly, the Ezha negative prefix appears as an- with perfective verbal bases, and as a- with imperfective, jussive and imperative verb forms. In both languages, the negative prefixes attach to verbs preceding person prefixes and following subordinators in negative subordinate clauses. When it comes to copular and existential verbs, as compared to prototypical verbs, negation in both languages can be expressed in two ways: in some cases, the aforementioned negative prefixes are employed; and in some other cases, completely different verb forms rendering negative readings are introduced, hence, lexical negation via suppletion. http://www.macrolinguistics.com/index.php?c=download&id=589</Fulltext>
+        <URLs>
+            <abstract>http://www.macrolinguistics.com/index.php?c=msg&id=766&</abstract>
+            <Fulltext>
+                <pdf>http://www.macrolinguistics.com/index.php?c=download&id=589</pdf>
+            </Fulltext>
+        </URLs>
+        <FulltextLanguage>EN</FulltextLanguage>
+        <ref-list>
+            <title>References</title>
+            <Citation ID="CR1">
+                <CitationNumber>2</CitationNumber>
+                <BibArticle>
+                    <BibAuthorName>
+                        <Initials>Bauer</Initials>
+                        <FamilyName></FamilyName>
+                    </BibAuthorName>
+                    <BibAuthorName>
+                        <Initials>L</Initials>
+                        <FamilyName></FamilyName>
+                    </BibAuthorName>
+                    <Year>2003</Year>
+                    <ArticleTitle Language="En">Introducing Linguistic Morphology </ArticleTitle>
+                    <JournalTitle></JournalTitle>
+                    <VolumeID></VolumeID>
+                    <FirstPage></FirstPage>
+                    <LastPage></LastPage>
+                    <Occurrence Type="DOI">
+                        <Handle></Handle>
+                    </Occurrence>
+                </BibArticle>
+                <BibUnstructured>Bauer, L. 2003. Introducing Linguistic Morphology [M]. Edinburgh: Edinburgh University Press.</BibUnstructured>
+            </Citation>
+            <Citation ID="CR2">
+                <CitationNumber>3</CitationNumber>
+                <BibArticle>
+                    <BibAuthorName>
+                        <Initials>Grimes</Initials>
+                        <FamilyName></FamilyName>
+                    </BibAuthorName>
+                    <BibAuthorName>
+                        <Initials>B.</Initials>
+                        <FamilyName>(ed.)</FamilyName>
+                    </BibAuthorName>
+                    <Year>2003</Year>
+                    <ArticleTitle Language="En">Ethnologueː Languages of the World </ArticleTitle>
+                    <JournalTitle></JournalTitle>
+                    <VolumeID></VolumeID>
+                    <FirstPage></FirstPage>
+                    <LastPage></LastPage>
+                    <Occurrence Type="DOI">
+                        <Handle></Handle>
+                    </Occurrence>
+                </BibArticle>
+                <BibUnstructured>Grimes, B. F. (ed.). 2003. Ethnologueː Languages of the World [M]. Dallasː Summer Institute of Linguistics and the University of Texas at Arlington.</BibUnstructured>
+            </Citation>
+            <Citation ID="CR3">
+                <CitationNumber>4</CitationNumber>
+                <BibArticle>
+                    <BibAuthorName>
+                        <Initials>Halliday</Initials>
+                        <FamilyName></FamilyName>
+                    </BibAuthorName>
+                    <BibAuthorName>
+                        <Initials>M</Initials>
+                        <FamilyName></FamilyName>
+                    </BibAuthorName>
+                    <Year>1994</Year>
+                    <ArticleTitle Language="En">An Introduction to Functional Grammar </ArticleTitle>
+                    <JournalTitle></JournalTitle>
+                    <VolumeID></VolumeID>
+                    <FirstPage></FirstPage>
+                    <LastPage></LastPage>
+                    <Occurrence Type="DOI">
+                        <Handle></Handle>
+                    </Occurrence>
+                </BibArticle>
+                <BibUnstructured>Halliday, M. 1994. An Introduction to Functional Grammar [M]. London: Arnold.</BibUnstructured>
+            </Citation>
+            <Citation ID="CR4">
+                <CitationNumber>5</CitationNumber>
+                <BibArticle>
+                    <BibAuthorName>
+                        <Initials>Hetzron</Initials>
+                        <FamilyName></FamilyName>
+                    </BibAuthorName>
+                    <BibAuthorName>
+                        <Initials>R.</Initials>
+                        <FamilyName>1972</FamilyName>
+                    </BibAuthorName>
+                    <Year>Ethiopian Semitic</Year>
+                    <ArticleTitle Language="En">Studies in Classification </ArticleTitle>
+                    <JournalTitle></JournalTitle>
+                    <VolumeID></VolumeID>
+                    <FirstPage></FirstPage>
+                    <LastPage></LastPage>
+                    <Occurrence Type="DOI">
+                        <Handle></Handle>
+                    </Occurrence>
+                </BibArticle>
+                <BibUnstructured>Hetzron, R. 1972. Ethiopian Semitic. Studies in Classification [M]. Manchester: Manchester University press.</BibUnstructured>
+            </Citation>
+        </ref-list>
+    </Article>
+</ArticleSet>

@@ -214,6 +214,9 @@ public class HTMLParser {
 
 			// 单个参考文献声明
 			References references = new References();
+			// 年份
+			references.setYear(year);
+			references.setContent(line);
 			// 文献作者列表
 			List<RefAuthor> refAuthorsList = new ArrayList<>();
 			String[] tempAuthor = articleAuthor.split(",|&amp;|and");

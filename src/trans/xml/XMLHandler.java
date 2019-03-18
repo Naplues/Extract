@@ -45,7 +45,7 @@ public class XMLHandler {
 
 		article.addElement("FulltextLanguage").addText(template.getFullTextLanguage());
 
-		Element references = article.addElement("References").addText("");
+		Element references = article.addElement("ref-list").addText("");
 
 		// journal子标签
 		journal.addElement("PublisherName").addText(template.getPublisherName());
@@ -87,24 +87,32 @@ public class XMLHandler {
 		urls.addElement("Fulltext").addElement("pdf").addText(template.getUrlPDF());
 
 		// 参考文献子标签
+		references.addElement("title").addText("References");
+
+		int refIndex = 1;
 		List<References> referencesTemplateList = template.getReferencesList();
 		for (References referencesTemplate : referencesTemplateList) {
-			references.addElement("ReferencesarticleTitle").addText(referencesTemplate.getReferencesarticleTitle());
-			references.addElement("ReferencesfirstPage").addText(referencesTemplate.getReferencesFirstPage());
-			references.addElement("ReferenceslastPage").addText(referencesTemplate.getReferencesLastPage());
-
-			Element refAuthorList = references.addElement("authorList").addText("");
+			Element refBody = references.addElement("Citation").addAttribute("ID", "CR" + refIndex);
+			refBody.addElement("CitationNumber").addText(refIndex + "");
+			refIndex++;
+			Element refAuthorList = refBody.addElement("BibArticle").addText("");
 			List<RefAuthor> refAuthorListTemplate = referencesTemplate.getRefAuthorList();
 
 			for (RefAuthor refAuthorTemplate : refAuthorListTemplate) {
-				Element refAuthor = refAuthorList.addElement("author");
-				refAuthor.addElement("ReferencesfirstName").addText(refAuthorTemplate.getReferencesFirstName());
-				refAuthor.addElement("ReferencesmiddleName").addText(refAuthorTemplate.getReferencesMiddleName());
-				refAuthor.addElement("ReferenceslastName").addText(refAuthorTemplate.getReferencesLastName());
-				refAuthor.addElement("ReferencesInitials").addText(refAuthorTemplate.getReferencesInitials());
-				refAuthor.addElement("Referencesaffiliation").addText(refAuthorTemplate.getReferencesAffiliation());
-				refAuthor.addElement("Referencescountry").addText(refAuthorTemplate.getReferencesCountry());
+				Element refAuthor = refAuthorList.addElement("BibAuthorName");
+				refAuthor.addElement("Initials").addText(refAuthorTemplate.getReferencesFirstName());
+				refAuthor.addElement("FamilyName").addText(refAuthorTemplate.getReferencesLastName());
 			}
+			refAuthorList.addElement("Year").addText(referencesTemplate.getYear());
+			refAuthorList.addElement("ArticleTitle").addText(referencesTemplate.getReferencesarticleTitle())
+					.addAttribute("Language", "En");
+			refAuthorList.addElement("JournalTitle").addText("");
+			refAuthorList.addElement("VolumeID").addText("");
+			refAuthorList.addElement("FirstPage").addText(referencesTemplate.getReferencesFirstPage());
+			refAuthorList.addElement("LastPage").addText(referencesTemplate.getReferencesLastPage());
+			refAuthorList.addElement("Occurrence").addAttribute("Type", "DOI").addElement("Handle").addText("");
+
+			refBody.addElement("BibUnstructured").addText(referencesTemplate.getContent());
 		}
 
 		// 写入文件

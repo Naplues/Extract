@@ -19,10 +19,12 @@ import java.util.List;
  */
 public class References {
 	// 参考文献信息
+	private String year;
 	private String referencesarticleTitle;
 	private String referencesFirstPage; 
 	private String referencesLastPage;
 	private List<RefAuthor> refAuthorList;
+	private String content;
 
 	public References() {
 		super();
@@ -62,5 +64,21 @@ public class References {
 
 	public void setRefAuthorList(List<RefAuthor> refAuthorList) {
 		this.refAuthorList = refAuthorList;
+	}
+
+	public String getYear() {
+		return year;
+	}
+
+	public void setYear(String year) {
+		this.year = year;
+	}
+
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
 	}
 }

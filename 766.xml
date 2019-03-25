@@ -47,11 +47,11 @@
         <Abstract>This article offers a description of negation marking in the two Ethio-Semitic languages: Amharic and Ezha. The description has been made from the perspective of synchronic comparison. The article discloses that both Amharic and Ezha make use of negative prefixes in order to reverse the truth condition of an affirmative expression. The negative morphemes employed by each of the two languages have two allomorphic variants whose alternation is grammatically conditioned. The two allomorphs of the negative marker in Amharic are al- which occurs with perfective and imperative verbs, and a- that surfaces with imperfective and jussive verbal conjugations. Similarly, the Ezha negative prefix appears as an- with perfective verbal bases, and as a- with imperfective, jussive and imperative verb forms. In both languages, the negative prefixes attach to verbs preceding person prefixes and following subordinators in negative subordinate clauses. When it comes to copular and existential verbs, as compared to prototypical verbs, negation in both languages can be expressed in two ways: in some cases, the aforementioned negative prefixes are employed; and in some other cases, completely different verb forms rendering negative readings are introduced, hence, lexical negation via suppletion.</Abstract>
         <AbstractLanguage>EN</AbstractLanguage>
         <Keywords>negation, allomorph, prototypical verb, copular verb, existential verb</Keywords>
-        <Fulltext>This article offers a description of negation marking in the two Ethio-Semitic languages: Amharic and Ezha. The description has been made from the perspective of synchronic comparison. The article discloses that both Amharic and Ezha make use of negative prefixes in order to reverse the truth condition of an affirmative expression. The negative morphemes employed by each of the two languages have two allomorphic variants whose alternation is grammatically conditioned. The two allomorphs of the negative marker in Amharic are al- which occurs with perfective and imperative verbs, and a- that surfaces with imperfective and jussive verbal conjugations. Similarly, the Ezha negative prefix appears as an- with perfective verbal bases, and as a- with imperfective, jussive and imperative verb forms. In both languages, the negative prefixes attach to verbs preceding person prefixes and following subordinators in negative subordinate clauses. When it comes to copular and existential verbs, as compared to prototypical verbs, negation in both languages can be expressed in two ways: in some cases, the aforementioned negative prefixes are employed; and in some other cases, completely different verb forms rendering negative readings are introduced, hence, lexical negation via suppletion. http://www.macrolinguistics.com/index.php?c=download&amp;id=589</Fulltext>
+        <Fulltext>This article offers a description of negation marking in the two Ethio-Semitic languages: Amharic and Ezha. The description has been made from the perspective of synchronic comparison. The article discloses that both Amharic and Ezha make use of negative prefixes in order to reverse the truth condition of an affirmative expression. The negative morphemes employed by each of the two languages have two allomorphic variants whose alternation is grammatically conditioned. The two allomorphs of the negative marker in Amharic are al- which occurs with perfective and imperative verbs, and a- that surfaces with imperfective and jussive verbal conjugations. Similarly, the Ezha negative prefix appears as an- with perfective verbal bases, and as a- with imperfective, jussive and imperative verb forms. In both languages, the negative prefixes attach to verbs preceding person prefixes and following subordinators in negative subordinate clauses. When it comes to copular and existential verbs, as compared to prototypical verbs, negation in both languages can be expressed in two ways: in some cases, the aforementioned negative prefixes are employed; and in some other cases, completely different verb forms rendering negative readings are introduced, hence, lexical negation via suppletion. http://www.macrolinguistics.com/index.php?c=download&id=589</Fulltext>
         <URLs>
-            <abstract>http://www.macrolinguistics.com/index.php?c=msg&amp;id=766&amp;</abstract>
+            <abstract>http://www.macrolinguistics.com/index.php?c=msg&id=766&</abstract>
             <Fulltext>
-                <pdf>http://www.macrolinguistics.com/index.php?c=download&amp;id=589</pdf>
+                <pdf>http://www.macrolinguistics.com/index.php?c=download&id=589</pdf>
             </Fulltext>
         </URLs>
         <FulltextLanguage>EN</FulltextLanguage>
@@ -59,91 +59,64 @@
             <title>References</title>
             <Citation ID="CR1">
                 <CitationNumber>1</CitationNumber>
-                <BibArticle>
+                <BibBook>
                     <BibAuthorName>
-                        <Initials>____________</Initials>
-                        <FamilyName></FamilyName>
+                        <Initials> L</Initials>
+                        <FamilyName>Bauer</FamilyName>
                     </BibAuthorName>
-                    <Year>1977</Year>
-                    <ArticleTitle Language="En">The Gunnän Gurage Languages </ArticleTitle>
-                    <JournalTitle></JournalTitle>
-                    <VolumeID></VolumeID>
-                    <FirstPage></FirstPage>
-                    <LastPage></LastPage>
-                    <Occurrence Type="DOI">
-                        <Handle></Handle>
-                    </Occurrence>
-                </BibArticle>
-                <BibUnstructured>____________. 1977. The Gunnän Gurage Languages [M]. Naples: Instituto Oriental di Napoli.</BibUnstructured>
+                    <Year>2003</Year>
+                    <BookTitle>Introducing Linguistic Morphology </BookTitle>
+                    <PublisherName>. Edinburgh: Edinburgh University Press.</PublisherName>
+                    <PublisherLocation></PublisherLocation>
+                </BibBook>
+                <BibUnstructured>Bauer, L. 2003. Introducing Linguistic Morphology [M]. Edinburgh: Edinburgh University Press.</BibUnstructured>
             </Citation>
             <Citation ID="CR2">
                 <CitationNumber>2</CitationNumber>
-                <BibArticle>
+                <BibBook>
                     <BibAuthorName>
-                        <Initials>____________</Initials>
-                        <FamilyName></FamilyName>
+                        <Initials> B. F. (ed.)</Initials>
+                        <FamilyName>Grimes</FamilyName>
                     </BibAuthorName>
-                    <Year>1996</Year>
-                    <ArticleTitle Language="En">The Two Futures in Central and Peripheral Western Gurage </ArticleTitle>
-                    <JournalTitle></JournalTitle>
-                    <VolumeID></VolumeID>
-                    <FirstPage>153</FirstPage>
-                    <LastPage>73</LastPage>
-                    <Occurrence Type="DOI">
-                        <Handle></Handle>
-                    </Occurrence>
-                </BibArticle>
-                <BibUnstructured>____________. 1996. The Two Futures in Central and Peripheral Western Gurage [A]. In G. Hudson (ed.) Essays on Gurage languages and culture [C]. Wiesbaden: Harrassowitz, 153-73.</BibUnstructured>
+                    <Year>2003</Year>
+                    <BookTitle>Ethnologueː Languages of the World </BookTitle>
+                    <PublisherName>. Dallasː Summer Institute of Linguistics and the University of Texas at Arlington.</PublisherName>
+                    <PublisherLocation></PublisherLocation>
+                </BibBook>
+                <BibUnstructured>Grimes, B. F. (ed.). 2003. Ethnologueː Languages of the World [M]. Dallasː Summer Institute of Linguistics and the University of Texas at Arlington.</BibUnstructured>
             </Citation>
             <Citation ID="CR3">
                 <CitationNumber>3</CitationNumber>
-                <BibArticle>
+                <BibBook>
                     <BibAuthorName>
-                        <Initials>Hetzron</Initials>
-                        <FamilyName></FamilyName>
+                        <Initials> M</Initials>
+                        <FamilyName>Halliday</FamilyName>
                     </BibAuthorName>
-                    <BibAuthorName>
-                        <Initials>R.</Initials>
-                        <FamilyName></FamilyName>
-                    </BibAuthorName>
-                    <BibAuthorName>
-                        <Initials>M.</Initials>
-                        <FamilyName>Bender</FamilyName>
-                    </BibAuthorName>
-                    <Year>1976</Year>
-                    <ArticleTitle Language="En">The Ethio-Semitic Languages </ArticleTitle>
-                    <JournalTitle></JournalTitle>
-                    <VolumeID></VolumeID>
-                    <FirstPage>23</FirstPage>
-                    <LastPage>33</LastPage>
-                    <Occurrence Type="DOI">
-                        <Handle></Handle>
-                    </Occurrence>
-                </BibArticle>
-                <BibUnstructured>Hetzron, R. and M. Bender. 1976. The Ethio-Semitic Languages [A]. In M. Bender, etal (eds.) Language in Ethiopia [C]. London: Oxford University press, 23-33.</BibUnstructured>
+                    <Year>1994</Year>
+                    <BookTitle>An Introduction to Functional Grammar </BookTitle>
+                    <PublisherName>. London: Arnold.</PublisherName>
+                    <PublisherLocation></PublisherLocation>
+                </BibBook>
+                <BibUnstructured>Halliday, M. 1994. An Introduction to Functional Grammar [M]. London: Arnold.</BibUnstructured>
             </Citation>
             <Citation ID="CR4">
                 <CitationNumber>4</CitationNumber>
                 <BibArticle>
                     <BibAuthorName>
-                        <Initials>Katamba</Initials>
-                        <FamilyName></FamilyName>
+                        <Initials> B</Initials>
+                        <FamilyName>Yimam</FamilyName>
                     </BibAuthorName>
-                    <BibAuthorName>
-                        <Initials>F</Initials>
-                        <FamilyName></FamilyName>
-                    </BibAuthorName>
-                    <Year>1993</Year>
-                    <ArticleTitle Language="En">Morphology </ArticleTitle>
-                    <JournalTitle></JournalTitle>
-                    <VolumeID></VolumeID>
-                    <FirstPage></FirstPage>
-                    <LastPage></LastPage>
+                    <Year>1999</Year>
+                    <ArticleTitle Language="En">Root Reduction and Extension in Amharic </ArticleTitle>
+                    <JournalTitle>. Ethiopian Journal of Languages and Literature</JournalTitle>
+                    <VolumeID> 9</VolumeID>
+                    <FirstPage>56</FirstPage>
+                    <LastPage>88</LastPage>
                     <Occurrence Type="DOI">
                         <Handle></Handle>
                     </Occurrence>
                 </BibArticle>
-                <BibUnstructured>Katamba, F. 1993. Morphology [M]. London, Michigan: Penguin Books Limited.</BibUnstructured>
+                <BibUnstructured>Yimam, B. 1999. Root Reduction and Extension in Amharic [J]. Ethiopian Journal of Languages and Literature, 9: 56-88.</BibUnstructured>
             </Citation>
         </ref-list>
     </Article>

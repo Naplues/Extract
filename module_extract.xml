@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_extract" default="compile.module.extract">
+  <dirname property="module.extract.basedir" file="${ant.file.module_extract}"/>
+  
+  <property name="module.jdk.home.extract" value="${jdk.home.1.8}"/>
+  <property name="module.jdk.bin.extract" value="${jdk.bin.1.8}"/>
+  <property name="module.jdk.classpath.extract" value="jdk.classpath.1.8"/>
+  
+  <property name="compiler.args.extract" value="-encoding UTF-8 -source 8 -target 8 ${compiler.args}"/>
+  
+  <property name="extract.output.dir" value="${module.extract.basedir}/bin"/>
+  <property name="extract.testoutput.dir" value="${module.extract.basedir}/bin"/>
+  
+  <path id="extract.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="extract.module.production.classpath">
+    <path refid="${module.jdk.classpath.extract}"/>
+    <pathelement location="${basedir}/lib/jsoup-1.11.2.jar"/>
+    <pathelement location="${basedir}/lib/dom4j-2.0.2.jar"/>
+    <pathelement location="${basedir}/lib/fluent-hc-4.5.4.jar"/>
+    <pathelement location="${basedir}/lib/httpclient-4.5.4.jar"/>
+    <pathelement location="${basedir}/lib/httpclient-cache-4.5.4.jar"/>
+    <pathelement location="${basedir}/lib/httpclient-win-4.5.4.jar"/>
+    <pathelement location="${basedir}/lib/httpcore-4.4.7.jar"/>
+    <pathelement location="${basedir}/lib/httpmime-4.5.4.jar"/>
+    <pathelement location="${basedir}/lib/jna-4.4.0.jar"/>
+    <pathelement location="${basedir}/lib/jna-platform-4.4.0.jar"/>
+    <pathelement location="${basedir}/lib/commons-codec-1.10.jar"/>
+    <pathelement location="${basedir}/lib/commons-logging-1.2.jar"/>
+  </path>
+  
+  <path id="extract.runtime.production.module.classpath">
+    <pathelement location="${extract.output.dir}"/>
+    <pathelement location="${basedir}/lib/jsoup-1.11.2.jar"/>
+    <pathelement location="${basedir}/lib/dom4j-2.0.2.jar"/>
+    <pathelement location="${basedir}/lib/fluent-hc-4.5.4.jar"/>
+    <pathelement location="${basedir}/lib/httpclient-4.5.4.jar"/>
+    <pathelement location="${basedir}/lib/httpclient-cache-4.5.4.jar"/>
+    <pathelement location="${basedir}/lib/httpclient-win-4.5.4.jar"/>
+    <pathelement location="${basedir}/lib/httpcore-4.4.7.jar"/>
+    <pathelement location="${basedir}/lib/httpmime-4.5.4.jar"/>
+    <pathelement location="${basedir}/lib/jna-4.4.0.jar"/>
+    <pathelement location="${basedir}/lib/jna-platform-4.4.0.jar"/>
+    <pathelement location="${basedir}/lib/commons-codec-1.10.jar"/>
+    <pathelement location="${basedir}/lib/commons-logging-1.2.jar"/>
+  </path>
+  
+  <path id="extract.module.classpath">
+    <path refid="${module.jdk.classpath.extract}"/>
+    <pathelement location="${extract.output.dir}"/>
+    <pathelement location="${basedir}/lib/jsoup-1.11.2.jar"/>
+    <pathelement location="${basedir}/lib/dom4j-2.0.2.jar"/>
+    <pathelement location="${basedir}/lib/fluent-hc-4.5.4.jar"/>
+    <pathelement location="${basedir}/lib/httpclient-4.5.4.jar"/>
+    <pathelement location="${basedir}/lib/httpclient-cache-4.5.4.jar"/>
+    <pathelement location="${basedir}/lib/httpclient-win-4.5.4.jar"/>
+    <pathelement location="${basedir}/lib/httpcore-4.4.7.jar"/>
+    <pathelement location="${basedir}/lib/httpmime-4.5.4.jar"/>
+    <pathelement location="${basedir}/lib/jna-4.4.0.jar"/>
+    <pathelement location="${basedir}/lib/jna-platform-4.4.0.jar"/>
+    <pathelement location="${basedir}/lib/commons-codec-1.10.jar"/>
+    <pathelement location="${basedir}/lib/commons-logging-1.2.jar"/>
+  </path>
+  
+  <path id="extract.runtime.module.classpath">
+    <pathelement location="${extract.output.dir}"/>
+    <pathelement location="${basedir}/lib/jsoup-1.11.2.jar"/>
+    <pathelement location="${basedir}/lib/dom4j-2.0.2.jar"/>
+    <pathelement location="${basedir}/lib/fluent-hc-4.5.4.jar"/>
+    <pathelement location="${basedir}/lib/httpclient-4.5.4.jar"/>
+    <pathelement location="${basedir}/lib/httpclient-cache-4.5.4.jar"/>
+    <pathelement location="${basedir}/lib/httpclient-win-4.5.4.jar"/>
+    <pathelement location="${basedir}/lib/httpcore-4.4.7.jar"/>
+    <pathelement location="${basedir}/lib/httpmime-4.5.4.jar"/>
+    <pathelement location="${basedir}/lib/jna-4.4.0.jar"/>
+    <pathelement location="${basedir}/lib/jna-platform-4.4.0.jar"/>
+    <pathelement location="${basedir}/lib/commons-codec-1.10.jar"/>
+    <pathelement location="${basedir}/lib/commons-logging-1.2.jar"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.extract">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.extract">
+    <patternset refid="excluded.from.module.extract"/>
+  </patternset>
+  
+  <path id="extract.module.sourcepath">
+    <dirset dir="${module.extract.basedir}">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.extract" depends="compile.module.extract.production,compile.module.extract.tests" description="Compile module Extract"/>
+  
+  <target name="compile.module.extract.production" depends="register.custom.compilers" description="Compile module Extract; production classes">
+    <mkdir dir="${extract.output.dir}"/>
+    <javac2 destdir="${extract.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.extract}/javac">
+      <compilerarg line="${compiler.args.extract}"/>
+      <bootclasspath refid="extract.module.bootclasspath"/>
+      <classpath refid="extract.module.production.classpath"/>
+      <src refid="extract.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.extract"/>
+    </javac2>
+    
+    <copy todir="${extract.output.dir}">
+      <fileset dir="${module.extract.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.extract.tests" depends="register.custom.compilers,compile.module.extract.production" description="compile module Extract; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.extract" description="cleanup module">
+    <delete dir="${extract.output.dir}"/>
+    <delete dir="${extract.testoutput.dir}"/>
+  </target>
+</project>

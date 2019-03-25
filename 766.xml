@@ -61,62 +61,29 @@
                 <CitationNumber>1</CitationNumber>
                 <BibBook>
                     <BibAuthorName>
-                        <Initials> L</Initials>
-                        <FamilyName>Bauer</FamilyName>
-                    </BibAuthorName>
-                    <Year>2003</Year>
-                    <BookTitle>Introducing Linguistic Morphology </BookTitle>
-                    <PublisherName>. Edinburgh: Edinburgh University Press.</PublisherName>
-                    <PublisherLocation></PublisherLocation>
-                </BibBook>
-                <BibUnstructured>Bauer, L. 2003. Introducing Linguistic Morphology [M]. Edinburgh: Edinburgh University Press.</BibUnstructured>
-            </Citation>
-            <Citation ID="CR2">
-                <CitationNumber>2</CitationNumber>
-                <BibBook>
-                    <BibAuthorName>
-                        <Initials> B. F. (ed.)</Initials>
-                        <FamilyName>Grimes</FamilyName>
-                    </BibAuthorName>
-                    <Year>2003</Year>
-                    <BookTitle>Ethnologueː Languages of the World </BookTitle>
-                    <PublisherName>. Dallasː Summer Institute of Linguistics and the University of Texas at Arlington.</PublisherName>
-                    <PublisherLocation></PublisherLocation>
-                </BibBook>
-                <BibUnstructured>Grimes, B. F. (ed.). 2003. Ethnologueː Languages of the World [M]. Dallasː Summer Institute of Linguistics and the University of Texas at Arlington.</BibUnstructured>
-            </Citation>
-            <Citation ID="CR3">
-                <CitationNumber>3</CitationNumber>
-                <BibBook>
-                    <BibAuthorName>
                         <Initials> M</Initials>
                         <FamilyName>Halliday</FamilyName>
                     </BibAuthorName>
                     <Year>1994</Year>
                     <BookTitle>An Introduction to Functional Grammar </BookTitle>
-                    <PublisherName>. London: Arnold.</PublisherName>
-                    <PublisherLocation></PublisherLocation>
+                    <PublisherName>Arnold.</PublisherName>
+                    <PublisherLocation>London</PublisherLocation>
                 </BibBook>
                 <BibUnstructured>Halliday, M. 1994. An Introduction to Functional Grammar [M]. London: Arnold.</BibUnstructured>
             </Citation>
-            <Citation ID="CR4">
-                <CitationNumber>4</CitationNumber>
-                <BibArticle>
+            <Citation ID="CR2">
+                <CitationNumber>2</CitationNumber>
+                <BibBook>
                     <BibAuthorName>
-                        <Initials> B</Initials>
-                        <FamilyName>Yimam</FamilyName>
+                        <Initials> R. 1972</Initials>
+                        <FamilyName>Hetzron</FamilyName>
                     </BibAuthorName>
-                    <Year>1999</Year>
-                    <ArticleTitle Language="En">Root Reduction and Extension in Amharic </ArticleTitle>
-                    <JournalTitle>. Ethiopian Journal of Languages and Literature</JournalTitle>
-                    <VolumeID> 9</VolumeID>
-                    <FirstPage>56</FirstPage>
-                    <LastPage>88</LastPage>
-                    <Occurrence Type="DOI">
-                        <Handle></Handle>
-                    </Occurrence>
-                </BibArticle>
-                <BibUnstructured>Yimam, B. 1999. Root Reduction and Extension in Amharic [J]. Ethiopian Journal of Languages and Literature, 9: 56-88.</BibUnstructured>
+                    <Year>Ethiopian Semitic</Year>
+                    <BookTitle>Studies in Classification </BookTitle>
+                    <PublisherName>Manchester University press.</PublisherName>
+                    <PublisherLocation>Manchester</PublisherLocation>
+                </BibBook>
+                <BibUnstructured>Hetzron, R. 1972. Ethiopian Semitic. Studies in Classification [M]. Manchester: Manchester University press.</BibUnstructured>
             </Citation>
         </ref-list>
     </Article>

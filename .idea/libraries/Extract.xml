@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="Extract">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/out/artifacts/Extract_jar/Extract.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

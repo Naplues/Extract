@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ArticleSet>
+    <Article>
+        <Journal>
+            <PublisherName>The Learned Press</PublisherName>
+            <JournalTitle>Macrolinguistics</JournalTitle>
+            <PISSN>1934-5755</PISSN>
+            <EISSN>2473-6376</EISSN>
+            <Volume></Volume>
+            <Issue>8</Issue>
+            <PartNumber></PartNumber>
+            <IssueTopic>Lingustics</IssueTopic>
+            <IssueLanguage>EN,ZH</IssueLanguage>
+            <Season>summer</Season>
+            <SpecialIssue>N</SpecialIssue>
+            <SupplementaryIssue>N</SupplementaryIssue>
+            <IssueOA>Y</IssueOA>
+            <PubDate>
+                <Year>2018</Year>
+                <Month>06</Month>
+                <Day>30</Day>
+            </PubDate>
+        </Journal>
+        <ArticleType>Research Article</ArticleType>
+        <ArticleTitle>Three Puzzles of the Dominant Yinping Tone in Mandarin Onomatopoeias</ArticleTitle>
+        <SubTitle></SubTitle>
+        <ArticleLanguage>EN,ZH</ArticleLanguage>
+        <ArticleOA>Y</ArticleOA>
+        <FirstPage>17</FirstPage>
+        <LastPage>42</LastPage>
+        <AuthorList>
+            <Author>
+                <FirstName>Jue</FirstName>
+                <MiddleName></MiddleName>
+                <LastName>Wang</LastName>
+                <Initials></Initials>
+                <AuthorLanguage></AuthorLanguage>
+                <Affiliation>Shanghai Jiao Tong University, China</Affiliation>
+                <Country>China</Country>
+                <Phone></Phone>
+                <Fax></Fax>
+                <AuthorEmails></AuthorEmails>
+            </Author>
+        </AuthorList>
+        <DOI>doi: 10.26478/ja2018.6.8.2</DOI>
+        <Abstract>Yinping tone is dominant in Mandarin onomatopoeias and there are three puzzles behind it: (a) Does this tonal distribution pattern exist since ancient or is it caused by diachronic evolution? (b) If this tonal distribution is caused by diachronic evolution, then what is the process of the diachronic evolution? (c) What is the restrictive mechanism behind this pattern of tonal distribution? First, this article examines the tonal distribution pattern, diachronic evolution of syllable size and structure type from five historical periods: from the Western Zhou Dynasty to the Spring and Autumn Period, the Tang Dynasty, the Yuan Dynasty, the middle Qing Dynasty and the contemporary China. Second, it tries to provide the key that unlocks the three puzzles one by one. Finally, four conclusions related to the subject are presented.</Abstract>
+        <AbstractLanguage>EN</AbstractLanguage>
+        <Keywords>onomatopoeia, Yinping tone, diachronic evolution, restrictive mechanism</Keywords>
+        <Fulltext>Yinping tone is dominant in Mandarin onomatopoeias and there are three puzzles behind it: (a) Does this tonal distribution pattern exist since ancient or is it caused by diachronic evolution? (b) If this tonal distribution is caused by diachronic evolution, then what is the process of the diachronic evolution? (c) What is the restrictive mechanism behind this pattern of tonal distribution? First, this article examines the tonal distribution pattern, diachronic evolution of syllable size and structure type from five historical periods: from the Western Zhou Dynasty to the Spring and Autumn Period, the Tang Dynasty, the Yuan Dynasty, the middle Qing Dynasty and the contemporary China. Second, it tries to provide the key that unlocks the three puzzles one by one. Finally, four conclusions related to the subject are presented. http://www.macrolinguistics.com/index.php?c=download&id=546</Fulltext>
+        <URLs>
+            <abstract>http://www.macrolinguistics.com/index.php?c=msg&id=738&</abstract>
+            <Fulltext>
+                <pdf>http://www.macrolinguistics.com/index.php?c=download&id=546</pdf>
+            </Fulltext>
+        </URLs>
+        <FulltextLanguage>EN</FulltextLanguage>
+        <ref-list>
+            <title>References</title>
+            <Citation ID="CR1">
+                <CitationNumber>1</CitationNumber>
+                <BibArticle>
+                    <BibAuthorName>
+                        <Initials>Aiwen</Initials>
+                        <FamilyName>Chen</FamilyName>
+                    </BibAuthorName>
+                    <BibAuthorName>
+                        <Initials>Ping</Initials>
+                        <FamilyName>Yu</FamilyName>
+                    </BibAuthorName>
+                    <Year>1979</Year>
+                    <ArticleTitle Language="En">The Word Order of Paratactic Disyllable Words </ArticleTitle>
+                    <JournalTitle>. Chinese language</JournalTitle>
+                    <VolumeID> 2.</VolumeID>
+                    <FirstPage></FirstPage>
+                    <LastPage></LastPage>
+                    <Occurrence Type="DOI">
+                        <Handle></Handle>
+                    </Occurrence>
+                </BibArticle>
+                <BibUnstructured>Chen Aiwen. & Yu Ping. 1979. The Word Order of Paratactic Disyllable Words [J]. Chinese language, 2.</BibUnstructured>
+            </Citation>
+            <Citation ID="CR2">
+                <CitationNumber>2</CitationNumber>
+                <BibArticle>
+                    <BibAuthorName>
+                        <Initials>Baoya</Initials>
+                        <FamilyName>Chen</FamilyName>
+                    </BibAuthorName>
+                    <Year>2006</Year>
+                    <ArticleTitle Language="En">The Two Modes of Language Contact Leading to the Differentiation of Chinese Dialects </ArticleTitle>
+                    <JournalTitle>. Journal of Peking University</JournalTitle>
+                    <VolumeID> 2.</VolumeID>
+                    <FirstPage></FirstPage>
+                    <LastPage></LastPage>
+                    <Occurrence Type="DOI">
+                        <Handle></Handle>
+                    </Occurrence>
+                </BibArticle>
+                <BibUnstructured>Chen Baoya. 2006. The Two Modes of Language Contact Leading to the Differentiation of Chinese Dialects [J]. Journal of Peking University, 2.</BibUnstructured>
+            </Citation>
+        </ref-list>
+    </Article>
+</ArticleSet>

@@ -213,43 +213,55 @@ public class HTMLParser {
             String articleAuthor = mattersInfo.replace(articleTitle, "").replace(year + ". ", "");
             if (articleAuthor.endsWith(". ")) articleAuthor = articleAuthor.substring(0, articleAuthor.length() - 2);
 
-            System.out.println(articleAuthor);
             // 文献作者列表
             List<RefAuthor> refAuthorsList = new ArrayList<>();
-            String[] tempAuthor = articleAuthor.split(",|&amp;|and"); // 分隔符 ", & and"
-            System.out.println(tempAuthor.length);
 
-            // 只有一位作者
-            if (tempAuthor.length >= 2) {
-                RefAuthor refAuthor = new RefAuthor();
-                if (isChina) {
-                    refAuthor.setReferencesFirstName(tempAuthor[0]);
-                    refAuthor.setReferencesLastName(tempAuthor[1]);
-                } else {
-                    refAuthor.setReferencesFirstName(tempAuthor[1]);
-                    refAuthor.setReferencesLastName(tempAuthor[0]);
+            // 中文处理
+            if (isChina) {
+                String[] tempAuthor = articleAuthor.replace(".", "").replace(" &", "").split(" ");
+                System.out.println(tempAuthor.length);
+                for (int i = 0; i < tempAuthor.length; i += 2) {
+                    String firstName = tempAuthor[i];
+                    String lastName = "";
+                    if (i + 1 < tempAuthor.length)
+                        lastName = tempAuthor[i + 1];
+                    RefAuthor refAuthor = new RefAuthor();
+                    refAuthor.setReferencesFirstName(lastName);
+                    refAuthor.setReferencesLastName(firstName);
+                    refAuthorsList.add(refAuthor);
                 }
-                refAuthorsList.add(refAuthor);
 
+            } else {
+                String[] tempAuthor = articleAuthor.split(",|&amp;|and"); // 分隔符 ", & and"
+                if (tempAuthor.length >= 1) {
+                    RefAuthor refAuthor = new RefAuthor();
 
-                if (tempAuthor.length > 2) {
-                    for (int i = 2; i < tempAuthor.length; i++) {
-                        String authorString = tempAuthor[i];
-                        for (int j = 0; j < authorString.length(); j++) {
-                            if (authorString.startsWith(" ")) authorString = authorString.substring(1);
-                        }
-                        refAuthor = new RefAuthor();
-                        String[] names = authorString.split(" ");// 分开前后中名
-                        if (isChina) {
-                            refAuthor.setReferencesFirstName(names[names.length - 1]);
-                            if (names.length > 1)
-                                refAuthor.setReferencesLastName(names[0]);
-                        } else {
+                    if (tempAuthor.length == 1) {
+                        refAuthor.setReferencesLastName(tempAuthor[0]);
+                        refAuthorsList.add(refAuthor);
+                    }
+
+                    if (tempAuthor.length == 2) {
+                        refAuthor.setReferencesFirstName(tempAuthor[1]);
+                        refAuthor.setReferencesLastName(tempAuthor[0]);
+                        refAuthorsList.add(refAuthor);
+                    }
+
+                    if (tempAuthor.length > 2) {
+                        for (int i = 2; i < tempAuthor.length; i++) {
+                            String authorString = tempAuthor[i];
+                            for (int j = 0; j < authorString.length(); j++) {
+                                if (authorString.startsWith(" ")) authorString = authorString.substring(1);
+                            }
+                            refAuthor = new RefAuthor();
+                            String[] names = authorString.split(" ");// 分开前后中名
+
                             refAuthor.setReferencesFirstName(names[0]);
                             if (names.length > 1)
                                 refAuthor.setReferencesLastName(names[names.length - 1]);
+
+                            refAuthorsList.add(refAuthor);
                         }
-                        refAuthorsList.add(refAuthor);
                     }
                 }
             }
@@ -279,13 +291,14 @@ public class HTMLParser {
                 }
             } else {
                 references.setType("book");
+
                 //出版社
                 if (!lastInfo.equals("")) {
-                    String[] pub = lastInfo.split(",");
-                    if (pub.length == 1) references.setPublisherName(pub[0]);
+                    String[] pub = lastInfo.split(":");
+                    if (pub.length == 1) references.setPublisherLocation(pub[0].replace(".", "").trim().split(",")[0]);
                     else if (pub.length == 2) {
-                        references.setPublisherName(pub[0]);
-                        references.setPublisherLocation(pub[1]);
+                        references.setPublisherLocation(pub[0].replace(".", "").trim());
+                        references.setPublisherName(pub[1].split(",")[0].trim());
                     }
                 }
             }
@@ -294,7 +307,6 @@ public class HTMLParser {
             references.setContent(line); // 内容
             references.setReferencesarticleTitle(articleTitle); // 标题
             references.setRefAuthorList(refAuthorsList);  // 作者列表
-
 
             if (!references.getReferencesarticleTitle().equals(""))
                 referencesList.add(references);

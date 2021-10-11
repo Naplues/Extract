@@ -21,6 +21,8 @@ import trans.xml.RefAuthor;
 import trans.xml.References;
 import trans.xml.Template;
 
+import javax.swing.*;
+
 /**
  * @author gzq
  */
@@ -28,6 +30,7 @@ public class HTMLParser {
     /*
      * 爬取网页信息
      */
+    public static boolean ERROR_LINE = false;
 
     public static String pickData(String url) {
         CloseableHttpClient httpclient = HttpClients.createDefault();
@@ -199,118 +202,131 @@ public class HTMLParser {
         }
 
         List<References> referencesList = new ArrayList<>();
+        int count = 0;
         for (String line : lines) {
-            // 对参考文献进行预处理
+            count++;
+            try {
+                // 对参考文献进行预处理
+                String[] tempInfo = line.split("\\[A\\]|\\[C\\]|\\[D\\]|\\[J\\]|\\[M\\]|\\[M\\]");
+                String mattersInfo = tempInfo[0];
+                String lastInfo = "";
+                if (tempInfo.length > 1)
+                    lastInfo = tempInfo[tempInfo.length - 1];
+                String[] temps = mattersInfo.split("\\. ");
+                String articleTitle = temps[temps.length - 1]; // 文章标题
+                String year = temps[temps.length - 2]; // 时间
+                String articleAuthor = mattersInfo.replace(articleTitle, "").replace(year + ". ", "");
+                if (articleAuthor.endsWith(". "))
+                    articleAuthor = articleAuthor.substring(0, articleAuthor.length() - 2);
 
-            String[] tempInfo = line.split("\\[A\\]|\\[C\\]|\\[D\\]|\\[J\\]|\\[M\\]|\\[M\\]");
-            String mattersInfo = tempInfo[0];
-            String lastInfo = "";
-            if (tempInfo.length > 1)
-                lastInfo = tempInfo[tempInfo.length - 1];
-            String[] temps = mattersInfo.split("\\. ");
-            String articleTitle = temps[temps.length - 1]; // 文章标题
-            String year = temps[temps.length - 2]; // 时间
-            String articleAuthor = mattersInfo.replace(articleTitle, "").replace(year + ". ", "");
-            if (articleAuthor.endsWith(". ")) articleAuthor = articleAuthor.substring(0, articleAuthor.length() - 2);
+                // 文献作者列表
+                List<RefAuthor> refAuthorsList = new ArrayList<>();
 
-            // 文献作者列表
-            List<RefAuthor> refAuthorsList = new ArrayList<>();
-
-            // 中文处理
-            if (isChina) {
-                String[] tempAuthor = articleAuthor.replace(".", "").replace(" &", "").split(" ");
-                System.out.println(tempAuthor.length);
-                for (int i = 0; i < tempAuthor.length; i += 2) {
-                    String firstName = tempAuthor[i];
-                    String lastName = "";
-                    if (i + 1 < tempAuthor.length)
-                        lastName = tempAuthor[i + 1];
-                    RefAuthor refAuthor = new RefAuthor();
-                    refAuthor.setReferencesFirstName(lastName);
-                    refAuthor.setReferencesLastName(firstName);
-                    refAuthorsList.add(refAuthor);
-                }
-
-            } else {
-                String[] tempAuthor = articleAuthor.split(",|&amp;|and"); // 分隔符 ", & and"
-                if (tempAuthor.length >= 1) {
-                    RefAuthor refAuthor = new RefAuthor();
-
-                    if (tempAuthor.length == 1) {
-                        refAuthor.setReferencesLastName(tempAuthor[0]);
+                // 中文处理
+                if (isChina) {
+                    String[] tempAuthor = articleAuthor.replace(".", "").replace(" &", "").split(" ");
+                    System.out.println(tempAuthor.length);
+                    for (int i = 0; i < tempAuthor.length; i += 2) {
+                        String firstName = tempAuthor[i];
+                        String lastName = "";
+                        if (i + 1 < tempAuthor.length)
+                            lastName = tempAuthor[i + 1];
+                        RefAuthor refAuthor = new RefAuthor();
+                        refAuthor.setReferencesFirstName(lastName);
+                        refAuthor.setReferencesLastName(firstName);
                         refAuthorsList.add(refAuthor);
                     }
 
-                    if (tempAuthor.length == 2) {
-                        refAuthor.setReferencesFirstName(tempAuthor[1]);
-                        refAuthor.setReferencesLastName(tempAuthor[0]);
-                        refAuthorsList.add(refAuthor);
-                    }
+                } else {
+                    String[] tempAuthor = articleAuthor.split(",|&amp;|and"); // 分隔符 ", & and"
+                    if (tempAuthor.length >= 1) {
+                        RefAuthor refAuthor = new RefAuthor();
 
-                    if (tempAuthor.length > 2) {
-                        for (int i = 2; i < tempAuthor.length; i++) {
-                            String authorString = tempAuthor[i];
-                            for (int j = 0; j < authorString.length(); j++) {
-                                if (authorString.startsWith(" ")) authorString = authorString.substring(1);
-                            }
-                            refAuthor = new RefAuthor();
-                            String[] names = authorString.split(" ");// 分开前后中名
-
-                            refAuthor.setReferencesFirstName(names[0]);
-                            if (names.length > 1)
-                                refAuthor.setReferencesLastName(names[names.length - 1]);
-
+                        if (tempAuthor.length == 1) {
+                            refAuthor.setReferencesLastName(tempAuthor[0]);
                             refAuthorsList.add(refAuthor);
                         }
-                    }
-                }
-            }
 
-            // 单个参考文献声明
-            References references = new References();
-            if (line.contains("[J]")) {
-                references.setType("journal");
-                //页码 期刊号
-                if (!lastInfo.equals("")) {
-                    String[] tempString = lastInfo.split(" ");
-                    if (tempString.length > 1) {
-                        String pageString = tempString[tempString.length - 1];
-                        if (pageString.contains("-")) {
-                            String startPage = pageString.split("-")[0];
-                            String lastPage = pageString.split("-")[1].replace(".", "");
-                            references.setReferencesFirstPage(startPage);
-                            references.setReferencesLastPage(lastPage);
+                        if (tempAuthor.length == 2) {
+                            refAuthor.setReferencesFirstName(tempAuthor[1]);
+                            refAuthor.setReferencesLastName(tempAuthor[0]);
+                            refAuthorsList.add(refAuthor);
+                        }
+
+                        if (tempAuthor.length > 2) {
+                            for (int i = 2; i < tempAuthor.length; i++) {
+                                String authorString = tempAuthor[i];
+                                for (int j = 0; j < authorString.length(); j++) {
+                                    if (authorString.startsWith(" ")) authorString = authorString.substring(1);
+                                }
+                                refAuthor = new RefAuthor();
+                                String[] names = authorString.split(" ");// 分开前后中名
+
+                                refAuthor.setReferencesFirstName(names[0]);
+                                if (names.length > 1)
+                                    refAuthor.setReferencesLastName(names[names.length - 1]);
+
+                                refAuthorsList.add(refAuthor);
+                            }
                         }
                     }
-                    String[] vol = lastInfo.split(",");
-                    if (vol.length > 1) {
-                        String volID = vol[vol.length - 1].split(":")[0];
-                        references.setVolume(volID);
-                    }
-                    references.setJournalName(vol[0]);
                 }
-            } else {
-                references.setType("book");
 
-                //出版社
-                if (!lastInfo.equals("")) {
-                    String[] pub = lastInfo.split(":");
-                    if (pub.length == 1) references.setPublisherLocation(pub[0].replace(".", "").trim().split(",")[0]);
-                    else if (pub.length == 2) {
-                        references.setPublisherLocation(pub[0].replace(".", "").trim());
-                        references.setPublisherName(pub[1].split(",")[0].trim());
+                // 单个参考文献声明
+                References references = new References();
+                if (line.contains("[J]")) {
+                    references.setType("journal");
+                    //页码 期刊号
+                    if (!lastInfo.equals("")) {
+                        String[] tempString = lastInfo.split(" ");
+                        if (tempString.length > 1) {
+                            String pageString = tempString[tempString.length - 1];
+                            if (pageString.contains("-")) {
+                                String startPage = pageString.split("-")[0];
+                                String lastPage = pageString.split("-")[1].replace(".", "");
+                                references.setReferencesFirstPage(startPage);
+                                references.setReferencesLastPage(lastPage);
+                            }
+                        }
+                        String[] vol = lastInfo.split(",");
+                        if (vol.length > 1) {
+                            String volID = vol[vol.length - 1].split(":")[0];
+                            references.setVolume(volID);
+                        }
+                        references.setJournalName(vol[0]);
+                    }
+                } else {
+                    references.setType("book");
+
+                    //出版社
+                    if (!lastInfo.equals("")) {
+                        String[] pub = lastInfo.split(":");
+                        if (pub.length == 1)
+                            references.setPublisherLocation(pub[0].replace(".", "").trim().split(",")[0]);
+                        else if (pub.length == 2) {
+                            references.setPublisherLocation(pub[0].replace(".", "").trim());
+                            references.setPublisherName(pub[1].split(",")[0].trim());
+                        }
                     }
                 }
+
+                references.setYear(year);  // 年份
+                references.setContent(line); // 内容
+                references.setReferencesarticleTitle(articleTitle); // 标题
+                references.setRefAuthorList(refAuthorsList);  // 作者列表
+
+                if (!references.getReferencesarticleTitle().equals(""))
+                    referencesList.add(references);
+
+            } catch (Exception e) {
+                ERROR_LINE=true;
+                System.out.println(ERROR_LINE);
+                JOptionPane.showMessageDialog(null, "第" + count + "行: " + line + "", "参考文献格式错误!",
+                        JOptionPane.INFORMATION_MESSAGE);
+                break;
             }
-
-            references.setYear(year);  // 年份
-            references.setContent(line); // 内容
-            references.setReferencesarticleTitle(articleTitle); // 标题
-            references.setRefAuthorList(refAuthorsList);  // 作者列表
-
-            if (!references.getReferencesarticleTitle().equals(""))
-                referencesList.add(references);
         }
+
         return referencesList;
     }
 
